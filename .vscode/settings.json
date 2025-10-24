@@ -1,0 +1,7 @@
+{
+"markdown-preview-enhanced.previewTheme": "github-dark.css",
+"markdown-preview-enhanced.mathRenderingOption": "KaTeX",
+"markdown-preview-enhanced.enableWikiLinkSyntax": true,
+"markdown-preview-enhanced.liveUpdate": true,
+"markdown-preview-enhanced.scrollSync": true
+}
