@@ -1,0 +1,1 @@
+## Notes on Kidger's *On Neural Differential Equations*

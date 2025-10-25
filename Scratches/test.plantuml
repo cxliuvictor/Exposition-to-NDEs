@@ -1,0 +1,5 @@
+@startuml 
+title Hello World
+A --> B : Hello
+B --> A : Hi
+@enduml

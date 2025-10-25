@@ -1,0 +1,1 @@
+## Note on Kidger's introductory talk (with David Duvenaud)

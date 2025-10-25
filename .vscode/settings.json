@@ -3,5 +3,25 @@
 "markdown-preview-enhanced.mathRenderingOption": "KaTeX",
 "markdown-preview-enhanced.enableWikiLinkSyntax": true,
 "markdown-preview-enhanced.liveUpdate": true,
-"markdown-preview-enhanced.scrollSync": true
+"markdown-preview-enhanced.scrollSync": true,
+"markdown.preview.openSideBySide": true,
+
+
+"editor.fontFamily": "JetBrains Mono, Fira Code, Cascadia Code, monospace",
+"editor.fontLigatures": true,
+"editor.renderWhitespace": "boundary",
+"editor.minimap.enabled": false,
+"workbench.colorTheme": "Tokyo Night Storm",  
+"latex-workshop.view.pdf.viewer": "tab",
+
+"latex-workshop.latex.autoBuild.run": "onSave",
+"markdown.preview.openMarkdownLinks": "inEditor",
+
+"code-runner.runInTerminal": true,
+
+"plantuml.render": "PlantUMLServer",
+"plantuml.server": "https://www.plantuml.com/plantuml",
+"plantuml.trace.server": "https://www.plantuml.com/plantuml/svg/",
+"plantuml.previewFileType": "svg"
+
 }
