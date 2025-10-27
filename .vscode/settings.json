@@ -11,7 +11,7 @@
 "editor.fontLigatures": true,
 "editor.renderWhitespace": "boundary",
 "editor.minimap.enabled": false,
-"workbench.colorTheme": "Tokyo Night Storm",  
+"workbench.colorTheme": "Tokyo Night Light",  
 "latex-workshop.view.pdf.viewer": "tab",
 
 "latex-workshop.latex.autoBuild.run": "onSave",
@@ -22,6 +22,10 @@
 "plantuml.render": "PlantUMLServer",
 "plantuml.server": "https://www.plantuml.com/plantuml",
 "plantuml.trace.server": "https://www.plantuml.com/plantuml/svg/",
-"plantuml.previewFileType": "svg"
-
+"plantuml.previewFileType": "svg",
+"cSpell.words": [
+    "Kidger's",
+    "Kidger"
+]
 }
+

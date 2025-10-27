@@ -20,3 +20,5 @@ print("Hello Markdown")
 Press <code>Ctrl K + V</code> (Ctrl K first, then lift all fingers from keyboard, then press V) to open preview on the side panel.
 
 (more previews to be done)
+
+$$ f_\theta: \R \to \R $$
