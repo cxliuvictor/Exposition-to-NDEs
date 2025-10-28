@@ -22,3 +22,10 @@ Press <code>Ctrl K + V</code> (Ctrl K first, then lift all fingers from keyboard
 (more previews to be done)
 
 $$ f_\theta: \R \to \R $$
+
+```math
+  \begin{bmatrix} 
+    X \\ 
+    Y 
+  \end{bmatrix}
+```
