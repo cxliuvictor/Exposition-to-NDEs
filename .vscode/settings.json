@@ -5,6 +5,13 @@
 "markdown-preview-enhanced.liveUpdate": true,
 "markdown-preview-enhanced.scrollSync": true,
 "markdown.preview.openSideBySide": true,
+"markdown-preview-enhanced.katexConfig": {
+  "macros": {
+    "\\RR": "\\mathbb{R}",
+    "\\vect": ["\\mathbf{#1}", 1],
+    "\\set": ["\\left\\{#1\\right\\}", 1]
+  }
+}
 
 
 "editor.fontFamily": "JetBrains Mono, Fira Code, Cascadia Code, monospace",
@@ -26,6 +33,9 @@
 "cSpell.words": [
     "Kidger's",
     "Kidger"
-]
+],
+"extensions.supportVirtualWorkspaces": {
+    "shd101wyy.markdown-preview-enhanced": false
+}
 }
 
