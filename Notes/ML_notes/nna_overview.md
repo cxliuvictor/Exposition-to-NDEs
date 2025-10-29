@@ -1,1 +1,1 @@
-### An overview of some of the most fundamental and novel neural network architectures 
+### An overview of fundamental and novel neural network architectures 
