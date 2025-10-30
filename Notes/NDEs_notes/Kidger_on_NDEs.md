@@ -53,9 +53,12 @@ Interestingly, this connection between DL architectures and NDEs is ubiquitous:
 
 NDEs have a myriad applications in real life, often demonstrating state-of-the-art performance in areas like systematic modelling (physical, biological, financial, etc), regular/irregular time series analysis, generative modelling, and many more. 
 
-NDEs offer practically a best-of-both-world approach: the NN side offers high-capacity function approximation and high trainability, while the DE side offers strong prior on model space, memory-efficiency (adjoint backpropagation), and theoretical understanding via well-understood mathematics.
+Advantages of NDE approaches:
+- NDEs offer practically a best-of-both-world approach: the NN side offers high-capacity function approximation and high trainability, while the DE side offers strong prior on model space, memory-efficiency (adjoint backpropagation), and theoretical understanding via well-understood mathematics. 
+- The NN side supplements the DE side when purely mechanistic models fail to capture real-world complexity, while the DE side brings a coherent theory and structural consistency/interpretability to the NN side.
+- Because of their continuous nature, NDEs naturally handle irregular/asynchronous data, at which discrete-time models like RNNs struggle. 
 
-However, NDEs are not without their limitations (speed of computation (might be an implementation issue regarding Python vs C++), number of parameters that insinuates low interpretability and potential overfitting), which we won't discuss much about here.
+However, NDEs are not without their limitations (speed of computation (might be an implementation issue regarding Python vs C++), number of parameters that insinuates low interpretability and potential overfitting, etc), but we won't discuss much about them here.
 
 
 ### NCDEs Overview
