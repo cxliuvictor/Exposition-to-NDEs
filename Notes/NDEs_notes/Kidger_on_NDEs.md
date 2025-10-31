@@ -91,7 +91,7 @@ and the output is either $l_\theta(y(T))$ or $l_\theta(y(t))$.
 
 The framework of NCDEs is essentially a continuous version of a recurrent neural network (RNN): $y_{n+1} = f_\theta(y_n, x_n)$, where the discrete inputs $x$ provoke changes in the **hidden state** $y$, just like how $X$ drive changes continuously in $y$ via the CDE that evolves in the latent space (not the data/output space itself directly, hence the $l_\theta$). 
 
-![alt text](NCDEs_idea.png)
+![Alt text](NDEs_diagrams/NCDEs_idea.png)
 
 <details close>
 <summary>Why do we need this extra latent data?</summary>
@@ -150,14 +150,15 @@ $$
 
 (slightly different form here from using stochastic notations) and then we define $F_\phi \coloneqq m_\theta \cdot H_T$. Here, $m_\theta$ acts as a readout from the hidden state $H_T$ (relative to $Y$) to the desired discriminator $F_\phi$. In short, *NSDE/NCDE form a generator/discriminator pair for a GAN*.
 
-![alt text](<SDE-GAN equations summary.png>)
+![Alt text](NDEs_diagrams/SDE-GAN%20equations%20summary.png)
 
 In Figure 4.2, from top to bottom, it models the formulation of a GAN; from left to right, it models an NDE.
 
 <span style="color:#888;">Remark: The only thing required in this framework is those fundamental, off-the-shelf techniques used for a conventional/"non-neural" SDE: not really any new machinery other than making the vector field NNs and learning the $f_\theta$ (discriminator of a GAN in this case) instead of using a fixed $f$.
 
 #### NSDEs fitting examples (standard Brownian motion with drift or time-dependent diffusion, Lorenz attractor, real-life time series)
-![alt text](<trained SDE-GAN results 1.png>)
+![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%201.png)
 
-![alt text](<trained SDE-GAN results 2.png>)
+![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%202.png)
+
 In the Beijing Air Quality example (six dimensional markers over the course of a day, time series for several days, modelled using an SDE), one has absolutely *no theory* about how air quality evolves and particulate matter changes over the course of a day, but it doesn't stop us from substituting theory with data, which we fit using NSDEs and other models (uncommon practice in DEs but not in ML) with effective results. 
