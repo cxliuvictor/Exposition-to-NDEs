@@ -1,5 +1,5 @@
 ## Notes on Kidger's NDEs talks
-This is a compilation of (not totally complete) notes on Patrick Kidger's talks across two to three seminars. The aim here is to provide a very high-level overview of subfields within NDEs.
+This is a compilation of notes mostly based on Patrick Kidger's talks across two to three seminars. The aim here is to provide a very high-level overview of subfields within NDEs.
 ### NDEs Overview
 
 A neural differential equation is *a differential equation (DE) that uses a neural network (NN) with learnable parameters/functions to parametrize its vector field*. A canonical starter example is a **neural ordinary differential equation** (NODE): 
@@ -101,7 +101,7 @@ The outputs can evolve in a nonmarkovian way, and it's rare to find truly markov
 
 </details>
 ...
-
+  
 <span style="color:#888;">Remark: One might wonder if there's any connection between control theory and NCDEs. Speaking very broadly, the difference between them is somewhat philosophical: the former studies some fixed system $f$ and attempts to find the optimal $X$ producing the desired response $y$, while the latter has input $X$ fixed and the goal of optimizing $f_\theta$ to give the desired $y$.  
 
 There are many things yet to be addressed:
@@ -142,7 +142,7 @@ $$
 X_0 = \zeta_\theta(V) \hspace{0.7cm} dX_t = \mu_\theta(t, X_t)dt +\sigma_\theta(t, X_t)dW_t \hspace{0.7cm} Y_t = l_\theta(X_t)
 $$
 
-(with a very flexible initial distribution $X_0$ as it's simply a learnt function of noise $V$) such that $Y \approx B$. Here, $X$ is the hidden state; $Y$ is the output, which are continuous-time paths, meaning that we need discriminator that accepts such objects as inputs. A convenient choice for $F_\phi$ would be a CDE (Remember this is an operator between path spaces and we gave an example about classifying handwritten digits? We shall now classify real vs fake time series generated from our SDE using the same CDE framework):
+(with a very flexible initial distribution $X_0$ as it's simply a learnt function of noise $V$) such that $Y \approx B$. Here, $X$ is the hidden state; $Y$ is the output, which are continuous-time paths, meaning that we need a discriminator that accepts such objects as inputs. A convenient choice for $F_\phi$ would be a CDE (Remember this is an operator between path spaces and we gave an example about classifying handwritten digits? We shall now classify real vs fake time series generated from our SDE using the same CDE framework):
 
 $$
 H_0 = \xi_\phi(Y_0) \hspace{1cm} dH_t = f_\phi(t, H_t)dt + g_\phi(t, H_t)dY_t
@@ -152,13 +152,16 @@ $$
 
 ![Alt text](NDEs_diagrams/SDE-GAN%20equations%20summary.png)
 
-In Figure 4.2, from top to bottom, it models the formulation of a GAN; from left to right, it models an NDE.
+In Figure 4.2, from top to bottom, it depicts the formulation of a GAN; from left to right, it models an NDE.
 
-<span style="color:#888;">Remark: The only thing required in this framework is those fundamental, off-the-shelf techniques used for a conventional/"non-neural" SDE: not really any new machinery other than making the vector field NNs and learning the $f_\theta$ (discriminator of a GAN in this case) instead of using a fixed $f$.
+<span style="color:#888;">Remark: The only thing required in this framework is those fundamental, off-the-shelf techniques used for a conventional/"non-neural" SDE: not really any new machinery other than making the vector field an NN and learning the $f_\theta$ (discriminator of a GAN in this case) instead of using a fixed $f$.
 
 #### NSDEs fitting examples (standard Brownian motion with drift or time-dependent diffusion, Lorenz attractor, real-life time series)
 ![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%201.png)
 
 ![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%202.png)
 
-In the Beijing Air Quality example (six dimensional markers over the course of a day, time series for several days, modelled using an SDE), one has absolutely *no theory* about how air quality evolves and particulate matter changes over the course of a day, but it doesn't stop us from substituting theory with data, which we fit using NSDEs and other models (uncommon practice in DEs but not in ML) with effective results. 
+In the Beijing Air Quality example (a six-dimensional marker over the course of a day generate a time series for several days which is modelled using an SDE), one has absolutely *no theory* about how air quality evolves and particulate matter changes over the course of a day, but it doesn't stop us from substituting theory with data (uncommon practice in DEs but not in ML), which we fit using NSDEs and other models with effective results. 
+
+###### Remark: One may notice that NCDEs and NSDEs share many similarities: they both model continuous-time dynamics and both involve a hidden state, under the framework of variational autoencoder, that evolves according to an DE with learnable parameters. 
+###### However, it's important to note that NCDEs sequentially model *deterministic* systems driven by observed input and learn how a system responds to continuous-time signal, whereas NSDEs model and generate samples from *intrinsically random* systems whose stochasticity is due to Brownian motion instead of some extrinsic control path.
