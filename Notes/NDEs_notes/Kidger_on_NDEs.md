@@ -26,7 +26,7 @@ Note that the ODE describes the evolution of $y$, which lives in a *latent space
 
 ...
 
-It's worth mentioning that this seemingly complicated nesting of an NN inside an DE is nothing groundbreaking from a mathematics or ML point of view alone. For example, the SIR model in epidemiology is as follows:
+It's worth mentioning that this seemingly complicated nesting of an NN inside an DE is nothing groundbreaking from a mathematics or ML point of view alone. For example, the SIR model in mathematical epidemiology is as follows:
 
 $$
 \frac{d}{dt} 
@@ -40,7 +40,7 @@ $$
 
 Both NODEs and the SIR model are parametrized DEs with some theoretical models for the RHS, with the mere difference being that SIR is specialized to fit a specific phenomenon (namely the evolution of a disease), while an NODE is a generalized "fitter" applicable to lots of things thanks to the NN architecture. In fact, the SIR model can transform into an NODE by making the parameters $b$ and $k$ learnable.
 
-In the framework of deep learning (DL), we may also see a shadow of NODE: by applying Euler method on $\frac{dy}{dt}(t) = f_\theta(t, y(t))$, we obtain a residual network (ResNet): 
+In the framework of deep learning (DL), we may also see a shadow of NODE: by applying Euler method to $\frac{dy}{dt}(t) = f_\theta(t, y(t))$, we obtain a residual network (ResNet): 
 
 $$ 
 y_{t_{n+1}} = y_{t_{n}} + \Delta tf_\theta(t_n, y_{t_{n}}).
@@ -89,7 +89,7 @@ $$
 
 and the output is either $l_\theta(y(T))$ or $l_\theta(y(t))$.
 
-The framework of NCDEs is essentially a continuous version of a recurrent neural network (RNN): $y_{n+1} = f_\theta(y_n, x_n)$, where the discrete inputs $x$ provoke changes in the **hidden state** $y$, just like how $X$ drive changes continuously in $y$ via the CDE that evolves in the latent space (not the data/output space itself directly, hence the $l_\theta$). 
+The framework of NCDEs is essentially a continuous version of recurrent neural network (RNN): $y_{n+1} = f_\theta(y_n, x_n)$, where the discrete inputs $x$ provoke changes in the **hidden state** $y$, just like how $X$ drive changes continuously in $y$ via the CDE that evolves in the latent space (not the data/output space itself directly, hence the $l_\theta$). 
 
 ![Alt text](NDEs_diagrams/NCDEs_idea.png)
 
@@ -97,7 +97,7 @@ The framework of NCDEs is essentially a continuous version of a recurrent neural
 <summary>Why do we need this extra latent data?</summary>
 <span style="color:#887">
 
-The outputs can evolve in a nonmarkovian way, and it's rare to find truly markovian data in real life... The $\zeta_\theta$ here acts as the initial encoder that compresses raw/interpolated data into some latent space, which is typically low-dimensional and easier for a model to reason about. For instance, in the context of modelling handwritten digits, the data space can be the position of pen moved over paper over time (as a time series), while the latent space can be a 2D continuous space representing stroke positions and styles. The CDE block acts as a continuous-time encoder describing data-driven hidden-state evolution, yielding a final $y(T)$ which is then passed through the readout map $l_\theta$ to give an output in target space such as a binary classification.
+Because the outputs can then evolve in a nonmarkovian way, and it's rare to find truly markovian data in real life... The $\zeta_\theta$ here acts as the initial encoder that compresses raw/interpolated data into some latent space, which is typically low-dimensional and easier for a model to reason about. For instance, in the context of modelling handwritten digits, the data space can be the position of pen moved over paper over time (as a time series), while the latent space can be a 2D continuous space representing stroke positions and styles. The CDE block acts as a continuous-time encoder describing data-driven hidden-state evolution, yielding a final $y(T)$ which is then passed through the readout map $l_\theta$ to give an output in target space such as a binary classification.
 
 </details>
 ...
@@ -105,7 +105,7 @@ The outputs can evolve in a nonmarkovian way, and it's rare to find truly markov
 <span style="color:#888;">Remark: One might wonder if there's any connection between control theory and NCDEs. Speaking very broadly, the difference between them is somewhat philosophical: the former studies some fixed system $f$ and attempts to find the optimal $X$ producing the desired response $y$, while the latter has input $X$ fixed and the goal of optimizing $f_\theta$ to give the desired $y$.  
 
 There are many things yet to be addressed:
-- We know typically $f_\theta$ is a feed-forward NN, but how do we initialize $f_\theta$ and what are generally some good choices for it?
+- We know typically $f_\theta$ is a feed-forward NN, but what are some good choices in initializing $f_\theta$?
 - What are some interpolation schemes in constructing $X$? How do we know which one to use?
 - The rough path theoretical reasoning behind writing $f_\theta(y(s))dX(s)$ instead of $f_\theta(y(s), X(s))ds$...
 - NCDEs are universal approximators for all functional sequences (strong theoretical guarantee): how do we show this and what are its implications?
@@ -119,7 +119,7 @@ $$
 dX_t = \mu(t, X_t)dt + \sigma(t, X_t)dW_t
 $$
 
-where $X$ is some stochastic processes governed by the RHS consisting of drift ($\mu$), diffusion ($\sigma$), and a Wiener process/Brownian noise ($W_t$). Here, $X$, $W$, $\mu$ are vector-valued, and $\sigma$ is matrix-valued. The solution to an SDE is a distribution over paths whose sample paths are just "random curves" in time but all following a certain "law" of the underlying process. An SDE solver can sample from an SDE, at least approximately, and is trained by matching statistics with payoff functions $F_i$:
+where $X$ is some stochastic processes governed by the RHS consisting of drift ($\mu$), diffusion ($\sigma$), and a Wiener process/Brownian noise ($W_t$). Here, $X$, $W$, $\mu$ are vector-valued, and $\sigma$ is matrix-valued. The solution to an SDE is a distribution over paths whose sample paths are just "random curves" in time but all following a certain "law" of the underlying process. An *SDE solver* can sample from an SDE, at least approximately, and is trained by matching statistics with payoff functions $F_i$:
 
 $$
 \mathbb{E}_XF_i(X) \approx \mathbb{E}_{data}F_i(data)
@@ -127,7 +127,7 @@ $$
 
 
 #### A quick recap on GANs
-Given some noise $A(\omega)\in \mathbb{R}^{d_1}$, target $B(\omega)\in \mathbb{R}^{d_2}$, a *generative model* is an NN $g_\theta:\mathbb{R}^{d_1} \to \mathbb{R}^{d_2}$ such that $g_\theta(A) \approx B$. For example, $A$ may be a multivariate normal sample which, after going through $g_\theta$, produces some distribution resembling $B$, the distribution of a cat's picture. We can sample $g_\theta(A(\omega))$, but the main difficulty here lies in the lack of tractable probability density, meaning that we can't train $g_\theta$ with classical approaches like maximum likelihood. So instead, we train $\theta$ to minimize the loss function $W$ defined below, where $F_\phi$ is the discriminator that is responsible for identifying "fake" data and competing against the GAN's generator:
+Given some noise random variable $A(\omega)\in \mathbb{R}^{d_1}$, target random variable $B(\omega)\in \mathbb{R}^{d_2}$, a *generative model* is an NN $g_\theta:\mathbb{R}^{d_1} \to \mathbb{R}^{d_2}$ such that $g_\theta(A) \approx B$. For example, $A$ may be a multivariate normal sample which, after going through $g_\theta$, produces some distribution resembling $B$, the distribution of a cat's picture. We can sample $g_\theta(A(\omega))$, but the main difficulty here lies in the lack of tractable probability density, meaning that we can't train $g_\theta$ with classical approaches like maximum likelihood. So instead, we train $\theta$ to minimize the loss function $W$ defined below, where $F_\phi$ is the discriminator that is responsible for identifying "fake" data and competing against the GAN's generator:
 
 $$
 W(g_\theta(A), B) \approx \sup_{\phi} \left|\frac{1}{N}\sum_{i=1}^{N}F_\phi(g_\theta(A(\omega_i))) - \frac{1}{M}\sum_{i=1}^{M}F_\phi(B(\tilde\omega_j))\right|
@@ -142,17 +142,17 @@ $$
 X_0 = \zeta_\theta(V) \hspace{0.7cm} dX_t = \mu_\theta(t, X_t)dt +\sigma_\theta(t, X_t)dW_t \hspace{0.7cm} Y_t = l_\theta(X_t)
 $$
 
-(with a very flexible initial distribution $X_0$ as it's simply a learnt function of noise $V$) such that $Y \approx B$. Here, $X$ is the hidden state; $Y$ is the output, which are continuous-time paths, meaning that we need a discriminator that accepts such objects as inputs. A convenient choice for $F_\phi$ would be a CDE (Remember this is an operator between path spaces and we gave an example about classifying handwritten digits? We shall now classify real vs fake time series generated from our SDE using the same CDE framework):
+(with a very flexible initial distribution $X_0$ as it's simply a learnt function of noise $V$) such that $Y \approx B$. Here, $X$ is the hidden state; $Y$ is the output, which are continuous-time paths. Now, we need a discriminator that accepts such objects as input, and a convenient choice for $F_\phi$ would be a CDE (Remember this is an operator between path spaces and we gave an example about classifying handwritten digits? We shall now classify real vs fake time series generated from our SDE using the same CDE framework):
 
 $$
 H_0 = \xi_\phi(Y_0) \hspace{1cm} dH_t = f_\phi(t, H_t)dt + g_\phi(t, H_t)dY_t
 $$
 
-(slightly different form here from using stochastic notations) and then we define $F_\phi \coloneqq m_\theta \cdot H_T$. Here, $m_\theta$ acts as a readout from the hidden state $H_T$ (relative to $Y$) to the desired discriminator $F_\phi$. In short, *NSDE/NCDE form a generator/discriminator pair for a GAN*.
+(slightly different form here from using stochastic notations) and then we define $F_\phi \coloneqq m_\theta \cdot H_T$. Here, $m_\theta$ acts as a readout from the hidden state $H_T$ (relative to $Y$) to the desired discriminator $F_\phi$. Quite remarkably, this is saying that *NSDE/NCDE form a generator/discriminator pair for a GAN*.
 
 ![Alt text](NDEs_diagrams/SDE-GAN%20equations%20summary.png)
 
-In Figure 4.2, from top to bottom, it depicts the formulation of a GAN; from left to right, it models an NDE.
+In Figure 4.2 (with slightly different notations than what's before), from top to bottom, it depicts the formulation of a GAN; from left to right, it models an NDE.
 
 <span style="color:#888;">Remark: The only thing required in this framework is those fundamental, off-the-shelf techniques used for a conventional/"non-neural" SDE: not really any new machinery other than making the vector field an NN and learning the $f_\theta$ (discriminator of a GAN in this case) instead of using a fixed $f$.
 
