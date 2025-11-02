@@ -51,7 +51,7 @@ Interestingly, this connection between DL architectures and NDEs is ubiquitous:
 2. GRUs/LSTMs $\leftrightarrow$ **neural controlled differential equations** (NCDEs)
 3. StyleGAN2 $\leftrightarrow$ **neural stochastic differential equations** (NSDEs)
 
-NDEs have a myriad applications in real life, often demonstrating state-of-the-art performance in areas like systematic modelling (physical, biological, financial, etc), regular/irregular time series analysis, generative modelling, and many more. 
+NDEs have a myriad of applications in real life, often demonstrating state-of-the-art performance in areas like systematic modelling (physical, biological, financial, etc), regular/irregular time series analysis, generative modelling, and many more.
 
 Advantages of NDE approaches:
 - NDEs offer practically a best-of-both-world approach: the NN side offers high-capacity function approximation and high trainability, while the DE side offers strong prior on model space, memory-efficiency (adjoint backpropagation), and theoretical understanding via well-understood mathematics. 
