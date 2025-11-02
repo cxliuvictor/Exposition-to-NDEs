@@ -119,7 +119,7 @@ $$
 dX_t = \mu(t, X_t)dt + \sigma(t, X_t)dW_t
 $$
 
-where $X$ is some stochastic processes governed by the RHS consisting of drift ($\mu$), diffusion ($\sigma$), and a Wiener process/Brownian noise ($W_t$). Here, $X$, $W$, $\mu$ are vector-valued, and $\sigma$ is matrix-valued. The solution to an SDE is a distribution over paths whose sample paths are just "random curves" in time but all following a certain "law" of the underlying process. An *SDE solver* can sample from an SDE, at least approximately, and is trained by matching statistics with payoff functions $F_i$:
+where $X$ is some stochastic processes governed by the RHS consisting of drift ($\mu$), diffusion ($\sigma$), and a Wiener process/Brownian noise ($W_t$). Here, $X$, $W$, $\mu$ are vector-valued, and $\sigma$ is matrix-valued. The solution to an SDE is a distribution over paths whose sample paths are just "random curves" in time but all following a certain "law" of the underlying process. In other words, it's a map from Brownian noise and the initial distribution $X_0$ to some distribution over paths: $(X_0, W) \mapsto X$. An *SDE solver* can sample from an SDE, at least approximately, and is trained by matching statistics with payoff functions $F_i$:
 
 $$
 \mathbb{E}_XF_i(X) \approx \mathbb{E}_{data}F_i(data)
@@ -133,7 +133,15 @@ $$
 W(g_\theta(A), B) \approx \sup_{\phi} \left|\frac{1}{N}\sum_{i=1}^{N}F_\phi(g_\theta(A(\omega_i))) - \frac{1}{M}\sum_{i=1}^{M}F_\phi(B(\tilde\omega_j))\right|
 $$
 
-which is essentially matching statistics: $\mathbb{E}_AF(g_\theta(A)) \approx \mathbb{E}_{B}F(B)$. The ways that SDE solvers and GANs are trained are very similar, so why not train an SDE as a GAN?
+whose minimizing is essentially matching statistics: 
+
+$$
+\mathbb{E}_AF(g_\theta(A)) \approx \mathbb{E}_{B}F(B)
+$$
+
+for all "discriminators" (payoff functions) $F$.
+
+The ways that SDE solvers and GANs are trained are very similar, so why not train an SDE as a GAN?
 
 #### What is an NSDE?
 Our goal now is to model $B$, a random variable on path space (e.g. a distribution of the time series of option prices over the course of 30 days). To now set up the GAN, we take Brownian motion $W$ and initial noise $V$ (e.g. $\sim \mathcal{N}(0,1)$), alongside NNs $\zeta_\theta$, $\mu_\theta$, $\sigma_\theta$, $l_\theta$. Then we seek to learn an SDE of the form 
@@ -154,14 +162,14 @@ $$
 
 In Figure 4.2 (with slightly different notations than what's before), from top to bottom, it depicts the formulation of a GAN; from left to right, it models an NDE.
 
-<span style="color:#888;">Remark: The only thing required in this framework is those fundamental, off-the-shelf techniques used for a conventional/"non-neural" SDE: not really any new machinery other than making the vector field an NN and learning the $f_\theta$ (discriminator of a GAN in this case) instead of using a fixed $f$.
+<span style="color:#888;">Remark: It's worth mentioning that in the framework of NSDE, we can learn nonlinear, state-dependent, and time-dependent drift and diffusion: that is, these two functions are not restricted to any particular analytic form like in the Ornstein-Uhlenbeck and GBM models. In fact, because neural nets are universal approximators, given enough data they can learn the true drift and diffusion of any SDE. Outside of the training part, the only thing required in this framework is those fundamental, off-the-shelf techniques used for a conventional/"non-neural" SDE.
 
 #### NSDEs fitting examples (standard Brownian motion with drift or time-dependent diffusion, Lorenz attractor, real-life time series)
 ![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%201.png)
 
 ![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%202.png)
 
-In the Beijing Air Quality example (a six-dimensional marker over the course of a day generate a time series for several days which is modelled using an SDE), one has absolutely *no theory* about how air quality evolves and particulate matter changes over the course of a day, but it doesn't stop us from substituting theory with data (uncommon practice in DEs but not in ML), which we fit using NSDEs and other models with effective results. 
+In the Beijing Air Quality example (a six-dimensional marker over the course of a day generate a time series for several days which is modelled using an SDE), one has absolutely no theory about how air quality evolves and particulate matter changes over the course of a day, but it doesn't stop us from substituting theory with data (uncommon practice in DEs but not in ML), which we fit using NSDEs and other models with effective results. 
 
 ###### Remark: One may notice that NCDEs and NSDEs share many similarities: they both model continuous-time dynamics and both involve a hidden state, under the framework of variational autoencoder, that evolves according to an DE with learnable parameters. 
 ###### However, it's important to note that NCDEs sequentially model *deterministic* systems driven by observed input and learn how a system responds to continuous-time signal, whereas NSDEs model and generate samples from *intrinsically random* systems whose stochasticity is due to Brownian motion instead of some extrinsic control path.
