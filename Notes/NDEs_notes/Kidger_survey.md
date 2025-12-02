@@ -1,1 +1,1 @@
-## Note on Kidger's introductory talk (with David Duvenaud)
+## Note on Kidger's survey (PhD thesis, 2022)
