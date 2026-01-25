@@ -18,7 +18,7 @@ where $f_\theta: \mathbb{R} \times\mathbb{R}^d \to \mathbb{R}^d$ is some standar
 
 In an NODE, the dynamics of the ODE are defined by an NN $f_\theta$ with learnable parameters. To train this NN, it's of course essential to understand how changes in $\theta$ influence the integrated solution $y$. By recording and encompassing the solver's internal numerical steps in the differentiable computation graph, auto-differentiation can propagate gradients from the loss function back through the solver and into the NN that defines how $y$ evolves, "nudging" the parameters along the way so that the learned dynamics better match the data. This turns the solver into a trainable component of the model, enabling end-to-end learning where the system learns not just static (plain "input $\to$ output") mappings, but the continuous-time evolution described by the ODE itself.
 
-Note that the ODE describes the evolution of $y$, which lives in a *latent space* (some internal representation of the raw input space). The solver integrates this NODE from $y(0)$ (the encoded input) to $y(T)$, then passes $y(T)$ through affine and softmax layers to get output/predictions and compute a loss.
+Note that the ODE describes the evolution of $y$, which lives in a *latent space* (some internal representation of the raw input space). The solver integrates this NODE from $y(0)$ (the encoded input) to $y(T)$, then passes $y(T)$ through affine and softmax layers to get output/predictions and compute a loss (e.g.  cross-entropy/KL-divergence).
 
 </span>
 </details>
