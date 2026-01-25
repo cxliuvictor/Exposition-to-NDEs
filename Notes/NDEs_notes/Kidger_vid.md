@@ -1,6 +1,6 @@
-## Notes on Kidger's NDEs talks
-This is a compilation of notes mostly based on Patrick Kidger's talks across two to three seminars. The aim here is to provide a very high-level overview of subfields within NDEs.
-### NDEs Overview
+# Notes on Kidger's NDEs talks
+This is a compilation of notes mostly based on Patrick Kidger's talks across two to three seminars. The aim here is to provide a very high-level overview of different areas within the study of NDEs.
+## NDEs Overview
 
 A neural differential equation is *a differential equation (DE) that uses a neural network (NN) with learnable parameters/functions to parametrize its vector field*. A canonical starter example is a **neural ordinary differential equation** (NODE): 
 
@@ -38,9 +38,9 @@ s(t) \\ i(t) \\ r(t)
 \end{pmatrix}. 
 $$
 
-Both NODEs and the SIR model are parametrized DEs with some theoretical models for the RHS, with the mere difference being that SIR is specialized to fit a specific phenomenon (namely the evolution of a disease), while an NODE is a generalized "fitter" applicable to lots of things thanks to the NN architecture. In fact, the SIR model can transform into an NODE by making the parameters $b$ and $k$ learnable.
+Both NODEs and the SIR model are parametrized DEs with some theoretical models for the RHS, with the mere difference being that SIR is specialized to fit a specific phenomenon (namely the evolution of a disease), while an NODE is a generalized "fitter" applicable to lots of things thanks to the NN architecture. Rather obviously, the SIR model can transform into an NODE by making the parameters $b$ and $k$ learnable.
 
-In the framework of deep learning (DL), we may also see a shadow of NODE: by applying Euler method to $\frac{dy}{dt}(t) = f_\theta(t, y(t))$, we obtain a residual network (ResNet): 
+In the framework of deep learning (DL), there are also traces of NODE: by applying Euler method to $\frac{dy}{dt}(t) = f_\theta(t, y(t))$, we obtain a residual network (ResNet): 
 
 $$ 
 y_{t_{n+1}} = y_{t_{n}} + \Delta tf_\theta(t_n, y_{t_{n}}).
@@ -54,25 +54,25 @@ Interestingly, this connection between DL architectures and NDEs is ubiquitous:
 NDEs have a myriad of applications in real life, often demonstrating state-of-the-art performance in areas like systematic modelling (physical, biological, financial, etc), regular/irregular time series analysis, generative modelling, and many more.
 
 Advantages of NDE approaches:
-- NDEs offer practically a best-of-both-world approach: the NN side offers high-capacity function approximation and high trainability, while the DE side offers strong prior on model space, memory-efficiency (adjoint backpropagation), and theoretical understanding via well-understood mathematics. 
+- NDEs offer a best-of-both-world approach: the NN side offers high-capacity function approximation and high trainability, while the DE side offers strong prior on model space, memory-efficiency (adjoint backpropagation), and theoretical understanding via well-understood mathematics. 
 - The NN side supplements the DE side when purely mechanistic models fail to capture real-world complexity, while the DE side brings a coherent theory and structural consistency/interpretability to the NN side.
 - Because of their continuous nature, NDEs naturally handle irregular/asynchronous data, at which discrete-time models like RNNs struggle. 
 
 However, NDEs are not without their limitations (speed of computation (might be an implementation issue regarding Python vs C++), number of parameters that insinuates low interpretability and potential overfitting, etc), but we won't discuss much about them here.
 
 
-### NCDEs Overview
+## NCDEs Overview
 
-#### What is a CDE?
+### What is a CDE?
 Motivation: consider the integral form of the NODE we saw above: 
 
 $$
 y(0) = y_0 \hspace{1cm} y(t) = y(0) + \int_0^t f_\theta(y(s))ds
 $$
 
-which takes the initial condition as the single input. Here, an extra "artificial" time-like dimension is introduced and integrated over, so it's natural to ask if the model can be extended to data of sequential nature (e.g. time series). That is, if we observe some *ordered data* $(y_0,\ldots,y_n)$ and would like to align this new dimension with the natural ordering of the data, how do we extend the $y(0)=y_0$ condition to one resembling (with the timestamps not necessarily looking like) $``y(0)=y_0,\ldots,y(n)=y_n"$? Since the initial condition at $y(0)$ determines the solution of an ODE, there is no direct mechanism for incorporating the late-coming data. This is where CDEs come into play.
+which takes the initial condition as the single input. Here, an extra time-like dimension is artificially introduced and integrated over, so it's natural to ask if the model can be extended to data of sequential nature (e.g. time series). That is, if we observe some *ordered data* $(y_0,\ldots,y_n)$ and would like to align this new dimension with the natural ordering of the data, how do we extend the $y(0)=y_0$ condition to one resembling (with the timestamps not necessarily looking like) $``y(0)=y_0,\ldots,y(n)=y_n"$? Since the initial condition at $y(0)$ determines the solution of an ODE, there is no direct mechanism for incorporating the late-coming data. This is where CDEs come into play.
 
-The main idea of a CDE is to have the local dynamics $y$ of the system depend on some time-varying input (path) $X:[0, T] \to \mathbb{R}^v$ in the form of a Riemann-Stieltjes integral
+The main idea of a CDE is to have the local dynamics $y$ of the system depend on some time-varying input (path) $X:[0, T] \to \mathbb{R}^v$ in the form of a Riemann-Stieltjes integral:
 
 $$
 y(t) = y(0) + \int_0^t f(y(s))dX(s) \hspace{0.5cm} \text{for } t\in [0,T]
@@ -80,7 +80,7 @@ $$
 
 where $f(y(s))dX(s)$ is a matrix-vector product and can be interpreted as $f(y(s))\frac{dX}{ds}(s)ds$ as long as $X$ is suitably smooth. $X$ can be thought to determine some local notion of physics and fundamentally, a CDE is *an operator on path space* $X \mapsto y$ that preserves measurability with respect to a filtration (i.e., causality)
 
-#### What is an NCDE and how to train it?
+### What is an NCDE and how to train it?
 Let $X:[0, T] \to \mathbb{R}^v$ be some observed data, for example an interpolation of a time series (in the image below, the path $x_X$ is an interpolation of the data points $x_i$), and our goal now is to learn NNs $\zeta_\theta$, $f_\theta$, $l_\theta$ such that 
 
 $$
@@ -89,7 +89,7 @@ $$
 
 and the output is either $l_\theta(y(T))$ or $l_\theta(y(t))$.
 
-The framework of NCDEs is essentially a continuous version of recurrent neural network (RNN): $y_{n+1} = f_\theta(y_n, x_n)$, where the discrete inputs $x$ provoke changes in the **hidden state** $y$, just like how $X$ drive changes continuously in $y$ via the CDE that evolves in the latent space (not the data/output space itself directly, hence the $l_\theta$). NCDEs are trained in exactly the same way as RNNs and also, NODEs, with standard gradient descent via auto-differentiation (adjoint backpropagation) after integrating the CDE with some numerical solver (if $X$ is smooth enough, ODE solvers like RK4 would suffice, otherwise SDE solvers like Milstein might be needed) and computing the loss.
+The framework of NCDEs is essentially a continuous version of recurrent neural network (RNN): $y_{n+1} = f_\theta(y_n, x_n)$, where the discrete inputs $x$ provoke changes in the **hidden state** $y$, just like how $X$ drive changes continuously in $y$ via the CDE that evolves in the latent space (not the data/output space itself directly, hence the $\zeta_\theta$ and $l_\theta$). NCDEs are trained in exactly the same way as RNNs and also, NODEs, with standard gradient descent via auto-differentiation (adjoint backpropagation) after integrating the CDE with some numerical solver (if $X$ is smooth enough, ODE solvers like RK4 would suffice; otherwise SDE solvers like Milstein might be needed).
 
 ![Alt text](NDEs_diagrams/NCDEs_idea.png)
 
@@ -110,9 +110,10 @@ There are many things yet to be addressed:
 - The rough path theoretical reasoning behind writing $f_\theta(y(s))dX(s)$ instead of $f_\theta(y(s), X(s))ds$...
 - NCDEs are universal approximators for all functional sequences (strong theoretical guarantee): how do we show this and what are its implications?
 
+The answers to some of these questions may be found in [the Kidger's survey notes](\Kidger_survey.md).
 
-### NSDEs Overview
-#### What is an SDE?
+## NSDEs Overview
+### What is an SDE?
 A general SDE has the form 
 
 $$
@@ -136,7 +137,7 @@ An SDE doesn’t have an easy or explicit probability density because its random
 
 Before we dive into the training of NSDEs, we shall draw some inspiration from a familiar friend from ML.
 
-#### A quick recap on GANs
+### A quick recap on GANs
 Given some noise random variable $A(\omega)\in \mathbb{R}^{d_1}$, target random variable $B(\omega)\in \mathbb{R}^{d_2}$, a *generative model* is an NN $g_\theta:\mathbb{R}^{d_1} \to \mathbb{R}^{d_2}$ such that $g_\theta(A) \approx B$. For example, $A$ may be a multivariate normal sample which, after going through $g_\theta$, produces some distribution resembling $B$, the distribution of a cat's picture. We can sample $g_\theta(A(\omega))$, but the main difficulty here lies in the lack of tractable probability density, meaning that we can't train $g_\theta$ with classical approaches like maximum likelihood. 
 
 <details close>
@@ -181,7 +182,7 @@ for all "discriminators" (payoff functions) $F$.
 
 It's now quite evident that the ways that SDE solvers and GANs are trained are very similar, so why not train an SDE as a GAN?
 
-#### What is an NSDE and how to train it?
+### What is an NSDE and how to train it?
 Our goal now is to model $B$, a random variable on path space (e.g. a distribution of the time series of option prices over the course of 30 days). To now set up the GAN, we take Brownian motion $W$ and initial noise $V$ (e.g. $\sim \mathcal{N}(0,I)$), alongside NNs $\zeta_\theta$, $\mu_\theta$, $\sigma_\theta$, $l_\theta$. Then we seek to learn an SDE of the form 
 
 $$
@@ -194,7 +195,7 @@ $$
 H_0 = \xi_\phi(Y_0) \hspace{1cm} dH_t = f_\phi(t, H_t)dt + g_\phi(t, H_t)dY_t
 $$
 
-(slightly different form here from using stochastic notations) and then we define $F_\phi = m_\theta \cdot H_T$. Here, $m_\theta$ acts as a readout from the hidden state $H_T$ (relative to $Y$) to the desired discriminator $F_\phi$. Quite remarkably, this is saying that *NSDE/NCDE form a generator/discriminator pair for a GAN*.
+(slightly different from the NCDEs we've seen before due to stochastic notations) and then we define $F_\phi = m_\theta \cdot H_T$. Here, $m_\theta$ acts as a readout from the hidden state $H_T$ (relative to $Y$) to the desired discriminator $F_\phi$. Quite remarkably, this is saying that *NSDE/NCDE form a generator/discriminator pair for a GAN*.
 
 ![Alt text](NDEs_diagrams/SDE-GAN%20equations%20summary.png)
 
@@ -202,12 +203,12 @@ In Figure 4.2 (with slightly different notations than what's before), from top t
 
 <span style="color:#888;">Remark: It's worth mentioning that in the framework of NSDE, we can learn nonlinear, state-dependent, and time-dependent drift and diffusion: that is, these two functions are not restricted to any particular analytic form like in the Ornstein-Uhlenbeck and GBM models. In fact, because neural nets are universal approximators, given enough data they can learn the true drift and diffusion of any SDE. Outside of the training part, the only thing required in this framework is those fundamental, off-the-shelf techniques used for a conventional/"non-neural" SDE.
 
-#### NSDEs fitting examples (standard Brownian motion with drift or time-dependent diffusion, Lorenz attractor, real-life time series):
+### NSDEs fitting examples (Brownian motions, Lorenz attractor, real-life time series):
 ![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%201.png)
 
 ![Alt text](NDEs_diagrams/trained%20SDE-GAN%20results%202.png)
 
-In the Beijing Air Quality example (a six-dimensional marker over the course of a day generate a time series for several days which is modelled using an SDE), one has absolutely no theory about how air quality evolves and particulate matter changes over the course of a day, but it doesn't stop us from substituting theory with data (uncommon practice in DEs but not in ML), which we fit using NSDEs and other models with effective results. 
+In the Beijing Air Quality example (dataset of bivariate time series of air quality over Beijing, each being 24-elements long and details PM2.5 and ozone concentrations), one has absolutely no theory about how air quality evolves and particulate matter changes over the course of a day, but it doesn't stop us from substituting theory with data (uncommon practice in DEs but not in ML), which we fit using NSDEs and other models with effective results. 
 
 Lastly, it's worth noting again that many details are still not addressed:
 - What is the specific structure of the vector field (neural network) other than being feed-forward?
@@ -218,5 +219,8 @@ Lastly, it's worth noting again that many details are still not addressed:
 - Connections to continuous normalizing flows, score-based diffusion,...
 - Concrete applications (there's been quite a lot of finance papers in particular)
 
-###### Remark: One may notice that NCDEs and NSDEs share many similarities: they both model continuous-time dynamics and both involve a hidden state, under the framework of variational autoencoder, that evolves according to an DE with learnable parameters. 
+The answers to some of these questions may be found in [the Kidger's survey notes](\Kidger_survey.md).
+
+
+###### Remark: One may notice that NCDEs and NSDEs share many similarities: they both model continuous-time dynamics and both involve a hidden state under the framework of variational autoencoder that evolves according to an DE with learnable parameters. 
 ###### However, it's important to note that NCDEs sequentially model *deterministic* systems driven by observed input and learn how a system responds to continuous-time signal, whereas NSDEs model and generate samples from *intrinsically random* systems whose stochasticity is due to Brownian motion instead of some extrinsic control path.
