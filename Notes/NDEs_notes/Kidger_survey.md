@@ -48,7 +48,9 @@ $$-\frac{1}{N}\sum_{i=1}^N \log p_\theta(T, y_i) \stackrel{(2.5)}{=} -\frac{1}{N
 The RHS here is possible to evaluate: 
 
 Starting from some terminal condition $y_i \in \mathbb{R}^d$, we may solve (using a numerical solver) 
+
 $$ y(T, y_i) = y_i, \hspace{0.5cm} \frac{dy}{dt}(t, y_i) = f_\theta(t, y(t, y_i)) \hspace{0.2cm} \text{ for }t \in [0, T] \hspace{0.3cm} (2.6)$$ 
+
 backwards-in-time from $t=T$ to $t=0$, giving us $y(t, y_i)$ for all $t \in [0, T]$, which is an input for the integral on RHS that can be solved as part of this backwards-in-time solve (by augmenting the ODE state: concatenating the integral together with (2.6) to form a system of DEs). Finally, we can easily evaluate $\log p_\theta(0, y(0, y_i))$ since $p_\theta(0, \cdot)$ is a normal distribution by setting.
 
 Having evaluated this chunky RHS, the minimizing target (LHS) is backpropagated and the parameters $\theta$ are updated via gradient-descent.
