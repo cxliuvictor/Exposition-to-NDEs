@@ -35,6 +35,7 @@
 Goal: Learn a generative model to approximate some time-stationary distribution over state space by training an NODE in distribution with a simple initial density.
 
 Say we observe some distribution $\mathbb{P}$ (e.g. over pictures of cats) with density $\pi$ over state space $\mathbb{R}^{d_1\times\cdots d_k} = \mathbb{R}^d$. We have empirical samples of $\mathbb{P}$ and wish to approximate $\pi$, so that we can generate more samples (we sample from a trained NODE by first sampling from the initial distribution, then solving the trained ODE). In the following NODE, we want to train $f_\theta$ so that $y(T)$'s distribution is approximately $\mathbb{P}$:
+
 $$y(0) \sim \mathcal{N}(0, I_{d\times d}) \hspace{1cm} \frac{dy}{dt}(t) = f_\theta(t, y(t)) \hspace{0.2cm} \text{ for }t \in [0, T]. \hspace{0.3cm} (2.4)$$
 
 <u>Training (with maximum likelihood)</u>: we need a tractable density for the distribution of $y(T)$. *Theorem 2.3* (instantaneous change of variables) specifies that $p_\theta(t, \cdot)$, the $f_\theta$-dependent density of $y(t)$, evolves according a special case of Fokker-Planck for deterministic dynamics subject to random initial condition: 
