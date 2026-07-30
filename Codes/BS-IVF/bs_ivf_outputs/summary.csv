@@ -1,0 +1,10 @@
+metric,value
+same_day_price_rmse,10.795959219094458
+same_day_price_mae,5.893566942739138
+next_day_price_rmse,10.879221955058524
+next_day_price_mae,5.934262735951017
+hedging_rmse,1.3855729344923398
+hedging_mae,0.9521140440766083
+hedging_bias,-0.026801040999482027
+number_of_clean_option_rows,131436.0
+number_of_one_day_pairs,118626.0
