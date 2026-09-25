@@ -1,0 +1,1787 @@
+2026-09-24T16:31:40 | Session initialised | RSS=318 MiB
+2026-09-24T16:37:08 | Initial calibration I: v5 shared Neural-LV | RSS=581 MiB
+2026-09-25T02:54:26 | Initial calibration II: maturity-head transfer under final-v7 objective | RSS=555 MiB
+2026-09-25T06:38:21 | Initial calibration III: v7 crash-safe full-sample refinement | RSS=390 MiB
+2026-09-25T06:48:57 | Initial calibration complete; nonessential objects released | RSS=596 MiB
+2026-09-25T06:48:58 | Development rolling sequence: 1-Mar to 8-Mar | RSS=596 MiB
+2026-09-25T06:49:11 | transition: begin | RSS=583 MiB
+2026-09-25T06:49:11 | transition AM=0: simulation begin, rows=6099 | RSS=599 MiB
+2026-09-25T06:49:21 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=606 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.0410958904109589, contracts=155 | RSS=606 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.043835616438356165, contracts=165 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.04657534246575343, contracts=164 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.049315068493150684, contracts=203 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.057534246575342465, contracts=167 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.06027397260273973, contracts=153 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.06301369863013699, contracts=171 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.06575342465753424, contracts=255 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.07671232876712329, contracts=110 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.07945205479452055, contracts=96 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.0821917808219178, contracts=98 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.08493150684931507, contracts=91 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.08767123287671233, contracts=241 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.0958904109589041, contracts=93 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.09863013698630137, contracts=53 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.10684931506849316, contracts=164 | RSS=608 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.12602739726027398, contracts=333 | RSS=609 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.14520547945205478, contracts=113 | RSS=609 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.15616438356164383, contracts=382 | RSS=609 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.20273972602739726, contracts=384 | RSS=609 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.2410958904109589, contracts=467 | RSS=609 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.29863013698630136, contracts=325 | RSS=609 MiB
+2026-09-25T06:49:21 | transition AM=0: payoff begin T=0.3178082191780822, contracts=534 | RSS=609 MiB
+2026-09-25T06:49:22 | transition AM=0: payoff begin T=0.37534246575342467, contracts=351 | RSS=609 MiB
+2026-09-25T06:49:22 | transition AM=0: payoff begin T=0.40821917808219177, contracts=255 | RSS=609 MiB
+2026-09-25T06:49:22 | transition AM=0: payoff begin T=0.4904109589041096, contracts=274 | RSS=609 MiB
+2026-09-25T06:49:22 | transition AM=0: payoff begin T=0.5753424657534246, contracts=149 | RSS=609 MiB
+2026-09-25T06:49:22 | transition AM=0: payoff begin T=0.8273972602739726, contracts=153 | RSS=609 MiB
+2026-09-25T06:49:22 | transition AM=0: pricing complete | RSS=609 MiB
+2026-09-25T06:49:22 | transition AM=1: simulation begin, rows=2672 | RSS=596 MiB
+2026-09-25T06:49:32 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=601 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.12602739726027398, contracts=334 | RSS=601 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.20273972602739726, contracts=398 | RSS=602 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.29863013698630136, contracts=417 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.37534246575342467, contracts=350 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.4520547945205479, contracts=342 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.547945205479452, contracts=143 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.6246575342465753, contracts=119 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.7013698630136986, contracts=123 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.7972602739726027, contracts=139 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.873972602739726, contracts=144 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: payoff begin T=0.9698630136986301, contracts=163 | RSS=603 MiB
+2026-09-25T06:49:32 | transition AM=1: pricing complete | RSS=603 MiB
+2026-09-25T06:49:32 | transition: concatenate begin | RSS=603 MiB
+2026-09-25T06:49:32 | transition: delta merge begin | RSS=599 MiB
+2026-09-25T06:49:32 | transition: hedge calculations complete; OTM flags begin | RSS=602 MiB
+2026-09-25T06:49:32 | transition: full summary begin | RSS=602 MiB
+2026-09-25T06:49:32 | transition: OTM summary begin | RSS=602 MiB
+2026-09-25T06:49:32 | transition: complete | RSS=602 MiB
+2026-09-25T06:49:33 | Saved transition 2024-03-01 -> 2024-03-04 (100,000 paths) | RSS=585 MiB
+2026-09-25T07:00:30 | transition: begin | RSS=547 MiB
+2026-09-25T07:00:30 | transition AM=0: simulation begin, rows=6302 | RSS=560 MiB
+2026-09-25T07:00:40 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=565 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.0410958904109589, contracts=171 | RSS=565 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.043835616438356165, contracts=171 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.04657534246575343, contracts=197 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.0547945205479452, contracts=178 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.057534246575342465, contracts=165 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.06027397260273973, contracts=181 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.06301369863013699, contracts=238 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.07397260273972603, contracts=115 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.07671232876712329, contracts=103 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.07945205479452055, contracts=104 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.0821917808219178, contracts=97 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.08493150684931507, contracts=240 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.09315068493150686, contracts=92 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.0958904109589041, contracts=61 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.09863013698630137, contracts=64 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.10410958904109589, contracts=252 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.1232876712328767, contracts=330 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.14246575342465753, contracts=173 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.15342465753424658, contracts=370 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.2, contracts=384 | RSS=567 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.23835616438356164, contracts=455 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.2958904109589041, contracts=342 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.3150684931506849, contracts=545 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.3726027397260274, contracts=358 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.4054794520547945, contracts=318 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.4876712328767123, contracts=294 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.5726027397260274, contracts=151 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: payoff begin T=0.8246575342465754, contracts=153 | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=0: pricing complete | RSS=568 MiB
+2026-09-25T07:00:40 | transition AM=1: simulation begin, rows=2692 | RSS=556 MiB
+2026-09-25T07:00:50 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=560 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.1232876712328767, contracts=330 | RSS=560 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.2, contracts=396 | RSS=562 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.2958904109589041, contracts=423 | RSS=562 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.3726027397260274, contracts=357 | RSS=562 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.44931506849315067, contracts=349 | RSS=562 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.5452054794520548, contracts=146 | RSS=563 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.6219178082191781, contracts=121 | RSS=563 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.6986301369863014, contracts=122 | RSS=563 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.7945205479452054, contracts=141 | RSS=563 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.8712328767123287, contracts=143 | RSS=563 MiB
+2026-09-25T07:00:50 | transition AM=1: payoff begin T=0.9671232876712329, contracts=164 | RSS=563 MiB
+2026-09-25T07:00:50 | transition AM=1: pricing complete | RSS=563 MiB
+2026-09-25T07:00:50 | transition: concatenate begin | RSS=563 MiB
+2026-09-25T07:00:51 | transition: delta merge begin | RSS=560 MiB
+2026-09-25T07:00:51 | transition: hedge calculations complete; OTM flags begin | RSS=561 MiB
+2026-09-25T07:00:51 | transition: full summary begin | RSS=561 MiB
+2026-09-25T07:00:51 | transition: OTM summary begin | RSS=561 MiB
+2026-09-25T07:00:51 | transition: complete | RSS=561 MiB
+2026-09-25T07:00:51 | Saved transition 2024-03-04 -> 2024-03-05 (100,000 paths) | RSS=543 MiB
+2026-09-25T07:12:28 | transition: begin | RSS=532 MiB
+2026-09-25T07:12:28 | transition AM=0: simulation begin, rows=6488 | RSS=545 MiB
+2026-09-25T07:12:39 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=537 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.0410958904109589, contracts=179 | RSS=538 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.043835616438356165, contracts=214 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.052054794520547946, contracts=185 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.0547945205479452, contracts=170 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.057534246575342465, contracts=185 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.06027397260273973, contracts=265 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.07123287671232877, contracts=159 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.07397260273972603, contracts=106 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.07671232876712329, contracts=107 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.07945205479452055, contracts=100 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.0821917808219178, contracts=256 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.09041095890410959, contracts=108 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.09315068493150686, contracts=63 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.0958904109589041, contracts=66 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.09863013698630137, contracts=71 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.10136986301369863, contracts=262 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.12054794520547946, contracts=351 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.13972602739726028, contracts=176 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.1506849315068493, contracts=390 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.19726027397260273, contracts=402 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.2356164383561644, contracts=472 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.29315068493150687, contracts=346 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.31232876712328766, contracts=565 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.3698630136986301, contracts=365 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.40273972602739727, contracts=321 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.4849315068493151, contracts=295 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.5698630136986301, contracts=154 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: payoff begin T=0.821917808219178, contracts=155 | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=0: pricing complete | RSS=540 MiB
+2026-09-25T07:12:39 | transition AM=1: simulation begin, rows=2760 | RSS=529 MiB
+2026-09-25T07:12:50 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=535 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.12054794520547946, contracts=353 | RSS=535 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.19726027397260273, contracts=413 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.29315068493150687, contracts=432 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.3698630136986301, contracts=365 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.4465753424657534, contracts=352 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.5424657534246575, contracts=150 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.6191780821917808, contracts=121 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.6958904109589041, contracts=124 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.7917808219178082, contracts=141 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.8684931506849315, contracts=145 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: payoff begin T=0.9643835616438357, contracts=164 | RSS=537 MiB
+2026-09-25T07:12:50 | transition AM=1: pricing complete | RSS=537 MiB
+2026-09-25T07:12:50 | transition: concatenate begin | RSS=537 MiB
+2026-09-25T07:12:50 | transition: delta merge begin | RSS=534 MiB
+2026-09-25T07:12:50 | transition: hedge calculations complete; OTM flags begin | RSS=536 MiB
+2026-09-25T07:12:50 | transition: full summary begin | RSS=536 MiB
+2026-09-25T07:12:50 | transition: OTM summary begin | RSS=536 MiB
+2026-09-25T07:12:50 | transition: complete | RSS=536 MiB
+2026-09-25T07:12:51 | Saved transition 2024-03-05 -> 2024-03-06 (100,000 paths) | RSS=517 MiB
+2026-09-25T07:23:40 | transition: begin | RSS=487 MiB
+2026-09-25T07:23:40 | transition AM=0: simulation begin, rows=6229 | RSS=501 MiB
+2026-09-25T07:23:50 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=508 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.0410958904109589, contracts=183 | RSS=508 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.049315068493150684, contracts=173 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.052054794520547946, contracts=167 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.0547945205479452, contracts=181 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.057534246575342465, contracts=231 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.0684931506849315, contracts=165 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.07123287671232877, contracts=146 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.07397260273972603, contracts=102 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.07671232876712329, contracts=101 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.07945205479452055, contracts=234 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.08767123287671233, contracts=106 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.09041095890410959, contracts=92 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.09315068493150686, contracts=63 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.0958904109589041, contracts=66 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.09863013698630137, contracts=249 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.1178082191780822, contracts=325 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.136986301369863, contracts=173 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.14794520547945206, contracts=364 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.15616438356164383, contracts=112 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.19452054794520549, contracts=382 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.2328767123287671, contracts=457 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.29041095890410956, contracts=340 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.3095890410958904, contracts=543 | RSS=510 MiB
+2026-09-25T07:23:50 | transition AM=0: payoff begin T=0.36712328767123287, contracts=358 | RSS=510 MiB
+2026-09-25T07:23:51 | transition AM=0: payoff begin T=0.4, contracts=319 | RSS=510 MiB
+2026-09-25T07:23:51 | transition AM=0: payoff begin T=0.4821917808219178, contracts=294 | RSS=510 MiB
+2026-09-25T07:23:51 | transition AM=0: payoff begin T=0.5671232876712329, contracts=149 | RSS=510 MiB
+2026-09-25T07:23:51 | transition AM=0: payoff begin T=0.8191780821917808, contracts=154 | RSS=510 MiB
+2026-09-25T07:23:51 | transition AM=0: pricing complete | RSS=510 MiB
+2026-09-25T07:23:51 | transition AM=1: simulation begin, rows=2667 | RSS=498 MiB
+2026-09-25T07:24:01 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=502 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.1178082191780822, contracts=325 | RSS=503 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.19452054794520549, contracts=395 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.29041095890410956, contracts=412 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.36712328767123287, contracts=356 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.4438356164383562, contracts=350 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.5397260273972603, contracts=146 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.6164383561643836, contracts=119 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.6931506849315069, contracts=121 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.7890410958904109, contracts=139 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.8657534246575342, contracts=141 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: payoff begin T=0.9616438356164384, contracts=163 | RSS=504 MiB
+2026-09-25T07:24:01 | transition AM=1: pricing complete | RSS=504 MiB
+2026-09-25T07:24:01 | transition: concatenate begin | RSS=504 MiB
+2026-09-25T07:24:02 | transition: delta merge begin | RSS=502 MiB
+2026-09-25T07:24:02 | transition: hedge calculations complete; OTM flags begin | RSS=504 MiB
+2026-09-25T07:24:02 | transition: full summary begin | RSS=504 MiB
+2026-09-25T07:24:02 | transition: OTM summary begin | RSS=504 MiB
+2026-09-25T07:24:02 | transition: complete | RSS=504 MiB
+2026-09-25T07:24:02 | Saved transition 2024-03-06 -> 2024-03-07 (100,000 paths) | RSS=488 MiB
+2026-09-25T07:34:56 | transition: begin | RSS=576 MiB
+2026-09-25T07:34:56 | transition AM=0: simulation begin, rows=6271 | RSS=588 MiB
+2026-09-25T07:35:06 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=598 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.04657534246575343, contracts=173 | RSS=598 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.049315068493150684, contracts=168 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.052054794520547946, contracts=182 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.0547945205479452, contracts=236 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.06575342465753424, contracts=165 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.0684931506849315, contracts=152 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.07123287671232877, contracts=144 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.07397260273972603, contracts=102 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.07671232876712329, contracts=237 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.08493150684931507, contracts=107 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.08767123287671233, contracts=98 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.09041095890410959, contracts=93 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.09315068493150686, contracts=66 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.0958904109589041, contracts=253 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.10410958904109589, contracts=94 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.11506849315068493, contracts=329 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.13424657534246576, contracts=174 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.14520547945205478, contracts=371 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.15342465753424658, contracts=113 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.1917808219178082, contracts=385 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.23013698630136986, contracts=462 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.2876712328767123, contracts=342 | RSS=600 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.30684931506849317, contracts=545 | RSS=601 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.3643835616438356, contracts=360 | RSS=601 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.3972602739726027, contracts=319 | RSS=601 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.4794520547945205, contracts=296 | RSS=601 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.5643835616438356, contracts=150 | RSS=601 MiB
+2026-09-25T07:35:06 | transition AM=0: payoff begin T=0.8164383561643835, contracts=155 | RSS=601 MiB
+2026-09-25T07:35:06 | transition AM=0: pricing complete | RSS=601 MiB
+2026-09-25T07:35:06 | transition AM=1: simulation begin, rows=2685 | RSS=588 MiB
+2026-09-25T07:35:17 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=593 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.11506849315068493, contracts=330 | RSS=593 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.1917808219178082, contracts=398 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.2876712328767123, contracts=415 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.3643835616438356, contracts=358 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.4410958904109589, contracts=352 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.536986301369863, contracts=146 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.6136986301369863, contracts=119 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.6904109589041096, contracts=121 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.7863013698630137, contracts=139 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.863013698630137, contracts=143 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: payoff begin T=0.958904109589041, contracts=164 | RSS=594 MiB
+2026-09-25T07:35:17 | transition AM=1: pricing complete | RSS=594 MiB
+2026-09-25T07:35:17 | transition: concatenate begin | RSS=594 MiB
+2026-09-25T07:35:17 | transition: delta merge begin | RSS=592 MiB
+2026-09-25T07:35:17 | transition: hedge calculations complete; OTM flags begin | RSS=594 MiB
+2026-09-25T07:35:17 | transition: full summary begin | RSS=594 MiB
+2026-09-25T07:35:17 | transition: OTM summary begin | RSS=594 MiB
+2026-09-25T07:35:17 | transition: complete | RSS=594 MiB
+2026-09-25T07:35:18 | Saved transition 2024-03-07 -> 2024-03-08 (100,000 paths) | RSS=577 MiB
+2026-09-25T07:35:18 | Frozen out-of-sample test: 8-Mar to 28-Mar | RSS=576 MiB
+2026-09-25T07:46:15 | transition: begin | RSS=639 MiB
+2026-09-25T07:46:15 | transition AM=0: simulation begin, rows=6554 | RSS=652 MiB
+2026-09-25T07:46:25 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=640 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.0410958904109589, contracts=191 | RSS=640 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.043835616438356165, contracts=191 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.04657534246575343, contracts=248 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.057534246575342465, contracts=188 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.06027397260273973, contracts=173 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.06301369863013699, contracts=175 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.06575342465753424, contracts=152 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.0684931506849315, contracts=249 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.07671232876712329, contracts=115 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.07945205479452055, contracts=112 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.0821917808219178, contracts=107 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.08493150684931507, contracts=99 | RSS=643 MiB
+2026-09-25T07:46:25 | transition AM=0: payoff begin T=0.08767123287671233, contracts=264 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.0958904109589041, contracts=97 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.09863013698630137, contracts=68 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.10684931506849316, contracts=349 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.12602739726027398, contracts=179 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.136986301369863, contracts=384 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.14520547945205478, contracts=118 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.18356164383561643, contracts=401 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.2219178082191781, contracts=475 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.27945205479452057, contracts=350 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.29863013698630136, contracts=568 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.3561643835616438, contracts=370 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.38904109589041097, contracts=323 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.4712328767123288, contracts=298 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.5561643835616439, contracts=153 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: payoff begin T=0.8082191780821918, contracts=157 | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=0: pricing complete | RSS=643 MiB
+2026-09-25T07:46:26 | transition AM=1: simulation begin, rows=2796 | RSS=632 MiB
+2026-09-25T07:46:36 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=638 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.10684931506849316, contracts=348 | RSS=638 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.18356164383561643, contracts=415 | RSS=639 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.27945205479452057, contracts=459 | RSS=639 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.3561643835616438, contracts=370 | RSS=639 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.4328767123287671, contracts=359 | RSS=639 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.5287671232876713, contracts=149 | RSS=640 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.6054794520547945, contracts=121 | RSS=640 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.6821917808219178, contracts=123 | RSS=640 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.7780821917808219, contracts=141 | RSS=640 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.8547945205479452, contracts=145 | RSS=640 MiB
+2026-09-25T07:46:36 | transition AM=1: payoff begin T=0.9506849315068493, contracts=166 | RSS=640 MiB
+2026-09-25T07:46:36 | transition AM=1: pricing complete | RSS=640 MiB
+2026-09-25T07:46:36 | transition: concatenate begin | RSS=639 MiB
+2026-09-25T07:46:37 | transition: delta merge begin | RSS=636 MiB
+2026-09-25T07:46:37 | transition: hedge calculations complete; OTM flags begin | RSS=639 MiB
+2026-09-25T07:46:37 | transition: full summary begin | RSS=639 MiB
+2026-09-25T07:46:37 | transition: OTM summary begin | RSS=639 MiB
+2026-09-25T07:46:37 | transition: complete | RSS=639 MiB
+2026-09-25T07:46:37 | Saved transition 2024-03-08 -> 2024-03-11 (100,000 paths) | RSS=621 MiB
+2026-09-25T07:57:37 | transition: begin | RSS=526 MiB
+2026-09-25T07:57:37 | transition AM=0: simulation begin, rows=6317 | RSS=539 MiB
+2026-09-25T07:57:47 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=523 MiB
+2026-09-25T07:57:47 | transition AM=0: payoff begin T=0.0410958904109589, contracts=176 | RSS=523 MiB
+2026-09-25T07:57:47 | transition AM=0: payoff begin T=0.043835616438356165, contracts=221 | RSS=525 MiB
+2026-09-25T07:57:47 | transition AM=0: payoff begin T=0.0547945205479452, contracts=176 | RSS=525 MiB
+2026-09-25T07:57:47 | transition AM=0: payoff begin T=0.057534246575342465, contracts=165 | RSS=525 MiB
+2026-09-25T07:57:47 | transition AM=0: payoff begin T=0.06027397260273973, contracts=178 | RSS=525 MiB
+2026-09-25T07:57:47 | transition AM=0: payoff begin T=0.06301369863013699, contracts=155 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.06575342465753424, contracts=231 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.07397260273972603, contracts=111 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.07671232876712329, contracts=108 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.07945205479452055, contracts=105 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.0821917808219178, contracts=104 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.08493150684931507, contracts=246 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.09315068493150686, contracts=93 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.0958904109589041, contracts=64 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.09863013698630137, contracts=67 | RSS=525 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.10410958904109589, contracts=320 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.1232876712328767, contracts=269 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.13424657534246576, contracts=359 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.14246575342465753, contracts=173 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.18082191780821918, contracts=381 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.2191780821917808, contracts=456 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.27671232876712326, contracts=339 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.2958904109589041, contracts=544 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.35342465753424657, contracts=358 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.3863013698630137, contracts=320 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.4684931506849315, contracts=296 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.5534246575342465, contracts=149 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: payoff begin T=0.8054794520547945, contracts=153 | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=0: pricing complete | RSS=526 MiB
+2026-09-25T07:57:48 | transition AM=1: simulation begin, rows=2697 | RSS=515 MiB
+2026-09-25T07:57:58 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=519 MiB
+2026-09-25T07:57:58 | transition AM=1: payoff begin T=0.10410958904109589, contracts=321 | RSS=519 MiB
+2026-09-25T07:57:58 | transition AM=1: payoff begin T=0.18082191780821918, contracts=395 | RSS=521 MiB
+2026-09-25T07:57:58 | transition AM=1: payoff begin T=0.27671232876712326, contracts=443 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.35342465753424657, contracts=358 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.4301369863013699, contracts=354 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.5260273972602739, contracts=145 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.6027397260273972, contracts=117 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.6794520547945205, contracts=121 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.7753424657534247, contracts=138 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.852054794520548, contracts=143 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: payoff begin T=0.947945205479452, contracts=162 | RSS=521 MiB
+2026-09-25T07:57:59 | transition AM=1: pricing complete | RSS=521 MiB
+2026-09-25T07:57:59 | transition: concatenate begin | RSS=521 MiB
+2026-09-25T07:57:59 | transition: delta merge begin | RSS=518 MiB
+2026-09-25T07:57:59 | transition: hedge calculations complete; OTM flags begin | RSS=521 MiB
+2026-09-25T07:57:59 | transition: full summary begin | RSS=521 MiB
+2026-09-25T07:57:59 | transition: OTM summary begin | RSS=521 MiB
+2026-09-25T07:57:59 | transition: complete | RSS=521 MiB
+2026-09-25T07:58:00 | Saved transition 2024-03-11 -> 2024-03-12 (100,000 paths) | RSS=502 MiB
+2026-09-25T08:09:35 | transition: begin | RSS=612 MiB
+2026-09-25T08:09:35 | transition AM=0: simulation begin, rows=6281 | RSS=626 MiB
+2026-09-25T08:09:46 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=631 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.0410958904109589, contracts=222 | RSS=632 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.052054794520547946, contracts=178 | RSS=634 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.0547945205479452, contracts=165 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.057534246575342465, contracts=178 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.06027397260273973, contracts=158 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.06301369863013699, contracts=233 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.07123287671232877, contracts=148 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.07397260273972603, contracts=108 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.07671232876712329, contracts=105 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.07945205479452055, contracts=104 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.0821917808219178, contracts=249 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.09041095890410959, contracts=97 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.09315068493150686, contracts=64 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.0958904109589041, contracts=67 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.09863013698630137, contracts=68 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.10136986301369863, contracts=323 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.12054794520547946, contracts=271 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.13150684931506848, contracts=363 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.13972602739726028, contracts=175 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.1780821917808219, contracts=383 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.21643835616438356, contracts=459 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.273972602739726, contracts=337 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.29315068493150687, contracts=545 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.3506849315068493, contracts=359 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.3835616438356164, contracts=321 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.4657534246575342, contracts=297 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.5506849315068493, contracts=150 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: payoff begin T=0.8027397260273973, contracts=154 | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=0: pricing complete | RSS=635 MiB
+2026-09-25T08:09:46 | transition AM=1: simulation begin, rows=2720 | RSS=623 MiB
+2026-09-25T08:09:57 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=627 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.10136986301369863, contracts=325 | RSS=627 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.1780821917808219, contracts=396 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.273972602739726, contracts=444 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.3506849315068493, contracts=359 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.4273972602739726, contracts=354 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.5232876712328767, contracts=145 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.6, contracts=117 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.6767123287671233, contracts=121 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.7726027397260274, contracts=154 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.8493150684931506, contracts=143 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: payoff begin T=0.9452054794520548, contracts=162 | RSS=629 MiB
+2026-09-25T08:09:57 | transition AM=1: pricing complete | RSS=629 MiB
+2026-09-25T08:09:57 | transition: concatenate begin | RSS=629 MiB
+2026-09-25T08:09:57 | transition: delta merge begin | RSS=626 MiB
+2026-09-25T08:09:57 | transition: hedge calculations complete; OTM flags begin | RSS=629 MiB
+2026-09-25T08:09:57 | transition: full summary begin | RSS=629 MiB
+2026-09-25T08:09:57 | transition: OTM summary begin | RSS=629 MiB
+2026-09-25T08:09:57 | transition: complete | RSS=629 MiB
+2026-09-25T08:09:58 | Saved transition 2024-03-12 -> 2024-03-13 (100,000 paths) | RSS=609 MiB
+2026-09-25T08:20:47 | transition: begin | RSS=593 MiB
+2026-09-25T08:20:47 | transition AM=0: simulation begin, rows=6100 | RSS=607 MiB
+2026-09-25T08:20:57 | transition AM=0: simulation returned; terminal storage=10.3 MiB | RSS=616 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.049315068493150684, contracts=177 | RSS=616 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.052054794520547946, contracts=177 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.0547945205479452, contracts=179 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.057534246575342465, contracts=160 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.06027397260273973, contracts=218 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.0684931506849315, contracts=174 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.07123287671232877, contracts=151 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.07397260273972603, contracts=104 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.07671232876712329, contracts=103 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.07945205479452055, contracts=237 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.08767123287671233, contracts=106 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.09041095890410959, contracts=94 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.09315068493150686, contracts=65 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.0958904109589041, contracts=65 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.09863013698630137, contracts=299 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.1178082191780822, contracts=281 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.12876712328767123, contracts=345 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.136986301369863, contracts=184 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.17534246575342466, contracts=372 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.2136986301369863, contracts=448 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.27123287671232876, contracts=320 | RSS=618 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.29041095890410956, contracts=541 | RSS=619 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.34794520547945207, contracts=359 | RSS=619 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.38082191780821917, contracts=326 | RSS=619 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.46301369863013697, contracts=305 | RSS=619 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.547945205479452, contracts=153 | RSS=619 MiB
+2026-09-25T08:20:57 | transition AM=0: payoff begin T=0.8, contracts=157 | RSS=619 MiB
+2026-09-25T08:20:57 | transition AM=0: pricing complete | RSS=619 MiB
+2026-09-25T08:20:57 | transition AM=1: simulation begin, rows=2681 | RSS=607 MiB
+2026-09-25T08:21:08 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=611 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.09863013698630137, contracts=303 | RSS=611 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.17534246575342466, contracts=384 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.27123287671232876, contracts=428 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.34794520547945207, contracts=357 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.4246575342465753, contracts=358 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.5205479452054794, contracts=148 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.5972602739726027, contracts=119 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.673972602739726, contracts=121 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.7698630136986301, contracts=156 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.8465753424657534, contracts=143 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: payoff begin T=0.9424657534246575, contracts=164 | RSS=613 MiB
+2026-09-25T08:21:08 | transition AM=1: pricing complete | RSS=613 MiB
+2026-09-25T08:21:08 | transition: concatenate begin | RSS=613 MiB
+2026-09-25T08:21:08 | transition: delta merge begin | RSS=611 MiB
+2026-09-25T08:21:08 | transition: hedge calculations complete; OTM flags begin | RSS=612 MiB
+2026-09-25T08:21:08 | transition: full summary begin | RSS=612 MiB
+2026-09-25T08:21:08 | transition: OTM summary begin | RSS=612 MiB
+2026-09-25T08:21:08 | transition: complete | RSS=613 MiB
+2026-09-25T08:21:09 | Saved transition 2024-03-13 -> 2024-03-14 (100,000 paths) | RSS=595 MiB
+2026-09-25T08:31:40 | transition: begin | RSS=589 MiB
+2026-09-25T08:31:40 | transition AM=0: simulation begin, rows=6659 | RSS=602 MiB
+2026-09-25T08:31:50 | transition AM=0: simulation returned; terminal storage=11.1 MiB | RSS=610 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.04657534246575343, contracts=175 | RSS=610 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.049315068493150684, contracts=177 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.052054794520547946, contracts=179 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.0547945205479452, contracts=160 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.057534246575342465, contracts=214 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.06575342465753424, contracts=175 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.0684931506849315, contracts=152 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.07123287671232877, contracts=149 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.07397260273972603, contracts=103 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.07671232876712329, contracts=232 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.08493150684931507, contracts=106 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.08767123287671233, contracts=98 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.09041095890410959, contracts=96 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.09315068493150686, contracts=65 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.0958904109589041, contracts=303 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.10410958904109589, contracts=98 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.11506849315068493, contracts=281 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.12602739726027398, contracts=346 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.13424657534246576, contracts=184 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.1726027397260274, contracts=376 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.21095890410958903, contracts=448 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.2684931506849315, contracts=324 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.2876712328767123, contracts=549 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.3452054794520548, contracts=365 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.3780821917808219, contracts=329 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.42191780821917807, contracts=358 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.4602739726027397, contracts=304 | RSS=613 MiB
+2026-09-25T08:31:50 | transition AM=0: payoff begin T=0.5452054794520548, contracts=154 | RSS=613 MiB
+2026-09-25T08:31:51 | transition AM=0: payoff begin T=0.7972602739726027, contracts=159 | RSS=613 MiB
+2026-09-25T08:31:51 | transition AM=0: pricing complete | RSS=613 MiB
+2026-09-25T08:31:51 | transition AM=1: simulation begin, rows=2704 | RSS=600 MiB
+2026-09-25T08:32:01 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=605 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.0958904109589041, contracts=302 | RSS=605 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.1726027397260274, contracts=388 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.2684931506849315, contracts=432 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.3452054794520548, contracts=362 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.42191780821917807, contracts=358 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.5178082191780822, contracts=151 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.5945205479452055, contracts=119 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.6712328767123288, contracts=123 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.7671232876712328, contracts=160 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.8438356164383561, contracts=145 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: payoff begin T=0.9397260273972603, contracts=164 | RSS=607 MiB
+2026-09-25T08:32:01 | transition AM=1: pricing complete | RSS=607 MiB
+2026-09-25T08:32:01 | transition: concatenate begin | RSS=607 MiB
+2026-09-25T08:32:01 | transition: delta merge begin | RSS=605 MiB
+2026-09-25T08:32:01 | transition: hedge calculations complete; OTM flags begin | RSS=607 MiB
+2026-09-25T08:32:01 | transition: full summary begin | RSS=607 MiB
+2026-09-25T08:32:01 | transition: OTM summary begin | RSS=607 MiB
+2026-09-25T08:32:01 | transition: complete | RSS=607 MiB
+2026-09-25T08:32:02 | Saved transition 2024-03-14 -> 2024-03-15 (100,000 paths) | RSS=587 MiB
+2026-09-25T08:43:20 | transition: begin | RSS=580 MiB
+2026-09-25T08:43:20 | transition AM=0: simulation begin, rows=6486 | RSS=595 MiB
+2026-09-25T08:43:32 | transition AM=0: simulation returned; terminal storage=11.1 MiB | RSS=608 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.0410958904109589, contracts=167 | RSS=608 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.043835616438356165, contracts=172 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.04657534246575343, contracts=163 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.049315068493150684, contracts=203 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.057534246575342465, contracts=172 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.06027397260273973, contracts=153 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.06301369863013699, contracts=148 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.06575342465753424, contracts=143 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.0684931506849315, contracts=225 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.07671232876712329, contracts=105 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.07945205479452055, contracts=97 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.0821917808219178, contracts=95 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.08493150684931507, contracts=93 | RSS=610 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.08767123287671233, contracts=292 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.0958904109589041, contracts=97 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.09863013698630137, contracts=61 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.10684931506849316, contracts=275 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.1178082191780822, contracts=332 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.12602739726027398, contracts=183 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.1643835616438356, contracts=370 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.20273972602739726, contracts=443 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.2602739726027397, contracts=330 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.27945205479452057, contracts=544 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.336986301369863, contracts=365 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.3698630136986301, contracts=328 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.4136986301369863, contracts=312 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.4520547945205479, contracts=304 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.536986301369863, contracts=155 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: payoff begin T=0.7890410958904109, contracts=159 | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=0: pricing complete | RSS=611 MiB
+2026-09-25T08:43:32 | transition AM=1: simulation begin, rows=2692 | RSS=599 MiB
+2026-09-25T08:43:43 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=594 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.08767123287671233, contracts=291 | RSS=595 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.1643835616438356, contracts=381 | RSS=595 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.2602739726027397, contracts=437 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.336986301369863, contracts=363 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.4136986301369863, contracts=358 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.5095890410958904, contracts=151 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.5863013698630137, contracts=119 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.663013698630137, contracts=123 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.7589041095890411, contracts=160 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.8356164383561644, contracts=145 | RSS=596 MiB
+2026-09-25T08:43:43 | transition AM=1: payoff begin T=0.9315068493150684, contracts=164 | RSS=596 MiB
+2026-09-25T08:43:44 | transition AM=1: pricing complete | RSS=596 MiB
+2026-09-25T08:43:44 | transition: concatenate begin | RSS=596 MiB
+2026-09-25T08:43:44 | transition: delta merge begin | RSS=593 MiB
+2026-09-25T08:43:44 | transition: hedge calculations complete; OTM flags begin | RSS=595 MiB
+2026-09-25T08:43:44 | transition: full summary begin | RSS=596 MiB
+2026-09-25T08:43:44 | transition: OTM summary begin | RSS=596 MiB
+2026-09-25T08:43:44 | transition: complete | RSS=596 MiB
+2026-09-25T08:43:45 | Saved transition 2024-03-15 -> 2024-03-18 (100,000 paths) | RSS=577 MiB
+2026-09-25T08:54:51 | transition: begin | RSS=632 MiB
+2026-09-25T08:54:51 | transition AM=0: simulation begin, rows=6514 | RSS=646 MiB
+2026-09-25T08:55:02 | transition AM=0: simulation returned; terminal storage=11.1 MiB | RSS=653 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.0410958904109589, contracts=166 | RSS=653 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.043835616438356165, contracts=163 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.04657534246575343, contracts=192 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.0547945205479452, contracts=183 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.057534246575342465, contracts=159 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.06027397260273973, contracts=174 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.06301369863013699, contracts=155 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.06575342465753424, contracts=220 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.07397260273972603, contracts=103 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.07671232876712329, contracts=103 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.07945205479452055, contracts=102 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.0821917808219178, contracts=100 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.08493150684931507, contracts=282 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.09315068493150686, contracts=96 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.0958904109589041, contracts=61 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.09863013698630137, contracts=61 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.10410958904109589, contracts=273 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.11506849315068493, contracts=324 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.1232876712328767, contracts=183 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.16164383561643836, contracts=363 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.2, contracts=440 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.25753424657534246, contracts=422 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.27671232876712326, contracts=584 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.33424657534246577, contracts=358 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.36712328767123287, contracts=325 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.410958904109589, contracts=311 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.44931506849315067, contracts=302 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.5342465753424658, contracts=152 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: payoff begin T=0.7863013698630137, contracts=157 | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=0: pricing complete | RSS=656 MiB
+2026-09-25T08:55:02 | transition AM=1: simulation begin, rows=2940 | RSS=644 MiB
+2026-09-25T08:55:12 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=648 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.08493150684931507, contracts=281 | RSS=648 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.16164383561643836, contracts=373 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.25753424657534246, contracts=432 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.33424657534246577, contracts=430 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.410958904109589, contracts=355 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.5068493150684932, contracts=334 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.5835616438356165, contracts=148 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.6602739726027397, contracts=125 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.7561643835616438, contracts=157 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.8328767123287671, contracts=143 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: payoff begin T=0.9287671232876712, contracts=162 | RSS=650 MiB
+2026-09-25T08:55:12 | transition AM=1: pricing complete | RSS=650 MiB
+2026-09-25T08:55:12 | transition: concatenate begin | RSS=650 MiB
+2026-09-25T08:55:13 | transition: delta merge begin | RSS=648 MiB
+2026-09-25T08:55:13 | transition: hedge calculations complete; OTM flags begin | RSS=650 MiB
+2026-09-25T08:55:13 | transition: full summary begin | RSS=650 MiB
+2026-09-25T08:55:13 | transition: OTM summary begin | RSS=651 MiB
+2026-09-25T08:55:13 | transition: complete | RSS=651 MiB
+2026-09-25T08:55:13 | Saved transition 2024-03-18 -> 2024-03-19 (100,000 paths) | RSS=632 MiB
+2026-09-25T09:06:32 | transition: begin | RSS=629 MiB
+2026-09-25T09:06:32 | transition AM=0: simulation begin, rows=5989 | RSS=642 MiB
+2026-09-25T09:06:43 | transition AM=0: simulation returned; terminal storage=11.1 MiB | RSS=647 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.0410958904109589, contracts=124 | RSS=648 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.043835616438356165, contracts=150 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.052054794520547946, contracts=145 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.0547945205479452, contracts=134 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.057534246575342465, contracts=148 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.06027397260273973, contracts=144 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.06301369863013699, contracts=192 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.07123287671232877, contracts=138 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.07397260273972603, contracts=98 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.07671232876712329, contracts=97 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.07945205479452055, contracts=95 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.0821917808219178, contracts=240 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.09041095890410959, contracts=91 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.09315068493150686, contracts=59 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.0958904109589041, contracts=60 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.09863013698630137, contracts=62 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.10136986301369863, contracts=247 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.11232876712328767, contracts=282 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.12054794520547946, contracts=174 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.1589041095890411, contracts=334 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.19726027397260273, contracts=413 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.2547945205479452, contracts=396 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.273972602739726, contracts=545 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.3315068493150685, contracts=345 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.3643835616438356, contracts=320 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.40821917808219177, contracts=351 | RSS=650 MiB
+2026-09-25T09:06:43 | transition AM=0: payoff begin T=0.4465753424657534, contracts=301 | RSS=650 MiB
+2026-09-25T09:06:44 | transition AM=0: payoff begin T=0.5315068493150685, contracts=148 | RSS=650 MiB
+2026-09-25T09:06:44 | transition AM=0: payoff begin T=0.7835616438356164, contracts=156 | RSS=650 MiB
+2026-09-25T09:06:44 | transition AM=0: pricing complete | RSS=650 MiB
+2026-09-25T09:06:44 | transition AM=1: simulation begin, rows=2792 | RSS=638 MiB
+2026-09-25T09:06:54 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=642 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.0821917808219178, contracts=235 | RSS=642 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.1589041095890411, contracts=339 | RSS=644 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.2547945205479452, contracts=402 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.3315068493150685, contracts=415 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.40821917808219177, contracts=351 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.5041095890410959, contracts=330 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.5808219178082191, contracts=145 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.6575342465753424, contracts=121 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.7534246575342466, contracts=155 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.8301369863013699, contracts=139 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: payoff begin T=0.9260273972602739, contracts=160 | RSS=645 MiB
+2026-09-25T09:06:54 | transition AM=1: pricing complete | RSS=645 MiB
+2026-09-25T09:06:54 | transition: concatenate begin | RSS=644 MiB
+2026-09-25T09:06:54 | transition: delta merge begin | RSS=642 MiB
+2026-09-25T09:06:54 | transition: hedge calculations complete; OTM flags begin | RSS=643 MiB
+2026-09-25T09:06:54 | transition: full summary begin | RSS=643 MiB
+2026-09-25T09:06:54 | transition: OTM summary begin | RSS=643 MiB
+2026-09-25T09:06:54 | transition: complete | RSS=644 MiB
+2026-09-25T09:06:55 | Saved transition 2024-03-19 -> 2024-03-20 (100,000 paths) | RSS=625 MiB
+2026-09-25T09:18:50 | transition: begin | RSS=614 MiB
+2026-09-25T09:18:50 | transition AM=0: simulation begin, rows=6103 | RSS=626 MiB
+2026-09-25T09:19:01 | transition AM=0: simulation returned; terminal storage=11.1 MiB | RSS=633 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.0410958904109589, contracts=147 | RSS=633 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.049315068493150684, contracts=138 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.052054794520547946, contracts=143 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.0547945205479452, contracts=146 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.057534246575342465, contracts=151 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.06027397260273973, contracts=193 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.0684931506849315, contracts=148 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.07123287671232877, contracts=142 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.07397260273972603, contracts=100 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.07671232876712329, contracts=101 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.07945205479452055, contracts=242 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.08767123287671233, contracts=95 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.09041095890410959, contracts=91 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.09315068493150686, contracts=61 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.0958904109589041, contracts=62 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.09863013698630137, contracts=249 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.1095890410958904, contracts=284 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.1178082191780822, contracts=173 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.136986301369863, contracts=108 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.15616438356164383, contracts=335 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.19452054794520549, contracts=420 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.25205479452054796, contracts=397 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.27123287671232876, contracts=553 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.3287671232876712, contracts=345 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.36164383561643837, contracts=321 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.4054794520547945, contracts=353 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.4438356164383562, contracts=301 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.5287671232876713, contracts=149 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: payoff begin T=0.7808219178082192, contracts=155 | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=0: pricing complete | RSS=636 MiB
+2026-09-25T09:19:01 | transition AM=1: simulation begin, rows=2801 | RSS=624 MiB
+2026-09-25T09:19:11 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=628 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.07945205479452055, contracts=237 | RSS=628 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.15616438356164383, contracts=340 | RSS=629 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.25205479452054796, contracts=403 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.3287671232876712, contracts=416 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.4054794520547945, contracts=353 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.5013698630136987, contracts=331 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.5780821917808219, contracts=146 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.6547945205479452, contracts=121 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.7506849315068493, contracts=155 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.8273972602739726, contracts=139 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: payoff begin T=0.9232876712328767, contracts=160 | RSS=630 MiB
+2026-09-25T09:19:11 | transition AM=1: pricing complete | RSS=630 MiB
+2026-09-25T09:19:11 | transition: concatenate begin | RSS=630 MiB
+2026-09-25T09:19:12 | transition: delta merge begin | RSS=627 MiB
+2026-09-25T09:19:12 | transition: hedge calculations complete; OTM flags begin | RSS=629 MiB
+2026-09-25T09:19:12 | transition: full summary begin | RSS=629 MiB
+2026-09-25T09:19:12 | transition: OTM summary begin | RSS=629 MiB
+2026-09-25T09:19:12 | transition: complete | RSS=629 MiB
+2026-09-25T09:19:12 | Saved transition 2024-03-20 -> 2024-03-21 (100,000 paths) | RSS=612 MiB
+2026-09-25T09:29:26 | transition: begin | RSS=705 MiB
+2026-09-25T09:29:26 | transition AM=0: simulation begin, rows=6650 | RSS=718 MiB
+2026-09-25T09:29:36 | transition AM=0: simulation returned; terminal storage=11.1 MiB | RSS=726 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.04657534246575343, contracts=170 | RSS=726 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.049315068493150684, contracts=167 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.052054794520547946, contracts=187 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.0547945205479452, contracts=171 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.057534246575342465, contracts=217 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.06575342465753424, contracts=179 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.0684931506849315, contracts=161 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.07123287671232877, contracts=173 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.07397260273972603, contracts=113 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.07671232876712329, contracts=277 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.08493150684931507, contracts=107 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.08767123287671233, contracts=102 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.09041095890410959, contracts=99 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.09315068493150686, contracts=65 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.0958904109589041, contracts=277 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.10410958904109589, contracts=100 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.10684931506849316, contracts=317 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.11506849315068493, contracts=185 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.13424657534246576, contracts=113 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.15342465753424658, contracts=367 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.1917808219178082, contracts=435 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.2493150684931507, contracts=420 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.2684931506849315, contracts=573 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.32602739726027397, contracts=357 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.3589041095890411, contracts=334 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.40273972602739727, contracts=365 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.4410958904109589, contracts=310 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.5260273972602739, contracts=151 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: payoff begin T=0.7780821917808219, contracts=158 | RSS=729 MiB
+2026-09-25T09:29:36 | transition AM=0: pricing complete | RSS=729 MiB
+2026-09-25T09:29:37 | transition AM=1: simulation begin, rows=2951 | RSS=717 MiB
+2026-09-25T09:29:47 | transition AM=1: simulation returned; terminal storage=4.2 MiB | RSS=721 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.07671232876712329, contracts=275 | RSS=721 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.15342465753424658, contracts=371 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.2493150684931507, contracts=427 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.32602739726027397, contracts=430 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.40273972602739727, contracts=364 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.4986301369863014, contracts=357 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.5753424657534246, contracts=152 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.6520547945205479, contracts=121 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.7479452054794521, contracts=155 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.8246575342465754, contracts=139 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: payoff begin T=0.9205479452054794, contracts=160 | RSS=723 MiB
+2026-09-25T09:29:47 | transition AM=1: pricing complete | RSS=723 MiB
+2026-09-25T09:29:47 | transition: concatenate begin | RSS=723 MiB
+2026-09-25T09:29:47 | transition: delta merge begin | RSS=721 MiB
+2026-09-25T09:29:47 | transition: hedge calculations complete; OTM flags begin | RSS=724 MiB
+2026-09-25T09:29:47 | transition: full summary begin | RSS=724 MiB
+2026-09-25T09:29:47 | transition: OTM summary begin | RSS=724 MiB
+2026-09-25T09:29:47 | transition: complete | RSS=724 MiB
+2026-09-25T09:29:48 | Saved transition 2024-03-21 -> 2024-03-22 (100,000 paths) | RSS=703 MiB
+2026-09-25T09:40:35 | transition: begin | RSS=623 MiB
+2026-09-25T09:40:35 | transition AM=0: simulation begin, rows=6483 | RSS=635 MiB
+2026-09-25T09:40:44 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=643 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.0410958904109589, contracts=158 | RSS=643 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.043835616438356165, contracts=174 | RSS=645 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.04657534246575343, contracts=180 | RSS=645 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.049315068493150684, contracts=204 | RSS=645 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.057534246575342465, contracts=180 | RSS=645 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.06027397260273973, contracts=165 | RSS=645 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.06301369863013699, contracts=177 | RSS=645 MiB
+2026-09-25T09:40:44 | transition AM=0: payoff begin T=0.06575342465753424, contracts=161 | RSS=645 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.0684931506849315, contracts=257 | RSS=645 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.07671232876712329, contracts=108 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.07945205479452055, contracts=104 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.0821917808219178, contracts=99 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.08493150684931507, contracts=96 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.08767123287671233, contracts=265 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.0958904109589041, contracts=97 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.09863013698630137, contracts=298 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.10684931506849316, contracts=185 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.12602739726027398, contracts=109 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.14520547945205478, contracts=375 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.18356164383561643, contracts=421 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.2410958904109589, contracts=431 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.2602739726027397, contracts=554 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.3178082191780822, contracts=358 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.3506849315068493, contracts=335 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.39452054794520547, contracts=369 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.4328767123287671, contracts=314 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.5178082191780822, contracts=152 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: payoff begin T=0.7698630136986301, contracts=157 | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=0: pricing complete | RSS=646 MiB
+2026-09-25T09:40:45 | transition AM=1: simulation begin, rows=3225 | RSS=634 MiB
+2026-09-25T09:40:55 | transition AM=1: simulation returned; terminal storage=4.6 MiB | RSS=624 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.0684931506849315, contracts=258 | RSS=624 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.14520547945205478, contracts=384 | RSS=626 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.2410958904109589, contracts=438 | RSS=626 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.3178082191780822, contracts=452 | RSS=626 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.39452054794520547, contracts=368 | RSS=626 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.4904109589041096, contracts=361 | RSS=627 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.5671232876712329, contracts=155 | RSS=627 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.6438356164383562, contracts=156 | RSS=627 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.7397260273972602, contracts=161 | RSS=627 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.8164383561643835, contracts=158 | RSS=627 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.9123287671232877, contracts=161 | RSS=627 MiB
+2026-09-25T09:40:55 | transition AM=1: payoff begin T=0.989041095890411, contracts=173 | RSS=627 MiB
+2026-09-25T09:40:55 | transition AM=1: pricing complete | RSS=627 MiB
+2026-09-25T09:40:55 | transition: concatenate begin | RSS=627 MiB
+2026-09-25T09:40:55 | transition: delta merge begin | RSS=624 MiB
+2026-09-25T09:40:55 | transition: hedge calculations complete; OTM flags begin | RSS=627 MiB
+2026-09-25T09:40:55 | transition: full summary begin | RSS=627 MiB
+2026-09-25T09:40:55 | transition: OTM summary begin | RSS=627 MiB
+2026-09-25T09:40:56 | transition: complete | RSS=627 MiB
+2026-09-25T09:40:56 | Saved transition 2024-03-22 -> 2024-03-25 (100,000 paths) | RSS=606 MiB
+2026-09-25T09:52:05 | transition: begin | RSS=707 MiB
+2026-09-25T09:52:05 | transition AM=0: simulation begin, rows=6305 | RSS=720 MiB
+2026-09-25T09:52:16 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=723 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.0410958904109589, contracts=167 | RSS=723 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.043835616438356165, contracts=175 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.04657534246575343, contracts=194 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.0547945205479452, contracts=174 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.057534246575342465, contracts=163 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.06027397260273973, contracts=173 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.06301369863013699, contracts=158 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.06575342465753424, contracts=244 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.07397260273972603, contracts=107 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.07671232876712329, contracts=104 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.07945205479452055, contracts=98 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.0821917808219178, contracts=96 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.08493150684931507, contracts=259 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.09315068493150686, contracts=96 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.0958904109589041, contracts=290 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.09863013698630137, contracts=71 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.10410958904109589, contracts=182 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.1232876712328767, contracts=108 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.14246575342465753, contracts=370 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.18082191780821918, contracts=414 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.23835616438356164, contracts=430 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.25753424657534246, contracts=549 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.3150684931506849, contracts=357 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.34794520547945207, contracts=334 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.3917808219178082, contracts=367 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.4301369863013699, contracts=314 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.5150684931506849, contracts=152 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: payoff begin T=0.7671232876712328, contracts=159 | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=0: pricing complete | RSS=726 MiB
+2026-09-25T09:52:16 | transition AM=1: simulation begin, rows=3207 | RSS=716 MiB
+2026-09-25T09:52:26 | transition AM=1: simulation returned; terminal storage=4.6 MiB | RSS=721 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.06575342465753424, contracts=246 | RSS=721 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.14246575342465753, contracts=376 | RSS=722 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.23835616438356164, contracts=433 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.3150684931506849, contracts=453 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.3917808219178082, contracts=367 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.4876712328767123, contracts=362 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.5643835616438356, contracts=156 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.6410958904109589, contracts=158 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.736986301369863, contracts=160 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.8136986301369863, contracts=160 | RSS=723 MiB
+2026-09-25T09:52:26 | transition AM=1: payoff begin T=0.9095890410958904, contracts=162 | RSS=723 MiB
+2026-09-25T09:52:27 | transition AM=1: payoff begin T=0.9863013698630136, contracts=174 | RSS=723 MiB
+2026-09-25T09:52:27 | transition AM=1: pricing complete | RSS=723 MiB
+2026-09-25T09:52:27 | transition: concatenate begin | RSS=723 MiB
+2026-09-25T09:52:27 | transition: delta merge begin | RSS=720 MiB
+2026-09-25T09:52:27 | transition: hedge calculations complete; OTM flags begin | RSS=722 MiB
+2026-09-25T09:52:27 | transition: full summary begin | RSS=722 MiB
+2026-09-25T09:52:27 | transition: OTM summary begin | RSS=722 MiB
+2026-09-25T09:52:27 | transition: complete | RSS=722 MiB
+2026-09-25T09:52:27 | Saved transition 2024-03-25 -> 2024-03-26 (100,000 paths) | RSS=703 MiB
+2026-09-25T10:03:39 | transition: begin | RSS=622 MiB
+2026-09-25T10:03:39 | transition AM=0: simulation begin, rows=5984 | RSS=635 MiB
+2026-09-25T10:03:49 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=641 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.0410958904109589, contracts=153 | RSS=641 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.043835616438356165, contracts=162 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.052054794520547946, contracts=160 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.0547945205479452, contracts=154 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.057534246575342465, contracts=164 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.06027397260273973, contracts=154 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.06301369863013699, contracts=221 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.07123287671232877, contracts=145 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.07397260273972603, contracts=101 | RSS=643 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.07671232876712329, contracts=98 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.07945205479452055, contracts=97 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.0821917808219178, contracts=242 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.09041095890410959, contracts=95 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.09315068493150686, contracts=264 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.0958904109589041, contracts=68 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.09863013698630137, contracts=68 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.10136986301369863, contracts=174 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.12054794520547946, contracts=106 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.13972602739726028, contracts=354 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.1780821917808219, contracts=398 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.2356164383561644, contracts=421 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.2547945205479452, contracts=528 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.31232876712328766, contracts=349 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.3452054794520548, contracts=329 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.38904109589041097, contracts=362 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.4273972602739726, contracts=311 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.5123287671232877, contracts=149 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: payoff begin T=0.7643835616438356, contracts=157 | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=0: pricing complete | RSS=644 MiB
+2026-09-25T10:03:49 | transition AM=1: simulation begin, rows=3135 | RSS=632 MiB
+2026-09-25T10:04:00 | transition AM=1: simulation returned; terminal storage=4.6 MiB | RSS=637 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.06301369863013699, contracts=226 | RSS=637 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.13972602739726028, contracts=360 | RSS=638 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.2356164383561644, contracts=424 | RSS=638 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.31232876712328766, contracts=445 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.38904109589041097, contracts=364 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.4849315068493151, contracts=359 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.5616438356164384, contracts=153 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.6383561643835617, contracts=156 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.7342465753424657, contracts=158 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.810958904109589, contracts=158 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.9068493150684932, contracts=160 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: payoff begin T=0.9835616438356164, contracts=172 | RSS=639 MiB
+2026-09-25T10:04:00 | transition AM=1: pricing complete | RSS=639 MiB
+2026-09-25T10:04:00 | transition: concatenate begin | RSS=639 MiB
+2026-09-25T10:04:00 | transition: delta merge begin | RSS=636 MiB
+2026-09-25T10:04:00 | transition: hedge calculations complete; OTM flags begin | RSS=638 MiB
+2026-09-25T10:04:00 | transition: full summary begin | RSS=638 MiB
+2026-09-25T10:04:00 | transition: OTM summary begin | RSS=638 MiB
+2026-09-25T10:04:00 | transition: complete | RSS=638 MiB
+2026-09-25T10:04:01 | Saved transition 2024-03-26 -> 2024-03-27 (100,000 paths) | RSS=620 MiB
+2026-09-25T10:15:22 | transition: begin | RSS=667 MiB
+2026-09-25T10:15:22 | transition AM=0: simulation begin, rows=6038 | RSS=680 MiB
+2026-09-25T10:15:32 | transition AM=0: simulation returned; terminal storage=10.7 MiB | RSS=687 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.0410958904109589, contracts=169 | RSS=687 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.049315068493150684, contracts=164 | RSS=689 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.052054794520547946, contracts=161 | RSS=689 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.0547945205479452, contracts=168 | RSS=689 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.057534246575342465, contracts=158 | RSS=689 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.06027397260273973, contracts=231 | RSS=689 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.0684931506849315, contracts=148 | RSS=689 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.07123287671232877, contracts=145 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.07397260273972603, contracts=99 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.07671232876712329, contracts=99 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.07945205479452055, contracts=247 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.08767123287671233, contracts=96 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.09041095890410959, contracts=272 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.09315068493150686, contracts=68 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.0958904109589041, contracts=68 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.09863013698630137, contracts=177 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.10684931506849316, contracts=68 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.1178082191780822, contracts=108 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.136986301369863, contracts=361 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.17534246575342466, contracts=407 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.2328767123287671, contracts=423 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.25205479452054796, contracts=535 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.3095890410958904, contracts=352 | RSS=690 MiB
+2026-09-25T10:15:32 | transition AM=0: payoff begin T=0.3424657534246575, contracts=331 | RSS=690 MiB
+2026-09-25T10:15:33 | transition AM=0: payoff begin T=0.3863013698630137, contracts=365 | RSS=690 MiB
+2026-09-25T10:15:33 | transition AM=0: payoff begin T=0.4246575342465753, contracts=311 | RSS=690 MiB
+2026-09-25T10:15:33 | transition AM=0: payoff begin T=0.5095890410958904, contracts=149 | RSS=690 MiB
+2026-09-25T10:15:33 | transition AM=0: payoff begin T=0.7616438356164383, contracts=158 | RSS=690 MiB
+2026-09-25T10:15:33 | transition AM=0: pricing complete | RSS=690 MiB
+2026-09-25T10:15:33 | transition AM=1: simulation begin, rows=3164 | RSS=678 MiB
+2026-09-25T10:15:43 | transition AM=1: simulation returned; terminal storage=4.6 MiB | RSS=683 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.06027397260273973, contracts=235 | RSS=683 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.136986301369863, contracts=370 | RSS=684 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.2328767123287671, contracts=429 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.3095890410958904, contracts=447 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.3863013698630137, contracts=366 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.4821917808219178, contracts=360 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.5589041095890411, contracts=152 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.6356164383561644, contracts=156 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.7315068493150685, contracts=159 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.8082191780821918, contracts=158 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.9041095890410958, contracts=161 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: payoff begin T=0.9808219178082191, contracts=171 | RSS=685 MiB
+2026-09-25T10:15:43 | transition AM=1: pricing complete | RSS=685 MiB
+2026-09-25T10:15:44 | transition: concatenate begin | RSS=685 MiB
+2026-09-25T10:15:44 | transition: delta merge begin | RSS=682 MiB
+2026-09-25T10:15:44 | transition: hedge calculations complete; OTM flags begin | RSS=684 MiB
+2026-09-25T10:15:44 | transition: full summary begin | RSS=684 MiB
+2026-09-25T10:15:44 | transition: OTM summary begin | RSS=684 MiB
+2026-09-25T10:15:44 | transition: complete | RSS=684 MiB
+2026-09-25T10:15:44 | Saved transition 2024-03-27 -> 2024-03-28 (100,000 paths) | RSS=665 MiB
+2026-09-25T10:15:45 | 400k-path evaluation of the frozen test checkpoints | RSS=665 MiB
+2026-09-25T10:16:38 | transition: begin | RSS=659 MiB
+2026-09-25T10:16:38 | transition AM=0: simulation begin, rows=6554 | RSS=667 MiB
+2026-09-25T10:17:19 | transition AM=0: simulation returned; terminal storage=42.7 MiB | RSS=710 MiB
+2026-09-25T10:17:19 | transition AM=0: payoff begin T=0.0410958904109589, contracts=191 | RSS=710 MiB
+2026-09-25T10:17:19 | transition AM=0: payoff begin T=0.043835616438356165, contracts=191 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.04657534246575343, contracts=248 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.057534246575342465, contracts=188 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.06027397260273973, contracts=173 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.06301369863013699, contracts=175 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.06575342465753424, contracts=152 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.0684931506849315, contracts=249 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.07671232876712329, contracts=115 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.07945205479452055, contracts=112 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.0821917808219178, contracts=107 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.08493150684931507, contracts=99 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.08767123287671233, contracts=264 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.0958904109589041, contracts=97 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.09863013698630137, contracts=68 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.10684931506849316, contracts=349 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.12602739726027398, contracts=179 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.136986301369863, contracts=384 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.14520547945205478, contracts=118 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.18356164383561643, contracts=401 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.2219178082191781, contracts=475 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.27945205479452057, contracts=350 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.29863013698630136, contracts=568 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.3561643835616438, contracts=370 | RSS=710 MiB
+2026-09-25T10:17:20 | transition AM=0: payoff begin T=0.38904109589041097, contracts=323 | RSS=710 MiB
+2026-09-25T10:17:21 | transition AM=0: payoff begin T=0.4712328767123288, contracts=298 | RSS=710 MiB
+2026-09-25T10:17:21 | transition AM=0: payoff begin T=0.5561643835616439, contracts=153 | RSS=710 MiB
+2026-09-25T10:17:21 | transition AM=0: payoff begin T=0.8082191780821918, contracts=157 | RSS=710 MiB
+2026-09-25T10:17:21 | transition AM=0: pricing complete | RSS=710 MiB
+2026-09-25T10:17:21 | transition AM=1: simulation begin, rows=2796 | RSS=667 MiB
+2026-09-25T10:18:03 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.10684931506849316, contracts=348 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.18356164383561643, contracts=415 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.27945205479452057, contracts=459 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.3561643835616438, contracts=370 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.4328767123287671, contracts=359 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.5287671232876713, contracts=149 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.6054794520547945, contracts=121 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.6821917808219178, contracts=123 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.7780821917808219, contracts=141 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.8547945205479452, contracts=145 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: payoff begin T=0.9506849315068493, contracts=166 | RSS=684 MiB
+2026-09-25T10:18:03 | transition AM=1: pricing complete | RSS=684 MiB
+2026-09-25T10:18:03 | transition: concatenate begin | RSS=667 MiB
+2026-09-25T10:18:04 | transition: delta merge begin | RSS=664 MiB
+2026-09-25T10:18:04 | transition: hedge calculations complete; OTM flags begin | RSS=668 MiB
+2026-09-25T10:18:04 | transition: full summary begin | RSS=668 MiB
+2026-09-25T10:18:04 | transition: OTM summary begin | RSS=668 MiB
+2026-09-25T10:18:04 | transition: complete | RSS=668 MiB
+2026-09-25T10:18:05 | Saved transition 2024-03-08 -> 2024-03-11 (400,000 paths) | RSS=663 MiB
+2026-09-25T10:19:04 | transition: begin | RSS=667 MiB
+2026-09-25T10:19:04 | transition AM=0: simulation begin, rows=6317 | RSS=673 MiB
+2026-09-25T10:19:52 | transition AM=0: simulation returned; terminal storage=42.7 MiB | RSS=715 MiB
+2026-09-25T10:19:52 | transition AM=0: payoff begin T=0.0410958904109589, contracts=176 | RSS=715 MiB
+2026-09-25T10:19:52 | transition AM=0: payoff begin T=0.043835616438356165, contracts=221 | RSS=715 MiB
+2026-09-25T10:19:52 | transition AM=0: payoff begin T=0.0547945205479452, contracts=176 | RSS=715 MiB
+2026-09-25T10:19:52 | transition AM=0: payoff begin T=0.057534246575342465, contracts=165 | RSS=715 MiB
+2026-09-25T10:19:52 | transition AM=0: payoff begin T=0.06027397260273973, contracts=178 | RSS=715 MiB
+2026-09-25T10:19:52 | transition AM=0: payoff begin T=0.06301369863013699, contracts=155 | RSS=715 MiB
+2026-09-25T10:19:52 | transition AM=0: payoff begin T=0.06575342465753424, contracts=231 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.07397260273972603, contracts=111 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.07671232876712329, contracts=108 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.07945205479452055, contracts=105 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.0821917808219178, contracts=104 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.08493150684931507, contracts=246 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.09315068493150686, contracts=93 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.0958904109589041, contracts=64 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.09863013698630137, contracts=67 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.10410958904109589, contracts=320 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.1232876712328767, contracts=269 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.13424657534246576, contracts=359 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.14246575342465753, contracts=173 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.18082191780821918, contracts=381 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.2191780821917808, contracts=456 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.27671232876712326, contracts=339 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.2958904109589041, contracts=544 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.35342465753424657, contracts=358 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.3863013698630137, contracts=320 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.4684931506849315, contracts=296 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.5534246575342465, contracts=149 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: payoff begin T=0.8054794520547945, contracts=153 | RSS=715 MiB
+2026-09-25T10:19:53 | transition AM=0: pricing complete | RSS=715 MiB
+2026-09-25T10:19:54 | transition AM=1: simulation begin, rows=2697 | RSS=672 MiB
+2026-09-25T10:20:37 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.10410958904109589, contracts=321 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.18082191780821918, contracts=395 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.27671232876712326, contracts=443 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.35342465753424657, contracts=358 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.4301369863013699, contracts=354 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.5260273972602739, contracts=145 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.6027397260273972, contracts=117 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.6794520547945205, contracts=121 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.7753424657534247, contracts=138 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.852054794520548, contracts=143 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: payoff begin T=0.947945205479452, contracts=162 | RSS=689 MiB
+2026-09-25T10:20:37 | transition AM=1: pricing complete | RSS=689 MiB
+2026-09-25T10:20:37 | transition: concatenate begin | RSS=672 MiB
+2026-09-25T10:20:37 | transition: delta merge begin | RSS=669 MiB
+2026-09-25T10:20:37 | transition: hedge calculations complete; OTM flags begin | RSS=670 MiB
+2026-09-25T10:20:37 | transition: full summary begin | RSS=670 MiB
+2026-09-25T10:20:37 | transition: OTM summary begin | RSS=670 MiB
+2026-09-25T10:20:38 | transition: complete | RSS=670 MiB
+2026-09-25T10:20:38 | Saved transition 2024-03-11 -> 2024-03-12 (400,000 paths) | RSS=666 MiB
+2026-09-25T10:21:33 | transition: begin | RSS=671 MiB
+2026-09-25T10:21:33 | transition AM=0: simulation begin, rows=6281 | RSS=675 MiB
+2026-09-25T10:22:15 | transition AM=0: simulation returned; terminal storage=42.7 MiB | RSS=718 MiB
+2026-09-25T10:22:15 | transition AM=0: payoff begin T=0.0410958904109589, contracts=222 | RSS=718 MiB
+2026-09-25T10:22:15 | transition AM=0: payoff begin T=0.052054794520547946, contracts=178 | RSS=718 MiB
+2026-09-25T10:22:15 | transition AM=0: payoff begin T=0.0547945205479452, contracts=165 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.057534246575342465, contracts=178 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.06027397260273973, contracts=158 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.06301369863013699, contracts=233 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.07123287671232877, contracts=148 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.07397260273972603, contracts=108 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.07671232876712329, contracts=105 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.07945205479452055, contracts=104 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.0821917808219178, contracts=249 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.09041095890410959, contracts=97 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.09315068493150686, contracts=64 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.0958904109589041, contracts=67 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.09863013698630137, contracts=68 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.10136986301369863, contracts=323 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.12054794520547946, contracts=271 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.13150684931506848, contracts=363 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.13972602739726028, contracts=175 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.1780821917808219, contracts=383 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.21643835616438356, contracts=459 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.273972602739726, contracts=337 | RSS=718 MiB
+2026-09-25T10:22:16 | transition AM=0: payoff begin T=0.29315068493150687, contracts=545 | RSS=718 MiB
+2026-09-25T10:22:17 | transition AM=0: payoff begin T=0.3506849315068493, contracts=359 | RSS=718 MiB
+2026-09-25T10:22:17 | transition AM=0: payoff begin T=0.3835616438356164, contracts=321 | RSS=718 MiB
+2026-09-25T10:22:17 | transition AM=0: payoff begin T=0.4657534246575342, contracts=297 | RSS=718 MiB
+2026-09-25T10:22:17 | transition AM=0: payoff begin T=0.5506849315068493, contracts=150 | RSS=718 MiB
+2026-09-25T10:22:17 | transition AM=0: payoff begin T=0.8027397260273973, contracts=154 | RSS=718 MiB
+2026-09-25T10:22:17 | transition AM=0: pricing complete | RSS=718 MiB
+2026-09-25T10:22:17 | transition AM=1: simulation begin, rows=2720 | RSS=675 MiB
+2026-09-25T10:23:00 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=692 MiB
+2026-09-25T10:23:00 | transition AM=1: payoff begin T=0.10136986301369863, contracts=325 | RSS=692 MiB
+2026-09-25T10:23:00 | transition AM=1: payoff begin T=0.1780821917808219, contracts=396 | RSS=692 MiB
+2026-09-25T10:23:00 | transition AM=1: payoff begin T=0.273972602739726, contracts=444 | RSS=692 MiB
+2026-09-25T10:23:00 | transition AM=1: payoff begin T=0.3506849315068493, contracts=359 | RSS=692 MiB
+2026-09-25T10:23:00 | transition AM=1: payoff begin T=0.4273972602739726, contracts=354 | RSS=692 MiB
+2026-09-25T10:23:00 | transition AM=1: payoff begin T=0.5232876712328767, contracts=145 | RSS=692 MiB
+2026-09-25T10:23:01 | transition AM=1: payoff begin T=0.6, contracts=117 | RSS=692 MiB
+2026-09-25T10:23:01 | transition AM=1: payoff begin T=0.6767123287671233, contracts=121 | RSS=692 MiB
+2026-09-25T10:23:01 | transition AM=1: payoff begin T=0.7726027397260274, contracts=154 | RSS=692 MiB
+2026-09-25T10:23:01 | transition AM=1: payoff begin T=0.8493150684931506, contracts=143 | RSS=692 MiB
+2026-09-25T10:23:01 | transition AM=1: payoff begin T=0.9452054794520548, contracts=162 | RSS=692 MiB
+2026-09-25T10:23:01 | transition AM=1: pricing complete | RSS=692 MiB
+2026-09-25T10:23:01 | transition: concatenate begin | RSS=675 MiB
+2026-09-25T10:23:01 | transition: delta merge begin | RSS=671 MiB
+2026-09-25T10:23:01 | transition: hedge calculations complete; OTM flags begin | RSS=673 MiB
+2026-09-25T10:23:01 | transition: full summary begin | RSS=673 MiB
+2026-09-25T10:23:01 | transition: OTM summary begin | RSS=673 MiB
+2026-09-25T10:23:01 | transition: complete | RSS=673 MiB
+2026-09-25T10:23:02 | Saved transition 2024-03-12 -> 2024-03-13 (400,000 paths) | RSS=668 MiB
+2026-09-25T10:23:57 | transition: begin | RSS=671 MiB
+2026-09-25T10:23:57 | transition AM=0: simulation begin, rows=6100 | RSS=676 MiB
+2026-09-25T10:24:39 | transition AM=0: simulation returned; terminal storage=41.2 MiB | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.049315068493150684, contracts=177 | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.052054794520547946, contracts=177 | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.0547945205479452, contracts=179 | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.057534246575342465, contracts=160 | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.06027397260273973, contracts=218 | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.0684931506849315, contracts=174 | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.07123287671232877, contracts=151 | RSS=717 MiB
+2026-09-25T10:24:39 | transition AM=0: payoff begin T=0.07397260273972603, contracts=104 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.07671232876712329, contracts=103 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.07945205479452055, contracts=237 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.08767123287671233, contracts=106 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.09041095890410959, contracts=94 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.09315068493150686, contracts=65 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.0958904109589041, contracts=65 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.09863013698630137, contracts=299 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.1178082191780822, contracts=281 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.12876712328767123, contracts=345 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.136986301369863, contracts=184 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.17534246575342466, contracts=372 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.2136986301369863, contracts=448 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.27123287671232876, contracts=320 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.29041095890410956, contracts=541 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.34794520547945207, contracts=359 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.38082191780821917, contracts=326 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.46301369863013697, contracts=305 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.547945205479452, contracts=153 | RSS=717 MiB
+2026-09-25T10:24:40 | transition AM=0: payoff begin T=0.8, contracts=157 | RSS=717 MiB
+2026-09-25T10:24:41 | transition AM=0: pricing complete | RSS=717 MiB
+2026-09-25T10:24:41 | transition AM=1: simulation begin, rows=2681 | RSS=676 MiB
+2026-09-25T10:25:24 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.09863013698630137, contracts=303 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.17534246575342466, contracts=384 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.27123287671232876, contracts=428 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.34794520547945207, contracts=357 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.4246575342465753, contracts=358 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.5205479452054794, contracts=148 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.5972602739726027, contracts=119 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.673972602739726, contracts=121 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.7698630136986301, contracts=156 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.8465753424657534, contracts=143 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: payoff begin T=0.9424657534246575, contracts=164 | RSS=692 MiB
+2026-09-25T10:25:24 | transition AM=1: pricing complete | RSS=692 MiB
+2026-09-25T10:25:24 | transition: concatenate begin | RSS=676 MiB
+2026-09-25T10:25:24 | transition: delta merge begin | RSS=672 MiB
+2026-09-25T10:25:24 | transition: hedge calculations complete; OTM flags begin | RSS=674 MiB
+2026-09-25T10:25:24 | transition: full summary begin | RSS=674 MiB
+2026-09-25T10:25:24 | transition: OTM summary begin | RSS=674 MiB
+2026-09-25T10:25:24 | transition: complete | RSS=674 MiB
+2026-09-25T10:25:25 | Saved transition 2024-03-13 -> 2024-03-14 (400,000 paths) | RSS=669 MiB
+2026-09-25T10:26:20 | transition: begin | RSS=672 MiB
+2026-09-25T10:26:20 | transition AM=0: simulation begin, rows=6659 | RSS=677 MiB
+2026-09-25T10:27:04 | transition AM=0: simulation returned; terminal storage=44.3 MiB | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.04657534246575343, contracts=175 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.049315068493150684, contracts=177 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.052054794520547946, contracts=179 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.0547945205479452, contracts=160 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.057534246575342465, contracts=214 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.06575342465753424, contracts=175 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.0684931506849315, contracts=152 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.07123287671232877, contracts=149 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.07397260273972603, contracts=103 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.07671232876712329, contracts=232 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.08493150684931507, contracts=106 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.08767123287671233, contracts=98 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.09041095890410959, contracts=96 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.09315068493150686, contracts=65 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.0958904109589041, contracts=303 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.10410958904109589, contracts=98 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.11506849315068493, contracts=281 | RSS=721 MiB
+2026-09-25T10:27:04 | transition AM=0: payoff begin T=0.12602739726027398, contracts=346 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.13424657534246576, contracts=184 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.1726027397260274, contracts=376 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.21095890410958903, contracts=448 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.2684931506849315, contracts=324 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.2876712328767123, contracts=549 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.3452054794520548, contracts=365 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.3780821917808219, contracts=329 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.42191780821917807, contracts=358 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.4602739726027397, contracts=304 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.5452054794520548, contracts=154 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: payoff begin T=0.7972602739726027, contracts=159 | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=0: pricing complete | RSS=721 MiB
+2026-09-25T10:27:05 | transition AM=1: simulation begin, rows=2704 | RSS=677 MiB
+2026-09-25T10:27:49 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.0958904109589041, contracts=302 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.1726027397260274, contracts=388 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.2684931506849315, contracts=432 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.3452054794520548, contracts=362 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.42191780821917807, contracts=358 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.5178082191780822, contracts=151 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.5945205479452055, contracts=119 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.6712328767123288, contracts=123 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.7671232876712328, contracts=160 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.8438356164383561, contracts=145 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: payoff begin T=0.9397260273972603, contracts=164 | RSS=693 MiB
+2026-09-25T10:27:49 | transition AM=1: pricing complete | RSS=693 MiB
+2026-09-25T10:27:49 | transition: concatenate begin | RSS=676 MiB
+2026-09-25T10:27:49 | transition: delta merge begin | RSS=673 MiB
+2026-09-25T10:27:49 | transition: hedge calculations complete; OTM flags begin | RSS=675 MiB
+2026-09-25T10:27:49 | transition: full summary begin | RSS=675 MiB
+2026-09-25T10:27:49 | transition: OTM summary begin | RSS=675 MiB
+2026-09-25T10:27:50 | transition: complete | RSS=675 MiB
+2026-09-25T10:27:50 | Saved transition 2024-03-14 -> 2024-03-15 (400,000 paths) | RSS=670 MiB
+2026-09-25T10:28:45 | transition: begin | RSS=673 MiB
+2026-09-25T10:28:45 | transition AM=0: simulation begin, rows=6486 | RSS=678 MiB
+2026-09-25T10:29:29 | transition AM=0: simulation returned; terminal storage=44.3 MiB | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.0410958904109589, contracts=167 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.043835616438356165, contracts=172 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.04657534246575343, contracts=163 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.049315068493150684, contracts=203 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.057534246575342465, contracts=172 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.06027397260273973, contracts=153 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.06301369863013699, contracts=148 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.06575342465753424, contracts=143 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.0684931506849315, contracts=225 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.07671232876712329, contracts=105 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.07945205479452055, contracts=97 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.0821917808219178, contracts=95 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.08493150684931507, contracts=93 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.08767123287671233, contracts=292 | RSS=722 MiB
+2026-09-25T10:29:29 | transition AM=0: payoff begin T=0.0958904109589041, contracts=97 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.09863013698630137, contracts=61 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.10684931506849316, contracts=275 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.1178082191780822, contracts=332 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.12602739726027398, contracts=183 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.1643835616438356, contracts=370 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.20273972602739726, contracts=443 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.2602739726027397, contracts=330 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.27945205479452057, contracts=544 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.336986301369863, contracts=365 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.3698630136986301, contracts=328 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.4136986301369863, contracts=312 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.4520547945205479, contracts=304 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.536986301369863, contracts=155 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: payoff begin T=0.7890410958904109, contracts=159 | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=0: pricing complete | RSS=722 MiB
+2026-09-25T10:29:30 | transition AM=1: simulation begin, rows=2692 | RSS=677 MiB
+2026-09-25T10:30:14 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.08767123287671233, contracts=291 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.1643835616438356, contracts=381 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.2602739726027397, contracts=437 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.336986301369863, contracts=363 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.4136986301369863, contracts=358 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.5095890410958904, contracts=151 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.5863013698630137, contracts=119 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.663013698630137, contracts=123 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.7589041095890411, contracts=160 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.8356164383561644, contracts=145 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: payoff begin T=0.9315068493150684, contracts=164 | RSS=694 MiB
+2026-09-25T10:30:14 | transition AM=1: pricing complete | RSS=694 MiB
+2026-09-25T10:30:14 | transition: concatenate begin | RSS=677 MiB
+2026-09-25T10:30:15 | transition: delta merge begin | RSS=674 MiB
+2026-09-25T10:30:15 | transition: hedge calculations complete; OTM flags begin | RSS=675 MiB
+2026-09-25T10:30:15 | transition: full summary begin | RSS=675 MiB
+2026-09-25T10:30:15 | transition: OTM summary begin | RSS=675 MiB
+2026-09-25T10:30:15 | transition: complete | RSS=675 MiB
+2026-09-25T10:30:15 | Saved transition 2024-03-15 -> 2024-03-18 (400,000 paths) | RSS=670 MiB
+2026-09-25T10:31:10 | transition: begin | RSS=674 MiB
+2026-09-25T10:31:10 | transition AM=0: simulation begin, rows=6514 | RSS=679 MiB
+2026-09-25T10:31:51 | transition AM=0: simulation returned; terminal storage=44.3 MiB | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.0410958904109589, contracts=166 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.043835616438356165, contracts=163 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.04657534246575343, contracts=192 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.0547945205479452, contracts=183 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.057534246575342465, contracts=159 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.06027397260273973, contracts=174 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.06301369863013699, contracts=155 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.06575342465753424, contracts=220 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.07397260273972603, contracts=103 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.07671232876712329, contracts=103 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.07945205479452055, contracts=102 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.0821917808219178, contracts=100 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.08493150684931507, contracts=282 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.09315068493150686, contracts=96 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.0958904109589041, contracts=61 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.09863013698630137, contracts=61 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.10410958904109589, contracts=273 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.11506849315068493, contracts=324 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.1232876712328767, contracts=183 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.16164383561643836, contracts=363 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.2, contracts=440 | RSS=723 MiB
+2026-09-25T10:31:51 | transition AM=0: payoff begin T=0.25753424657534246, contracts=422 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: payoff begin T=0.27671232876712326, contracts=584 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: payoff begin T=0.33424657534246577, contracts=358 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: payoff begin T=0.36712328767123287, contracts=325 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: payoff begin T=0.410958904109589, contracts=311 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: payoff begin T=0.44931506849315067, contracts=302 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: payoff begin T=0.5342465753424658, contracts=152 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: payoff begin T=0.7863013698630137, contracts=157 | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=0: pricing complete | RSS=723 MiB
+2026-09-25T10:31:52 | transition AM=1: simulation begin, rows=2940 | RSS=679 MiB
+2026-09-25T10:32:33 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.08493150684931507, contracts=281 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.16164383561643836, contracts=373 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.25753424657534246, contracts=432 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.33424657534246577, contracts=430 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.410958904109589, contracts=355 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.5068493150684932, contracts=334 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.5835616438356165, contracts=148 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.6602739726027397, contracts=125 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.7561643835616438, contracts=157 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.8328767123287671, contracts=143 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: payoff begin T=0.9287671232876712, contracts=162 | RSS=695 MiB
+2026-09-25T10:32:33 | transition AM=1: pricing complete | RSS=695 MiB
+2026-09-25T10:32:33 | transition: concatenate begin | RSS=679 MiB
+2026-09-25T10:32:33 | transition: delta merge begin | RSS=675 MiB
+2026-09-25T10:32:33 | transition: hedge calculations complete; OTM flags begin | RSS=677 MiB
+2026-09-25T10:32:33 | transition: full summary begin | RSS=677 MiB
+2026-09-25T10:32:33 | transition: OTM summary begin | RSS=677 MiB
+2026-09-25T10:32:33 | transition: complete | RSS=677 MiB
+2026-09-25T10:32:34 | Saved transition 2024-03-18 -> 2024-03-19 (400,000 paths) | RSS=672 MiB
+2026-09-25T10:33:28 | transition: begin | RSS=675 MiB
+2026-09-25T10:33:28 | transition AM=0: simulation begin, rows=5989 | RSS=679 MiB
+2026-09-25T10:34:10 | transition AM=0: simulation returned; terminal storage=44.3 MiB | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.0410958904109589, contracts=124 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.043835616438356165, contracts=150 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.052054794520547946, contracts=145 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.0547945205479452, contracts=134 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.057534246575342465, contracts=148 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.06027397260273973, contracts=144 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.06301369863013699, contracts=192 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.07123287671232877, contracts=138 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.07397260273972603, contracts=98 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.07671232876712329, contracts=97 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.07945205479452055, contracts=95 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.0821917808219178, contracts=240 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.09041095890410959, contracts=91 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.09315068493150686, contracts=59 | RSS=723 MiB
+2026-09-25T10:34:10 | transition AM=0: payoff begin T=0.0958904109589041, contracts=60 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.09863013698630137, contracts=62 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.10136986301369863, contracts=247 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.11232876712328767, contracts=282 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.12054794520547946, contracts=174 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.1589041095890411, contracts=334 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.19726027397260273, contracts=413 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.2547945205479452, contracts=396 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.273972602739726, contracts=545 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.3315068493150685, contracts=345 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.3643835616438356, contracts=320 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.40821917808219177, contracts=351 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.4465753424657534, contracts=301 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.5315068493150685, contracts=148 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: payoff begin T=0.7835616438356164, contracts=156 | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=0: pricing complete | RSS=723 MiB
+2026-09-25T10:34:11 | transition AM=1: simulation begin, rows=2792 | RSS=679 MiB
+2026-09-25T10:34:52 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.0821917808219178, contracts=235 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.1589041095890411, contracts=339 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.2547945205479452, contracts=402 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.3315068493150685, contracts=415 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.40821917808219177, contracts=351 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.5041095890410959, contracts=330 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.5808219178082191, contracts=145 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.6575342465753424, contracts=121 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.7534246575342466, contracts=155 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.8301369863013699, contracts=139 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: payoff begin T=0.9260273972602739, contracts=160 | RSS=695 MiB
+2026-09-25T10:34:52 | transition AM=1: pricing complete | RSS=695 MiB
+2026-09-25T10:34:52 | transition: concatenate begin | RSS=678 MiB
+2026-09-25T10:34:52 | transition: delta merge begin | RSS=675 MiB
+2026-09-25T10:34:52 | transition: hedge calculations complete; OTM flags begin | RSS=677 MiB
+2026-09-25T10:34:52 | transition: full summary begin | RSS=677 MiB
+2026-09-25T10:34:52 | transition: OTM summary begin | RSS=677 MiB
+2026-09-25T10:34:52 | transition: complete | RSS=677 MiB
+2026-09-25T10:34:53 | Saved transition 2024-03-19 -> 2024-03-20 (400,000 paths) | RSS=672 MiB
+2026-09-25T10:35:46 | transition: begin | RSS=674 MiB
+2026-09-25T10:35:46 | transition AM=0: simulation begin, rows=6103 | RSS=679 MiB
+2026-09-25T10:36:27 | transition AM=0: simulation returned; terminal storage=44.3 MiB | RSS=723 MiB
+2026-09-25T10:36:27 | transition AM=0: payoff begin T=0.0410958904109589, contracts=147 | RSS=723 MiB
+2026-09-25T10:36:27 | transition AM=0: payoff begin T=0.049315068493150684, contracts=138 | RSS=723 MiB
+2026-09-25T10:36:27 | transition AM=0: payoff begin T=0.052054794520547946, contracts=143 | RSS=723 MiB
+2026-09-25T10:36:27 | transition AM=0: payoff begin T=0.0547945205479452, contracts=146 | RSS=723 MiB
+2026-09-25T10:36:27 | transition AM=0: payoff begin T=0.057534246575342465, contracts=151 | RSS=723 MiB
+2026-09-25T10:36:27 | transition AM=0: payoff begin T=0.06027397260273973, contracts=193 | RSS=723 MiB
+2026-09-25T10:36:27 | transition AM=0: payoff begin T=0.0684931506849315, contracts=148 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.07123287671232877, contracts=142 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.07397260273972603, contracts=100 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.07671232876712329, contracts=101 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.07945205479452055, contracts=242 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.08767123287671233, contracts=95 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.09041095890410959, contracts=91 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.09315068493150686, contracts=61 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.0958904109589041, contracts=62 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.09863013698630137, contracts=249 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.1095890410958904, contracts=284 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.1178082191780822, contracts=173 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.136986301369863, contracts=108 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.15616438356164383, contracts=335 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.19452054794520549, contracts=420 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.25205479452054796, contracts=397 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.27123287671232876, contracts=553 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.3287671232876712, contracts=345 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.36164383561643837, contracts=321 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.4054794520547945, contracts=353 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.4438356164383562, contracts=301 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.5287671232876713, contracts=149 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: payoff begin T=0.7808219178082192, contracts=155 | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=0: pricing complete | RSS=723 MiB
+2026-09-25T10:36:28 | transition AM=1: simulation begin, rows=2801 | RSS=678 MiB
+2026-09-25T10:37:09 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.07945205479452055, contracts=237 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.15616438356164383, contracts=340 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.25205479452054796, contracts=403 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.3287671232876712, contracts=416 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.4054794520547945, contracts=353 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.5013698630136987, contracts=331 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.5780821917808219, contracts=146 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.6547945205479452, contracts=121 | RSS=695 MiB
+2026-09-25T10:37:09 | transition AM=1: payoff begin T=0.7506849315068493, contracts=155 | RSS=695 MiB
+2026-09-25T10:37:10 | transition AM=1: payoff begin T=0.8273972602739726, contracts=139 | RSS=695 MiB
+2026-09-25T10:37:10 | transition AM=1: payoff begin T=0.9232876712328767, contracts=160 | RSS=695 MiB
+2026-09-25T10:37:10 | transition AM=1: pricing complete | RSS=695 MiB
+2026-09-25T10:37:10 | transition: concatenate begin | RSS=678 MiB
+2026-09-25T10:37:10 | transition: delta merge begin | RSS=675 MiB
+2026-09-25T10:37:10 | transition: hedge calculations complete; OTM flags begin | RSS=677 MiB
+2026-09-25T10:37:10 | transition: full summary begin | RSS=677 MiB
+2026-09-25T10:37:10 | transition: OTM summary begin | RSS=677 MiB
+2026-09-25T10:37:10 | transition: complete | RSS=677 MiB
+2026-09-25T10:37:11 | Saved transition 2024-03-20 -> 2024-03-21 (400,000 paths) | RSS=672 MiB
+2026-09-25T10:38:06 | transition: begin | RSS=675 MiB
+2026-09-25T10:38:06 | transition AM=0: simulation begin, rows=6650 | RSS=679 MiB
+2026-09-25T10:38:49 | transition AM=0: simulation returned; terminal storage=44.3 MiB | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.04657534246575343, contracts=170 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.049315068493150684, contracts=167 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.052054794520547946, contracts=187 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.0547945205479452, contracts=171 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.057534246575342465, contracts=217 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.06575342465753424, contracts=179 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.0684931506849315, contracts=161 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.07123287671232877, contracts=173 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.07397260273972603, contracts=113 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.07671232876712329, contracts=277 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.08493150684931507, contracts=107 | RSS=723 MiB
+2026-09-25T10:38:49 | transition AM=0: payoff begin T=0.08767123287671233, contracts=102 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.09041095890410959, contracts=99 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.09315068493150686, contracts=65 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.0958904109589041, contracts=277 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.10410958904109589, contracts=100 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.10684931506849316, contracts=317 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.11506849315068493, contracts=185 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.13424657534246576, contracts=113 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.15342465753424658, contracts=367 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.1917808219178082, contracts=435 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.2493150684931507, contracts=420 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.2684931506849315, contracts=573 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.32602739726027397, contracts=357 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.3589041095890411, contracts=334 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.40273972602739727, contracts=365 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.4410958904109589, contracts=310 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.5260273972602739, contracts=151 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: payoff begin T=0.7780821917808219, contracts=158 | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=0: pricing complete | RSS=723 MiB
+2026-09-25T10:38:50 | transition AM=1: simulation begin, rows=2951 | RSS=679 MiB
+2026-09-25T10:39:32 | transition AM=1: simulation returned; terminal storage=16.8 MiB | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.07671232876712329, contracts=275 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.15342465753424658, contracts=371 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.2493150684931507, contracts=427 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.32602739726027397, contracts=430 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.40273972602739727, contracts=364 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.4986301369863014, contracts=357 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.5753424657534246, contracts=152 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.6520547945205479, contracts=121 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.7479452054794521, contracts=155 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.8246575342465754, contracts=139 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: payoff begin T=0.9205479452054794, contracts=160 | RSS=696 MiB
+2026-09-25T10:39:32 | transition AM=1: pricing complete | RSS=696 MiB
+2026-09-25T10:39:32 | transition: concatenate begin | RSS=679 MiB
+2026-09-25T10:39:33 | transition: delta merge begin | RSS=675 MiB
+2026-09-25T10:39:33 | transition: hedge calculations complete; OTM flags begin | RSS=677 MiB
+2026-09-25T10:39:33 | transition: full summary begin | RSS=677 MiB
+2026-09-25T10:39:33 | transition: OTM summary begin | RSS=677 MiB
+2026-09-25T10:39:33 | transition: complete | RSS=677 MiB
+2026-09-25T10:39:33 | Saved transition 2024-03-21 -> 2024-03-22 (400,000 paths) | RSS=672 MiB
+2026-09-25T10:40:27 | transition: begin | RSS=675 MiB
+2026-09-25T10:40:27 | transition AM=0: simulation begin, rows=6483 | RSS=680 MiB
+2026-09-25T10:41:08 | transition AM=0: simulation returned; terminal storage=42.7 MiB | RSS=722 MiB
+2026-09-25T10:41:08 | transition AM=0: payoff begin T=0.0410958904109589, contracts=158 | RSS=722 MiB
+2026-09-25T10:41:08 | transition AM=0: payoff begin T=0.043835616438356165, contracts=174 | RSS=722 MiB
+2026-09-25T10:41:08 | transition AM=0: payoff begin T=0.04657534246575343, contracts=180 | RSS=722 MiB
+2026-09-25T10:41:08 | transition AM=0: payoff begin T=0.049315068493150684, contracts=204 | RSS=722 MiB
+2026-09-25T10:41:08 | transition AM=0: payoff begin T=0.057534246575342465, contracts=180 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.06027397260273973, contracts=165 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.06301369863013699, contracts=177 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.06575342465753424, contracts=161 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.0684931506849315, contracts=257 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.07671232876712329, contracts=108 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.07945205479452055, contracts=104 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.0821917808219178, contracts=99 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.08493150684931507, contracts=96 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.08767123287671233, contracts=265 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.0958904109589041, contracts=97 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.09863013698630137, contracts=298 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.10684931506849316, contracts=185 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.12602739726027398, contracts=109 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.14520547945205478, contracts=375 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.18356164383561643, contracts=421 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.2410958904109589, contracts=431 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.2602739726027397, contracts=554 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.3178082191780822, contracts=358 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.3506849315068493, contracts=335 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.39452054794520547, contracts=369 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.4328767123287671, contracts=314 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.5178082191780822, contracts=152 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: payoff begin T=0.7698630136986301, contracts=157 | RSS=722 MiB
+2026-09-25T10:41:09 | transition AM=0: pricing complete | RSS=722 MiB
+2026-09-25T10:41:10 | transition AM=1: simulation begin, rows=3225 | RSS=680 MiB
+2026-09-25T10:41:51 | transition AM=1: simulation returned; terminal storage=18.3 MiB | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.0684931506849315, contracts=258 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.14520547945205478, contracts=384 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.2410958904109589, contracts=438 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.3178082191780822, contracts=452 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.39452054794520547, contracts=368 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.4904109589041096, contracts=361 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.5671232876712329, contracts=155 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.6438356164383562, contracts=156 | RSS=698 MiB
+2026-09-25T10:41:51 | transition AM=1: payoff begin T=0.7397260273972602, contracts=161 | RSS=698 MiB
+2026-09-25T10:41:52 | transition AM=1: payoff begin T=0.8164383561643835, contracts=158 | RSS=698 MiB
+2026-09-25T10:41:52 | transition AM=1: payoff begin T=0.9123287671232877, contracts=161 | RSS=698 MiB
+2026-09-25T10:41:52 | transition AM=1: payoff begin T=0.989041095890411, contracts=173 | RSS=698 MiB
+2026-09-25T10:41:52 | transition AM=1: pricing complete | RSS=698 MiB
+2026-09-25T10:41:52 | transition: concatenate begin | RSS=680 MiB
+2026-09-25T10:41:52 | transition: delta merge begin | RSS=676 MiB
+2026-09-25T10:41:52 | transition: hedge calculations complete; OTM flags begin | RSS=678 MiB
+2026-09-25T10:41:52 | transition: full summary begin | RSS=678 MiB
+2026-09-25T10:41:52 | transition: OTM summary begin | RSS=678 MiB
+2026-09-25T10:41:52 | transition: complete | RSS=678 MiB
+2026-09-25T10:41:53 | Saved transition 2024-03-22 -> 2024-03-25 (400,000 paths) | RSS=673 MiB
+2026-09-25T10:42:46 | transition: begin | RSS=676 MiB
+2026-09-25T10:42:46 | transition AM=0: simulation begin, rows=6305 | RSS=680 MiB
+2026-09-25T10:43:34 | transition AM=0: simulation returned; terminal storage=42.7 MiB | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.0410958904109589, contracts=167 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.043835616438356165, contracts=175 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.04657534246575343, contracts=194 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.0547945205479452, contracts=174 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.057534246575342465, contracts=163 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.06027397260273973, contracts=173 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.06301369863013699, contracts=158 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.06575342465753424, contracts=244 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.07397260273972603, contracts=107 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.07671232876712329, contracts=104 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.07945205479452055, contracts=98 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.0821917808219178, contracts=96 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.08493150684931507, contracts=259 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.09315068493150686, contracts=96 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.0958904109589041, contracts=290 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.09863013698630137, contracts=71 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.10410958904109589, contracts=182 | RSS=723 MiB
+2026-09-25T10:43:34 | transition AM=0: payoff begin T=0.1232876712328767, contracts=108 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.14246575342465753, contracts=370 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.18082191780821918, contracts=414 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.23835616438356164, contracts=430 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.25753424657534246, contracts=549 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.3150684931506849, contracts=357 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.34794520547945207, contracts=334 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.3917808219178082, contracts=367 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.4301369863013699, contracts=314 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.5150684931506849, contracts=152 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: payoff begin T=0.7671232876712328, contracts=159 | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=0: pricing complete | RSS=723 MiB
+2026-09-25T10:43:35 | transition AM=1: simulation begin, rows=3207 | RSS=680 MiB
+2026-09-25T10:44:20 | transition AM=1: simulation returned; terminal storage=18.3 MiB | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.06575342465753424, contracts=246 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.14246575342465753, contracts=376 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.23835616438356164, contracts=433 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.3150684931506849, contracts=453 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.3917808219178082, contracts=367 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.4876712328767123, contracts=362 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.5643835616438356, contracts=156 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.6410958904109589, contracts=158 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.736986301369863, contracts=160 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.8136986301369863, contracts=160 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.9095890410958904, contracts=162 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: payoff begin T=0.9863013698630136, contracts=174 | RSS=698 MiB
+2026-09-25T10:44:20 | transition AM=1: pricing complete | RSS=698 MiB
+2026-09-25T10:44:21 | transition: concatenate begin | RSS=680 MiB
+2026-09-25T10:44:21 | transition: delta merge begin | RSS=676 MiB
+2026-09-25T10:44:21 | transition: hedge calculations complete; OTM flags begin | RSS=678 MiB
+2026-09-25T10:44:21 | transition: full summary begin | RSS=678 MiB
+2026-09-25T10:44:21 | transition: OTM summary begin | RSS=678 MiB
+2026-09-25T10:44:21 | transition: complete | RSS=678 MiB
+2026-09-25T10:44:21 | Saved transition 2024-03-25 -> 2024-03-26 (400,000 paths) | RSS=673 MiB
+2026-09-25T10:45:18 | transition: begin | RSS=676 MiB
+2026-09-25T10:45:18 | transition AM=0: simulation begin, rows=5984 | RSS=680 MiB
+2026-09-25T10:46:02 | transition AM=0: simulation returned; terminal storage=42.7 MiB | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.0410958904109589, contracts=153 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.043835616438356165, contracts=162 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.052054794520547946, contracts=160 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.0547945205479452, contracts=154 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.057534246575342465, contracts=164 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.06027397260273973, contracts=154 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.06301369863013699, contracts=221 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.07123287671232877, contracts=145 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.07397260273972603, contracts=101 | RSS=722 MiB
+2026-09-25T10:46:02 | transition AM=0: payoff begin T=0.07671232876712329, contracts=98 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.07945205479452055, contracts=97 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.0821917808219178, contracts=242 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.09041095890410959, contracts=95 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.09315068493150686, contracts=264 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.0958904109589041, contracts=68 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.09863013698630137, contracts=68 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.10136986301369863, contracts=174 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.12054794520547946, contracts=106 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.13972602739726028, contracts=354 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.1780821917808219, contracts=398 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.2356164383561644, contracts=421 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.2547945205479452, contracts=528 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.31232876712328766, contracts=349 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.3452054794520548, contracts=329 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.38904109589041097, contracts=362 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.4273972602739726, contracts=311 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.5123287671232877, contracts=149 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: payoff begin T=0.7643835616438356, contracts=157 | RSS=722 MiB
+2026-09-25T10:46:03 | transition AM=0: pricing complete | RSS=722 MiB
+2026-09-25T10:46:04 | transition AM=1: simulation begin, rows=3135 | RSS=679 MiB
+2026-09-25T10:46:48 | transition AM=1: simulation returned; terminal storage=18.3 MiB | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.06301369863013699, contracts=226 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.13972602739726028, contracts=360 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.2356164383561644, contracts=424 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.31232876712328766, contracts=445 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.38904109589041097, contracts=364 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.4849315068493151, contracts=359 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.5616438356164384, contracts=153 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.6383561643835617, contracts=156 | RSS=697 MiB
+2026-09-25T10:46:48 | transition AM=1: payoff begin T=0.7342465753424657, contracts=158 | RSS=697 MiB
+2026-09-25T10:46:49 | transition AM=1: payoff begin T=0.810958904109589, contracts=158 | RSS=697 MiB
+2026-09-25T10:46:49 | transition AM=1: payoff begin T=0.9068493150684932, contracts=160 | RSS=697 MiB
+2026-09-25T10:46:49 | transition AM=1: payoff begin T=0.9835616438356164, contracts=172 | RSS=697 MiB
+2026-09-25T10:46:49 | transition AM=1: pricing complete | RSS=697 MiB
+2026-09-25T10:46:49 | transition: concatenate begin | RSS=679 MiB
+2026-09-25T10:46:49 | transition: delta merge begin | RSS=676 MiB
+2026-09-25T10:46:49 | transition: hedge calculations complete; OTM flags begin | RSS=677 MiB
+2026-09-25T10:46:49 | transition: full summary begin | RSS=677 MiB
+2026-09-25T10:46:49 | transition: OTM summary begin | RSS=677 MiB
+2026-09-25T10:46:49 | transition: complete | RSS=677 MiB
+2026-09-25T10:46:50 | Saved transition 2024-03-26 -> 2024-03-27 (400,000 paths) | RSS=672 MiB
+2026-09-25T10:48:30 | transition: begin | RSS=634 MiB
+2026-09-25T10:48:30 | transition AM=0: simulation begin, rows=6038 | RSS=638 MiB
+2026-09-25T10:49:42 | transition AM=0: simulation returned; terminal storage=42.7 MiB | RSS=681 MiB
+2026-09-25T10:49:42 | transition AM=0: payoff begin T=0.0410958904109589, contracts=169 | RSS=681 MiB
+2026-09-25T10:49:42 | transition AM=0: payoff begin T=0.049315068493150684, contracts=164 | RSS=681 MiB
+2026-09-25T10:49:42 | transition AM=0: payoff begin T=0.052054794520547946, contracts=161 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.0547945205479452, contracts=168 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.057534246575342465, contracts=158 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.06027397260273973, contracts=231 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.0684931506849315, contracts=148 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.07123287671232877, contracts=145 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.07397260273972603, contracts=99 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.07671232876712329, contracts=99 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.07945205479452055, contracts=247 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.08767123287671233, contracts=96 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.09041095890410959, contracts=272 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.09315068493150686, contracts=68 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.0958904109589041, contracts=68 | RSS=681 MiB
+2026-09-25T10:49:43 | transition AM=0: payoff begin T=0.09863013698630137, contracts=177 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.10684931506849316, contracts=68 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.1178082191780822, contracts=108 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.136986301369863, contracts=361 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.17534246575342466, contracts=407 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.2328767123287671, contracts=423 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.25205479452054796, contracts=535 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.3095890410958904, contracts=352 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.3424657534246575, contracts=331 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.3863013698630137, contracts=365 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.4246575342465753, contracts=311 | RSS=681 MiB
+2026-09-25T10:49:44 | transition AM=0: payoff begin T=0.5095890410958904, contracts=149 | RSS=681 MiB
+2026-09-25T10:49:45 | transition AM=0: payoff begin T=0.7616438356164383, contracts=158 | RSS=681 MiB
+2026-09-25T10:49:45 | transition AM=0: pricing complete | RSS=681 MiB
+2026-09-25T10:49:45 | transition AM=1: simulation begin, rows=3164 | RSS=638 MiB
+2026-09-25T10:51:07 | transition AM=1: simulation returned; terminal storage=18.3 MiB | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.06027397260273973, contracts=235 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.136986301369863, contracts=370 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.2328767123287671, contracts=429 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.3095890410958904, contracts=447 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.3863013698630137, contracts=366 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.4821917808219178, contracts=360 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.5589041095890411, contracts=152 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.6356164383561644, contracts=156 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.7315068493150685, contracts=159 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.8082191780821918, contracts=158 | RSS=656 MiB
+2026-09-25T10:51:07 | transition AM=1: payoff begin T=0.9041095890410958, contracts=161 | RSS=656 MiB
+2026-09-25T10:51:08 | transition AM=1: payoff begin T=0.9808219178082191, contracts=171 | RSS=656 MiB
+2026-09-25T10:51:08 | transition AM=1: pricing complete | RSS=656 MiB
+2026-09-25T10:51:08 | transition: concatenate begin | RSS=638 MiB
+2026-09-25T10:51:08 | transition: delta merge begin | RSS=635 MiB
+2026-09-25T10:51:08 | transition: hedge calculations complete; OTM flags begin | RSS=636 MiB
+2026-09-25T10:51:08 | transition: full summary begin | RSS=636 MiB
+2026-09-25T10:51:08 | transition: OTM summary begin | RSS=636 MiB
+2026-09-25T10:51:08 | transition: complete | RSS=636 MiB
+2026-09-25T10:51:10 | Saved transition 2024-03-27 -> 2024-03-28 (400,000 paths) | RSS=631 MiB
+2026-09-25T12:04:36 | Session initialised | RSS=317 MiB
+2026-09-25T12:04:49 | Initial calibration I: v5 shared Neural-LV | RSS=576 MiB
+2026-09-25T12:04:53 | Initial calibration II: maturity-head transfer under final-v7 objective | RSS=648 MiB
+2026-09-25T12:05:31 | Initial calibration I: v5 shared Neural-LV | RSS=730 MiB
+2026-09-25T12:05:31 | Initial calibration II: maturity-head transfer under final-v7 objective | RSS=747 MiB
+2026-09-25T12:09:19 | Initial calibration III: v7 crash-safe full-sample refinement | RSS=705 MiB
+2026-09-25T12:09:36 | Initial calibration complete; nonessential objects released | RSS=700 MiB
+2026-09-25T12:09:37 | Development rolling sequence: 1-Mar to 8-Mar | RSS=700 MiB
+2026-09-25T12:09:38 | Frozen out-of-sample test: 8-Mar to 28-Mar | RSS=700 MiB
+2026-09-25T12:11:55 | 400k-path evaluation of the frozen test checkpoints | RSS=696 MiB
+2026-09-25T12:12:00 | Notebook complete | RSS=768 MiB
+2026-09-25T12:17:26 | Session initialised | RSS=318 MiB

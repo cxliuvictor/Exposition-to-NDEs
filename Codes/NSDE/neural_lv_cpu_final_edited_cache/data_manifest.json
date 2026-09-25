@@ -1,0 +1,22 @@
+{
+  "options": {
+    "file": "one_month_spx_option_price.csv",
+    "bytes": 54286695,
+    "sha256": "eee79c73b580d941385f5854367cfa2a8eff6f538c256cb1d2408a227538e01b"
+  },
+  "forwards": {
+    "file": "one_month_spx_forward_price.csv",
+    "bytes": 55900,
+    "sha256": "61c9d5ded58aec3e62b1b009b6a5ea2668dd9a45e01cb20ae51da11c8e006cc1"
+  },
+  "spot": {
+    "file": "one_month_spx_security_price.csv",
+    "bytes": 1221,
+    "sha256": "7b3ae0f4d22723d557caddef686ad0606c2a354187d9ca0f3cfa989b32cfd3bf"
+  },
+  "rates": {
+    "file": "one_month_spx_zero_coupon_yield_curve.csv",
+    "bytes": 5193,
+    "sha256": "6c5063b8dda2b707f471b6cdc272ba6a18c04ebd7fc0aabd023d8bcd303627cc"
+  }
+}

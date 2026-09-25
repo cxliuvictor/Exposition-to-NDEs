@@ -1,0 +1,27 @@
+{
+  "model": "Neural Local Volatility \u2014 final CPU baseline",
+  "initial_calibration": [
+    "v5 shared 4x50, 1000 alternating epochs, capped OTM, maturity-balanced sampling",
+    "Stage II maturity-head 4x50, 600 alternating epochs, deterministic 80% full-OTM train split, uniform 400-contract sampling, raw MSE, constant Adam 1e-4/1e-3",
+    "v7 crash-safe full-OTM refinement, max 30 updates, min 10, patience 12, update-0 guaranteed in 50k rerank"
+  ],
+  "rolling_recalibration": "fixed 15 updates/day; all filtered OTM; 4096 paths; 400 contracts; 10 NLV + 10 CV steps/update; Adam 1e-4/1e-3; deterministic pre-construction CV seed; no early stopping or reranking",
+  "evaluation": "100k common-random-number primary; 400k antithetic final test; self-financing one-day hedge error with financing/dividend carry; 2k path chunks; sequential AM/PM groups",
+  "development": "2024-03-01 to 2024-03-08",
+  "test": "2024-03-08 to 2024-03-28",
+  "test_100k": {
+    "n": 57622,
+    "pricing_RMSE": 3.249280751392689,
+    "pricing_MAE": 2.5290068478068455,
+    "NLV_hedge_RMSE": 1.888708664736322,
+    "market_delta_hedge_RMSE": 1.297975508161713
+  },
+  "test_400k": {
+    "n": 57622,
+    "pricing_RMSE": 3.202799433189878,
+    "pricing_MAE": 2.509802536237893,
+    "NLV_hedge_RMSE": 1.888242358251012,
+    "market_delta_hedge_RMSE": 1.297975508161713
+  },
+  "delta_correlation_400k": 0.9967028184882794
+}

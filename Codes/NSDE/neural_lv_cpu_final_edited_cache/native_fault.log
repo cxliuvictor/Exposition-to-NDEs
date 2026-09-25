@@ -1,0 +1,230 @@
+Fatal Python error: Aborted
+
+Thread 0x00004200 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 359 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 655 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tqdm\_monitor.py", line 60 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00007544 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 574 in _run_select
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00003ddc (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\parentpoller.py", line 93 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x000071c4 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 355 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 655 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\history.py", line 903 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\history.py", line 61 in only_when_enabled
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\decorator.py", line 232 in fun
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00007b48 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 574 in _run_select
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x000012a8 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 774 in _poll
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 445 in select
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 1948 in _run_once
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 641 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 322 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 205 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\control.py", line 23 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00007f04 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\heartbeat.py", line 106 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x000012d4 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 574 in _run_select
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00003dc0 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 774 in _poll
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 445 in select
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 1948 in _run_once
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 641 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 322 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 205 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\iostream.py", line 91 in _thread_main
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Current thread 0x00004ec0 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2455 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2455 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2271 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2456 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2428 in transform_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_api\deprecation.py", line 300 in wrapper
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 1505 in transform
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\text.py", line 961 in get_window_extent
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 1351 in _get_ticklabel_bboxes
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 2206 in _get_tick_boxes_siblings
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 2413 in _update_label_position
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 1372 in get_tightbbox
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\artist.py", line 1410 in _get_tightbbox_for_layout_only
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axes\_base.py", line 4476 in get_tightbbox
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_api\deprecation.py", line 457 in wrapper
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\artist.py", line 1410 in _get_tightbbox_for_layout_only
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_tight_layout.py", line 82 in _auto_adjust_subplotpars
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_tight_layout.py", line 266 in get_tight_layout_figure
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\layout_engine.py", line 183 in execute
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\figure.py", line 3545 in tight_layout
+  File "C:\Users\Startklar\AppData\Local\Temp\ipykernel_25376\2661992512.py", line 74 in <module>
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3577 in run_code
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3517 in run_ast_nodes
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3334 in run_cell_async
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\async_helpers.py", line 128 in _pseudo_sync_runner
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3130 in _run_cell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3075 in run_cell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\zmqshell.py", line 549 in run_cell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\ipkernel.py", line 429 in do_execute
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 767 in execute_request
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 429 in dispatch_shell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 523 in process_one
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 534 in dispatch_queue
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\events.py", line 88 in _run
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 1986 in _run_once
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 641 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 322 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 205 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelapp.py", line 701 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\traitlets\config\application.py", line 1075 in launch_instance
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel_launcher.py", line 17 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main
+
+Extension modules: zmq.backend.cython.context, zmq.backend.cython.message, zmq.backend.cython.socket, zmq.backend.cython._device, zmq.backend.cython._poll, zmq.backend.cython._proxy_steerable, zmq.backend.cython._version, zmq.backend.cython.error, zmq.backend.cython.utils, tornado.speedups, psutil._psutil_windows, win32api, win32security, mkl._mklinit, mkl._py_mkl_service, numpy.core._multiarray_umath, numpy.core._multiarray_tests, numpy.linalg._umath_linalg, numpy.fft._pocketfft_internal, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, numpy.random._philox, numpy.random._pcg64, numpy.random._sfc64, numpy.random._generator, pyarrow.lib, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.timestamps, pandas._libs.properties, pandas._libs.tslibs.offsets, pandas._libs.tslibs.strptime, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.lib, pyarrow._compute, pandas._libs.ops, numexpr.interpreter, bottleneck.move, bottleneck.nonreduce, bottleneck.nonreduce_axis, bottleneck.reduce, pandas._libs.hashing, pandas._libs.arrays, pandas._libs.tslib, pandas._libs.sparse, pandas._libs.internals, pandas._libs.indexing, pandas._libs.index, pandas._libs.writers, pandas._libs.join, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.groupby, pandas._libs.json, pandas._libs.parsers, pandas._libs.testing, scipy._lib._ccallback_c, scipy.special._ufuncs_cxx, scipy.special._cdflib, scipy.special._ufuncs, scipy.special._specfun, scipy.special._comb, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg.cython_lapack, scipy.linalg._cythonized_array_utils, scipy.linalg._solve_toeplitz, scipy.linalg._decomp_lu_cython, scipy.linalg._matfuncs_sqrtm_triu, scipy.linalg.cython_blas, scipy.linalg._matfuncs_expm, scipy.linalg._decomp_update, scipy.sparse._sparsetools, _csparsetools, scipy.sparse._csparsetools, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpack, scipy.sparse.linalg._propack._spropack, scipy.sparse.linalg._propack._dpropack, scipy.sparse.linalg._propack._cpropack, scipy.sparse.linalg._propack._zpropack, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.special._ellip_harm_2, scipy.interpolate._fitpack, scipy.interpolate.dfitpack, scipy.optimize._minpack2, scipy.optimize._group_columns, scipy._lib.messagestream, scipy.optimize._trlib._trlib, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._cobyla, scipy.optimize._slsqp, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy.optimize._highs.cython.src._highs_wrapper, scipy.optimize._highs._highs_wrapper, scipy.optimize._highs.cython.src._highs_constants, scipy.optimize._highs._highs_constants, scipy.linalg._interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap, scipy.spatial._ckdtree, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._distance_wrap, scipy.spatial._hausdorff, scipy.spatial.transform._rotation, scipy.optimize._direct, scipy.interpolate._bspl, scipy.interpolate._ppoly, scipy.interpolate.interpnd, scipy.interpolate._rbfinterp_pythran, scipy.interpolate._rgi_cython, torch._C, torch._C._dynamo.autograd_compiler, torch._C._dynamo.eval_frame, torch._C._dynamo.guards, torch._C._dynamo.utils, torch._C._fft, torch._C._linalg, torch._C._nested, torch._C._nn, torch._C._sparse, torch._C._special, PIL._imaging, kiwisolver._cext, zstandard.backend_c (total: 155)
+Fatal Python error: Aborted
+
+Thread 0x0000ad28 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 359 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 655 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tqdm\_monitor.py", line 60 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00003470 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 574 in _run_select
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x0000dbcc (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\parentpoller.py", line 93 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x0000bf0c (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 355 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 655 in wait
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\history.py", line 903 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\history.py", line 61 in only_when_enabled
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\decorator.py", line 232 in fun
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x0000d8d4 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 574 in _run_select
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00007b18 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 774 in _poll
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 445 in select
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 1948 in _run_once
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 641 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 322 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 205 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\control.py", line 23 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x0000da34 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 574 in _run_select
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x0000db08 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\heartbeat.py", line 106 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00004464 (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 774 in _poll
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 445 in select
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 1948 in _run_once
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 641 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 322 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 205 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\iostream.py", line 91 in _thread_main
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1012 in run
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "c:\Users\Startklar\anaconda3.0\Lib\threading.py", line 1032 in _bootstrap
+
+Current thread 0x0000daac (most recent call first):
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2455 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2455 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2271 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2456 in get_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 2428 in transform_affine
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_api\deprecation.py", line 300 in wrapper
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\transforms.py", line 1505 in transform
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\text.py", line 961 in get_window_extent
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 1351 in _get_ticklabel_bboxes
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 2206 in _get_tick_boxes_siblings
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 2413 in _update_label_position
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axis.py", line 1372 in get_tightbbox
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\artist.py", line 1410 in _get_tightbbox_for_layout_only
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\axes\_base.py", line 4476 in get_tightbbox
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_api\deprecation.py", line 457 in wrapper
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\artist.py", line 1410 in _get_tightbbox_for_layout_only
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_tight_layout.py", line 82 in _auto_adjust_subplotpars
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\_tight_layout.py", line 266 in get_tight_layout_figure
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\layout_engine.py", line 183 in execute
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\matplotlib\figure.py", line 3545 in tight_layout
+  File "C:\Users\Startklar\AppData\Local\Temp\ipykernel_56136\3100088550.py", line 25 in <module>
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3577 in run_code
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3517 in run_ast_nodes
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3334 in run_cell_async
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\async_helpers.py", line 128 in _pseudo_sync_runner
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3130 in _run_cell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\IPython\core\interactiveshell.py", line 3075 in run_cell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\zmqshell.py", line 549 in run_cell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\ipkernel.py", line 429 in do_execute
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 767 in execute_request
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 429 in dispatch_shell
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 523 in process_one
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelbase.py", line 534 in dispatch_queue
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\events.py", line 88 in _run
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 1986 in _run_once
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\base_events.py", line 641 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\asyncio\windows_events.py", line 322 in run_forever
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\tornado\platform\asyncio.py", line 205 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel\kernelapp.py", line 701 in start
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\traitlets\config\application.py", line 1075 in launch_instance
+  File "c:\Users\Startklar\anaconda3.0\Lib\site-packages\ipykernel_launcher.py", line 17 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main
+
+Extension modules: zmq.backend.cython.context, zmq.backend.cython.message, zmq.backend.cython.socket, zmq.backend.cython._device, zmq.backend.cython._poll, zmq.backend.cython._proxy_steerable, zmq.backend.cython._version, zmq.backend.cython.error, zmq.backend.cython.utils, tornado.speedups, psutil._psutil_windows, win32api, win32security, mkl._mklinit, mkl._py_mkl_service, numpy.core._multiarray_umath, numpy.core._multiarray_tests, numpy.linalg._umath_linalg, numpy.fft._pocketfft_internal, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, numpy.random._philox, numpy.random._pcg64, numpy.random._sfc64, numpy.random._generator, pyarrow.lib, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.timestamps, pandas._libs.properties, pandas._libs.tslibs.offsets, pandas._libs.tslibs.strptime, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.lib, pyarrow._compute, pandas._libs.ops, numexpr.interpreter, bottleneck.move, bottleneck.nonreduce, bottleneck.nonreduce_axis, bottleneck.reduce, pandas._libs.hashing, pandas._libs.arrays, pandas._libs.tslib, pandas._libs.sparse, pandas._libs.internals, pandas._libs.indexing, pandas._libs.index, pandas._libs.writers, pandas._libs.join, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.groupby, pandas._libs.json, pandas._libs.parsers, pandas._libs.testing, scipy._lib._ccallback_c, scipy.special._ufuncs_cxx, scipy.special._cdflib, scipy.special._ufuncs, scipy.special._specfun, scipy.special._comb, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg.cython_lapack, scipy.linalg._cythonized_array_utils, scipy.linalg._solve_toeplitz, scipy.linalg._decomp_lu_cython, scipy.linalg._matfuncs_sqrtm_triu, scipy.linalg.cython_blas, scipy.linalg._matfuncs_expm, scipy.linalg._decomp_update, scipy.sparse._sparsetools, _csparsetools, scipy.sparse._csparsetools, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpack, scipy.sparse.linalg._propack._spropack, scipy.sparse.linalg._propack._dpropack, scipy.sparse.linalg._propack._cpropack, scipy.sparse.linalg._propack._zpropack, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.special._ellip_harm_2, scipy.interpolate._fitpack, scipy.interpolate.dfitpack, scipy.optimize._minpack2, scipy.optimize._group_columns, scipy._lib.messagestream, scipy.optimize._trlib._trlib, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._cobyla, scipy.optimize._slsqp, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy.optimize._highs.cython.src._highs_wrapper, scipy.optimize._highs._highs_wrapper, scipy.optimize._highs.cython.src._highs_constants, scipy.optimize._highs._highs_constants, scipy.linalg._interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap, scipy.spatial._ckdtree, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._distance_wrap, scipy.spatial._hausdorff, scipy.spatial.transform._rotation, scipy.optimize._direct, scipy.interpolate._bspl, scipy.interpolate._ppoly, scipy.interpolate.interpnd, scipy.interpolate._rbfinterp_pythran, scipy.interpolate._rgi_cython, torch._C, torch._C._dynamo.autograd_compiler, torch._C._dynamo.eval_frame, torch._C._dynamo.guards, torch._C._dynamo.utils, torch._C._fft, torch._C._linalg, torch._C._nested, torch._C._nn, torch._C._sparse, torch._C._special, PIL._imaging, kiwisolver._cext, zstandard.backend_c (total: 155)
