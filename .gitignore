@@ -1,3 +1,14 @@
 # Generated outputs
 *_outputs/
 *.csv
+
+Codes/NSDE/GPT_NSDE_work/*.zip
+Codes/NSDE/GPT_NSDE_work/v7_long_run_workspace/__pycache__
+Codes/NSDE/GPT_NSDE_work/v7_long_run_workspace/cache_original
+Codes/NSDE/GPT_NSDE_work/v7_long_run_workspace/search_runs
+Codes/NSDE/neural_lv_cpu_final_cache/
+Codes/NSDE/neural_lv_v7_final_cache/
+Codes/NSDE/neural_lv_v7_final_safe_cache.zip
+Codes/NSDE/neural_lv_v7_final_safe_cache/
+Codes/NSDE/neural_lv_v7_cache/
+Codes/NSDE/neural_lv_cpu_final_edited_cache/
