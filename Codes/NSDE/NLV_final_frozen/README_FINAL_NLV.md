@@ -60,12 +60,12 @@ The SPX identifier is `secid = 108105`. The base option filter keeps:
 
 Spot, forward and interpolated zero rates are merged into each option row. For each contract,
 
-\[
+$$
 T = \frac{\text{days to expiry}}{365},\qquad
 D=e^{-rT},\qquad
 q=r-\frac{\log(F/S)}{T},\qquad
 k=\log(K/F).
-\]
+$$
 
 The OTM surface uses the call when `K >= F` and the put otherwise. In a narrow ATM band `|k| <= 0.05`, if both call and put are available, the tighter-spread side is used. A date/expiry/settlement slice must contain at least eight usable points.
 
@@ -87,21 +87,21 @@ The protocol hash fixes the dates, contract population, next-day join, hedge acc
 
 For deterministic rates/dividends, the spot model is
 
-\[
+$$
 dS_t=(r_t-q_t)S_t\,dt+S_t\sigma_{\theta,d}(t,X_t)\,dW_t.
-\]
+$$
 
 The implementation works in forward-normalised coordinates
 
-\[
+$$
 X_t=\frac{S_t}{F_d(t)},
-\]
+$$
 
 so under the pricing measure
 
-\[
+$$
 dX_t=X_t\sigma_{\theta,d}(t,X_t)\,dW_t.
-\]
+$$
 
 This removes deterministic carry from the simulated state. Option prices are reconstructed with the appropriate forward and discount factor for each expiry.
 
@@ -109,15 +109,15 @@ This removes deterministic carry from the simulated state. Option prices are rec
 
 Each maturity interval has its **own** network. If the ordered maturity boundaries are
 
-\[
+$$
 0<T_1<\cdots<T_m,
-\]
+$$
 
 then interval `j` uses a separate function
 
-\[
+$$
 \sigma_{\theta,j}(t,x).
-\]
+$$
 
 Each network receives `(t, x)` and has:
 
@@ -136,18 +136,18 @@ The frozen model uses a base grid of 192 steps/year and inserts every observed o
 
 With
 
-\[
+$$
 a_n=X_n\sigma_\theta(t_n,X_n),
-\]
+$$
 
 the tamed Euler step is
 
-\[
+$$
 X_{n+1}
 =
 X_n+
 \frac{a_n\Delta W_n}{1+|a_n|\sqrt{\Delta t}}.
-\]
+$$
 
 For the frozen `surrogate` gradient, the `a_n` inside the taming denominator is detached when differentiating. The forward simulation itself is unchanged; this only modifies the training gradient.
 
@@ -167,10 +167,10 @@ A daily recalibration cannot simply reuse the old network with the time origin r
 
 When rolling from date `d0` to `d1=d0+e`, a new-date state `x` at time-to-maturity `u` corresponds to the old state
 
-\[
+$$
 x_{\rm old}
 =x\,\frac{F_{d_1}(u)}{F_{d_0}(u+e)}.
-\]
+$$
 
 The previous volatility function is therefore treated as a teacher in the new coordinates. The process is:
 
@@ -211,11 +211,11 @@ For each maturity interval there is a separate hedge network bank. Each per-opti
 
 For a discounted payoff estimator `Phi`, the network supplies a stochastic-integral control variate. Schematically,
 
-\[
+$$
 \Phi^{cv}
 =
 \Phi-\sum_n h_\xi(t_n,X_n)\,\Delta \bar S_n.
-\]
+$$
 
 The expectation is unchanged while the Monte Carlo variance can be reduced. The learned integrand is also retained as one model-native hedge convention.
 
@@ -232,14 +232,14 @@ Each rolling date receives 15 paired updates. Each paired update contains:
 
 First, the code makes a no-gradient pass over all 8,192 paths to estimate the controlled option-price means. With target midprices `p_i`, the frozen loss is a spot-normalised weighted MSE,
 
-\[
+$$
 L(\theta)
 =
 \frac{1}{S_0^2}
 \frac{1}{M}
 \sum_{i=1}^M
 \left(\widehat p_i(\theta)-p_i\right)^2.
-\]
+$$
 
 It then replays the **same shocks** in 512-path chunks and accumulates the gradient using the already-computed residual coefficients. This preserves the intended full-path estimator while avoiding storage of the whole 8,192-path computation graph.
 
@@ -275,10 +275,10 @@ This is therefore conditional next-day repricing, not a forecast of tomorrow's s
 
 The next-day pricing error is
 
-\[
+$$
 e^{price}_i
 =\widehat C_{d+1,i}-C^{mkt}_{d+1,i}.
-\]
+$$
 
 The primary pricing metric is pooled OTM-on-both-dates RMSE in index points, with MAE, relative MAE, bid-ask coverage and implied-volatility diagnostics reported alongside it.
 
@@ -310,13 +310,13 @@ All delta conventions use the same overnight accounting.
 
 With current option price `C0`, spot `S0`, hedge `delta`, next-day prices `C1,S1`, overnight discount factor `D01`, and integrated dividend yield `Q01`, the one-period hedge error is implemented as
 
-\[
+$$
 E
 =(C_1-C_0)
 -\delta(S_1-S_0)
 -\delta S_0\left(e^{Q_{01}}-1\right)
 -(C_0-\delta S_0)\left(D_{01}^{-1}-1\right).
-\]
+$$
 
 Thus the stock position, dividend approximation and financing of the residual cash account are all treated consistently across model and market deltas.
 
