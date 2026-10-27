@@ -1,2692 +1,1546 @@
-# Quant Onsite Cheatsheets — All in One
+# All-in-one: Kaggle-aligned Onsite Cheatsheets
+
+**Use Ctrl+F to find a method.** `[K]` = aligned with named Kaggle courses; `[+]` = extra for onsite.
+
+- 00_ONSITE_WORKFLOW
+- 01_PANDAS
+- 02_NUMPY
+- 03_VISUALISATION
+- 04_CLEANING_FEATURE_ENGINEERING
+- 05_SKLEARN_MODELLING_VALIDATION
+- 06_TIME_SERIES
+- 07_STATS_DIAGNOSTICS
+- 08_JUPYTER_DEBUGGING
+- 09_COMMON_RECIPES
+- 10_OPTIONAL_ML_METHODS
 
 ---
 
-# Onsite Workflow
+# 00 — Onsite workflow
 
-## First 5–10 minutes
+**Goal:** Turn an unfamiliar dataset into a defensible notebook before you run out of time.
+
+## First 5–10 minutes — [K]
 
 ```python
-import numpy as np
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("data.csv")
-
-df.head()
-df.shape
+df = pd.read_csv("data.csv")  # change filename
+print(df.shape)
+display(df.head())
 df.info()
-df.isna().sum().sort_values(ascending=False)
-df.duplicated().sum()
-df.nunique().sort_values()
-df.describe(include="all").T
+display(df.describe(include="all").T)
+print(df.isna().sum().sort_values(ascending=False).head(15))
+print("duplicate rows:", df.duplicated().sum())
+print("unique values:", df.nunique().sort_values().head(15))
 ```
 
-Immediately identify:
+**What it does:** Checks the size, types, missing values, duplication, and rough ranges before you build any model.
 
-- What does **one row** represent?
-- What is the **target**?
-- Regression or classification?
-- Any time/order/group structure?
-- Numeric vs categorical columns?
-- Missingness?
-- Duplicate rows or duplicate keys?
-- IDs?
-- Possible leakage?
-- Target imbalance/skew?
-- Any obvious impossible values?
+Ask: What is **one row**? Which variable is the **target**? Are there dates, repeated entities, ID columns or features that would only be known *after* the target?
 
-## First plots
-
-### Target distribution
+## Look at the target immediately — [K]
 
 ```python
-fig, ax = plt.subplots(figsize=(6, 4))
-ax.hist(df["target"].dropna(), bins=30)
-ax.set_title("Target distribution")
+target = "y"  # replace
+fig, ax = plt.subplots(figsize=(6, 3))
+ax.hist(df[target].dropna(), bins=30)
+ax.set(title="Target distribution", xlabel=target, ylabel="Count")
 plt.show()
 ```
 
-### Numeric columns quickly
+**What it does:** Shows whether the target is skewed, discrete, imbalanced or dominated by extreme values.
 
-```python
-num_cols = df.select_dtypes(include=np.number).columns
-
-df[num_cols].hist(bins=30, figsize=(14, 10))
-plt.tight_layout()
-plt.show()
-```
-
-### Correlation
-
-```python
-corr = df[num_cols].corr()
-
-fig, ax = plt.subplots(figsize=(9, 8))
-im = ax.imshow(corr, vmin=-1, vmax=1, aspect="auto")
-ax.set_xticks(range(len(corr.columns)))
-ax.set_xticklabels(corr.columns, rotation=90)
-ax.set_yticks(range(len(corr.columns)))
-ax.set_yticklabels(corr.columns)
-fig.colorbar(im, ax=ax)
-plt.tight_layout()
-plt.show()
-```
-
-## Decide validation before serious modelling
-
-### IID / generic tabular
+## First modelling decision: which validation split? — [K]
 
 ```python
 from sklearn.model_selection import train_test_split
-
+# Use for independent tabular observations:
 X_train, X_valid, y_train, y_valid = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 ```
 
-Classification:
+**What it does:** Reserves unseen observations to test whether the model generalises; **do not use** if you are forecasting later dates from earlier ones.
 
 ```python
-X_train, X_valid, y_train, y_valid = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
+# Use for a forecasting dataset that has already been sorted by time:
+i = int(len(df) * 0.8)
+train, valid = df.iloc[:i].copy(), df.iloc[i:].copy()
 ```
 
-### Time series
+**What it does:** Trains on the past and assesses predictions on the future.
 
-```python
-df = df.sort_values("date").reset_index(drop=True)
-split = int(0.8 * len(df))
-train = df.iloc[:split]
-valid = df.iloc[split:]
+## Time budget for a 09:30–15:00 work period — [+]
+
+| Work time | Output that must exist |
+|---|---|
+| First 60–75 min | Data audit, 3–4 plots, basic cleaning |
+| Next 30 min | Target, features, split, baseline |
+| Next 90 min | A simple model and one nonlinear model |
+| Next 60 min | Metric comparison, residuals, targeted improvement |
+| Final 30–45 min | Clean notebook, conclusions, caveats |
+
+**If behind:** Keep the baseline, one tree/random forest model, one comparison table and a conclusion. A completed basic analysis beats an unfinished advanced one.
+
+## Notebook conclusion template — [+]
+
+```markdown
+## Findings
+- **Question:** What was being predicted and from which information?
+- **Data:** What quality problems or transformations mattered?
+- **Validation:** Why was this split appropriate?
+- **Baseline vs model:** State both values using the same metric.
+- **Failure:** Which subgroup, tail or time period was hardest?
+- **Next step:** One plausible improvement, not a list of ten.
 ```
 
-Do not randomly shuffle a forecasting problem unless you have a specific reason.
-
-## Modelling order
-
-Regression:
-
-1. Mean / persistence / seasonal-naive baseline
-2. Ridge
-3. Random Forest or HistGradientBoosting
-4. Diagnostics
-5. One or two targeted improvements
-
-Classification:
-
-1. Majority-class baseline
-2. Logistic regression
-3. Random Forest / tree model
-4. Threshold analysis
-5. Diagnostics
-
-## Stop modelling before time expires
-
-Leave time to produce:
-
-- one concise model comparison table
-- 2–4 useful figures
-- main conclusion
-- limitations
-- next step
-
-A readable notebook is part of the interview.
-
-## Discussion structure
-
-> I first identified the unit of observation and target, then audited missingness, duplicates and leakage. I used [validation method] because [reason]. I established [baseline], then compared [simple model] with [nonlinear model]. The strongest result was [result], but performance deteriorated in [bucket/regime], so my main remaining concern is [limitation].
+**What it does:** Gives the researcher enough context to discuss your decisions without reading every cell.
 
 ---
 
-# Pandas Cheatsheet
+# 01 — Pandas: course-style essentials, then necessary extras
 
 ```python
 import pandas as pd
 import numpy as np
-```
 
-## 1. Inspection
-
-```python
-df.head()
-df.tail()
-df.sample(5, random_state=42)
-
-df.shape
-df.columns
-df.dtypes
-df.info()
-
-df.describe()
-df.describe(include="all")
-
-df.isna().sum()
-df.isna().mean().sort_values(ascending=False)
-
-df.nunique().sort_values()
-df.duplicated().sum()
-```
-
-## 2. Selecting / filtering
-
-```python
-df["Sales"]
-df[["Sales", "Returns"]]
-
-df.loc[df["Sales"] > 1000]
-
-df.loc[
-    (df["Sales"] > 1000) & (df["Returns"] < 10),
-    ["Region", "Sales", "Returns"]
-]
-
-df.iloc[:10, :5]
-```
-
-Conditional count:
-
-```python
-((df["age"] > 50) & (df["bmi"] < 20)).sum()
-```
-
-Fraction satisfying condition:
-
-```python
-((df["age"] > 50) & (df["bmi"] < 20)).mean()
-```
-
-Readable simple conditions:
-
-```python
-df.query("age > 50 and bmi < 20")
-```
-
-## 3. Sorting
-
-```python
-df.sort_values("Sales", ascending=False)
-
-df.sort_values(
-    ["Region", "Sales"],
-    ascending=[True, False]
-)
-```
-
-## 4. GroupBy + `agg`
-
-Representative data:
-
-```python
-df = pd.DataFrame({
-    "Region": ["North","North","South","South","East","East","West","West"],
-    "Sales": [1200,1500,900,1100,2400,3100,1800,1400],
-    "Returns": [5,12,0,8,22,15,7,np.nan],
-    "Customer_Sat": [4.2,4.5,3.8,4.0,4.9,4.7,3.5,4.1]
+sales = pd.DataFrame({
+    "region": ["North", "North", "South", "South", "East"],
+    "revenue": [120, 150, 90, 110, 240],
+    "returns": [5, np.nan, 0, 8, 2],
+    "category": ["A", "B", "A", "B", "A"]
 })
 ```
 
-Preferred named aggregation:
+## 1. `DataFrame`, `Series`, `read_csv`, `to_csv` — [K]
+
+**What they do:** A Series is one labelled column, a DataFrame is a table, and CSV methods load/save that table.
 
 ```python
-summary = (
-    df.groupby("Region")
-      .agg(
-          Total_Sales=("Sales", "sum"),
-          Avg_Sales=("Sales", "mean"),
-          Max_Returns=("Returns", "max"),
-          Missing_Returns=("Returns", lambda s: s.isna().sum())
-      )
-      .reset_index()
+pd.Series([2, 4, 6], name="value")
+pd.DataFrame({"x": [1, 2], "y": [3, 4]})
+# sales = pd.read_csv("sales.csv", index_col=0)  # only if first column really is the index
+sales.to_csv("sales_output.csv", index=False)
+```
+
+## 2. `head`, `shape`, `info`, `describe`, `value_counts`, `unique` — [K]
+
+**What they do:** Quickly display rows, sizes, types, summary statistics, and the most frequent categories.
+
+```python
+sales.head()
+sales.shape
+sales.info()
+sales["revenue"].describe()
+sales["region"].unique()
+sales["region"].value_counts()
+sales["region"].value_counts(normalize=True)  # proportions
+```
+
+## 3. `iloc`, `loc`, boolean filtering — [K]
+
+**What they do:** `iloc` selects by integer position; `loc` selects by labels or conditions.
+
+```python
+sales.iloc[:3, :2]                                     # first 3 rows, first 2 cols
+sales.loc[:, ["region", "revenue"]]                    # named columns
+sales.loc[(sales["revenue"] > 100) & (sales["returns"].fillna(0) < 5)]
+((sales["revenue"] > 100) & (sales["category"] == "A")).sum()  # count
+```
+
+**Trap:** Use parentheses around comparisons and `&` / `|`, not Python `and` / `or`, with Series.
+
+## 4. Column assignment, `rename`, `astype`, `set_index` — [K]
+
+**What they do:** Create a field, rename fields, convert types and make a column the row index.
+
+```python
+sales["net"] = sales["revenue"] - sales["returns"].fillna(0)
+sales = sales.rename(columns={"revenue": "sales_amount"})
+sales["sales_amount"] = sales["sales_amount"].astype(float)
+sales_by_region = sales.set_index("region")
+```
+
+## 5. Summary methods and `map` — [K]
+
+**What they do:** Aggregate a column or transform each value using a simple rule.
+
+```python
+sales["sales_amount"].mean()
+sales["sales_amount"].median()
+sales["sales_amount"].max()
+sales["category"].map({"A": 1, "B": 0})          # translate categories
+sales["sales_amount"].map(lambda x: x / 100)      # one value at a time
+```
+
+## 6. `apply(axis=1)` — [K]
+
+**What it does:** Computes a value from *multiple columns in a row* when direct arithmetic is awkward.
+
+```python
+sales.apply(lambda row: row["sales_amount"] - row["returns"]
+            if pd.notna(row["returns"]) else row["sales_amount"], axis=1)
+# Prefer direct vectorised arithmetic for simple calculations.
+```
+
+## 7. `groupby`, `agg` — [K]
+
+**What they do:** Split a table into groups, then produce one summary for each group.
+
+```python
+sales.groupby("region")["sales_amount"].mean()
+summary = sales.groupby("region").agg(
+    n=("sales_amount", "size"),
+    total=("sales_amount", "sum"),
+    average=("sales_amount", "mean"),
+    missing_returns=("returns", lambda s: s.isna().sum())
+).reset_index()
+summary
+```
+
+**Alternative:** `sales.groupby("region").agg({"sales_amount": ["sum", "mean"]})` is compact but creates two-level column names.
+
+## 8. `groupby(...).apply`, `transform` — [K]/[+]
+
+**What they do:** `apply` runs custom logic per group; `transform` returns a value for *each original row*, rather than a smaller summary table.
+
+```python
+sales.groupby("region").apply(lambda g: g["sales_amount"].max())
+sales["relative_sales"] = (
+    sales["sales_amount"] - sales.groupby("region")["sales_amount"].transform("mean")
 )
 ```
 
-Multiple functions per column:
+**Shortcut:** `agg` = one row per group; `transform` = same number of rows as before.
+
+## 9. `sort_values`, `sort_index`, `idxmax` — [K]
+
+**What they do:** Order observations and locate the row label of an extreme value.
 
 ```python
-summary = df.groupby("Region").agg({
-    "Sales": ["sum", "mean"],
-    "Returns": ["max", "mean"],
-    "Customer_Sat": ["mean", "std"]
-})
+sales.sort_values(["region", "sales_amount"], ascending=[True, False])
+sales.sort_index()
+sales.loc[sales["sales_amount"].idxmax()]
 ```
 
-Flatten MultiIndex columns:
+## 10. `isna`, `notna`, `fillna`, `dropna`, `replace` — [K]
+
+**What they do:** Detect, fill, remove or recode missing/bad entries.
 
 ```python
-summary.columns = [
-    "_".join(map(str, col)).strip("_")
-    for col in summary.columns
-]
-summary = summary.reset_index()
+sales.isna().sum()
+sales["returns"].fillna(sales["returns"].median())
+sales.dropna(subset=["returns"])
+sales["category"].replace({"A": "Core", "B": "Other"})
 ```
 
-Whole DataFrame aggregation:
+**Modelling trap:** Fit imputation values on training data, not on the full dataset (see `05`).
+
+## 11. `concat` — [K]
+
+**What it does:** Stacks tables with matching columns vertically (or side-by-side with `axis=1`).
 
 ```python
-df.agg({
-    "Sales": ["sum", "mean"],
-    "Returns": ["sum", "mean"]
-})
+north = sales[sales["region"] == "North"]
+other = sales[sales["region"] != "North"]
+combined = pd.concat([north, other], ignore_index=True)
 ```
 
-## 5. `transform`
+## 12. `join` — [K]
 
-Use when output must align with the original rows.
+**What it does:** Combines tables by their row indexes. This is the simple index-based combining style emphasised in Kaggle Pandas.
 
 ```python
-df["Region_Mean_Sales"] = (
-    df.groupby("Region")["Sales"]
-      .transform("mean")
-)
-
-df["Sales_Demeaned"] = (
-    df["Sales"] - df["Region_Mean_Sales"]
-)
+left = pd.DataFrame({"id": [1, 2], "sales": [100, 150]}).set_index("id")
+right = pd.DataFrame({"id": [1, 2], "segment": ["A", "B"]}).set_index("id")
+left.join(right, how="left")
 ```
 
-Group z-score:
+**Rule:** `concat` stacks; `join` matches indexes.
+
+## 13. `merge(validate=...)` — [+ onsite-critical]
+
+**What it does:** Joins on *ordinary columns* rather than manually setting indexes; `validate` catches unexpected duplicate matches.
 
 ```python
-df["Sales_Z"] = (
-    df.groupby("Region")["Sales"]
-      .transform(lambda s: (s - s.mean()) / s.std())
-)
+left = pd.DataFrame({"id": [1, 2, 2], "sales": [20, 30, 40]})
+right = pd.DataFrame({"id": [1, 2], "segment": ["A", "B"]})
+result = left.merge(right, on="id", how="left", validate="many_to_one")
+assert len(result) == len(left)
 ```
 
-- `agg` → one row per group
-- `transform` → same length as original DataFrame
+**When to use:** Combining transaction rows with a unique customer/asset lookup table. Although Kaggle introduces `join` as a convenient alternative, explicit keys and validation are often safer in an unfamiliar dataset.
 
-## 6. `apply`
+## 14. `pivot_table`, `melt`, `explode` — [+ onsite-useful]
 
-Flexible but often slower:
+**What they do:** `pivot_table` turns categories into columns, `melt` reverses wide-to-long, and `explode` separates a list into several rows.
 
 ```python
-result = (
-    df.groupby("Region")
-      .apply(lambda g: g.nlargest(1, "Sales"))
-)
+sales.pivot_table(index="region", columns="category", values="sales_amount", aggfunc="mean")
+wide = pd.DataFrame({"id": [1, 2], "Jan": [10, 20], "Feb": [11, 22]})
+wide.melt(id_vars="id", var_name="month", value_name="sales")
+tags = pd.DataFrame({"id": [1, 2], "tags": ["a|b", "b|c"]})
+tags.assign(tags=tags["tags"].str.split("|")).explode("tags")
 ```
 
-Prefer vectorised/groupby operations when possible.
+**Trap:** `pivot` requires unique row/column keys; `pivot_table` can aggregate repeated keys.
 
-## 7. `value_counts`
+## 15. `pd.to_datetime`, `.dt`, `shift`, `rolling`, `qcut`, `rank` — [+ because forecasting may appear]
+
+**What they do:** Convert dates, extract calendar properties, create past values, summarise recent history and make bins/ranks.
 
 ```python
-df["Region"].value_counts()
-df["Region"].value_counts(normalize=True)
-df[["Region","Category"]].value_counts()
+ts = pd.DataFrame({"date": pd.date_range("2024-01-01", periods=40), "y": np.arange(40.0)})
+ts["month"] = ts["date"].dt.month
+ts["lag1"] = ts["y"].shift(1)
+ts["mean7_past"] = ts["y"].shift(1).rolling(7).mean()
+ts["quartile"] = pd.qcut(ts["y"], 4, labels=False)
+ts["rank_pct"] = ts["y"].rank(pct=True)
 ```
 
-## 8. Missing values
+**Trap:** `shift(1)` is needed only when the current observation would otherwise be unavailable at prediction time. Define *when* the forecast is made before adding lags.
+
+## 16. `pd.cut` vs `pd.qcut` — [+]
+
+**What they do:** `cut` makes fixed-size/rule-based intervals; `qcut` makes roughly equal-count bins.
 
 ```python
-df.isna().sum()
+pd.cut(sales["sales_amount"], bins=[0, 100, 200, 1000])
+pd.qcut(sales["sales_amount"], q=2, duplicates="drop")
 ```
 
-Drop:
+## 17. Cross join / `pct_change` / `expanding` — [+ rarely necessary]
+
+**What they do:** Cross joins create every combination; percentage change converts price levels to returns; expanding windows summarise all earlier rows.
 
 ```python
-df.dropna()
-df.dropna(subset=["target"])
+a = pd.DataFrame({"region": ["N", "S"]})
+b = pd.DataFrame({"scenario": ["base", "stress"]})
+a.merge(b, how="cross")  # if pandas is older, use a temporary key column instead
+prices = pd.Series([100., 103., 102., 105.])
+prices.pct_change()
+prices.shift(1).expanding().mean()
 ```
 
-Fill numeric:
-
-```python
-df["Returns"] = df["Returns"].fillna(df["Returns"].median())
-```
-
-Fill by group:
-
-```python
-df["Returns"] = df["Returns"].fillna(
-    df.groupby("Region")["Returns"].transform("median")
-)
-```
-
-Categorical:
-
-```python
-df["Category"] = df["Category"].fillna("Missing")
-```
-
-## 9. Duplicates
-
-```python
-df.duplicated().sum()
-df[df.duplicated(keep=False)]
-df.drop_duplicates()
-df.drop_duplicates(subset=["customer_id", "date"], keep="last")
-```
-
-Check duplicate keys, not only exact duplicate rows.
-
-## 10. Merge
-
-```python
-out = left.merge(
-    right,
-    on="customer_id",
-    how="left",
-    validate="many_to_one"
-)
-```
-
-Useful `validate=` values:
-
-```python
-"one_to_one"
-"one_to_many"
-"many_to_one"
-"many_to_many"
-```
-
-Multiple keys:
-
-```python
-out = left.merge(
-    right,
-    on=["asset", "date"],
-    how="left",
-    validate="one_to_one"
-)
-```
-
-Always compare row count before/after:
-
-```python
-print(len(left), len(out))
-```
-
-## 11. Join
-
-Convenient on index:
-
-```python
-left = left.set_index("id")
-right = right.set_index("id")
-out = left.join(right, how="left")
-```
-
-## 12. Concatenate
-
-Rows:
-
-```python
-pd.concat([a, b], ignore_index=True)
-```
-
-Columns:
-
-```python
-pd.concat([a, b], axis=1)
-```
-
-## 13. Cross product / Cartesian join
-
-```python
-regions = pd.DataFrame({"Region": ["North","South"]})
-scenarios = pd.DataFrame({"Scenario": ["Base","Stress","Bull"]})
-
-grid = regions.merge(scenarios, how="cross")
-```
-
-Expected rows:
-
-```python
-len(regions) * len(scenarios)
-```
-
-## 14. `pivot`
-
-Requires unique index-column pairs:
-
-```python
-wide = df.pivot(
-    index="date",
-    columns="asset",
-    values="return"
-)
-```
-
-## 15. `pivot_table`
-
-Safer if duplicates exist because it aggregates:
-
-```python
-wide = pd.pivot_table(
-    df,
-    index="date",
-    columns="asset",
-    values="return",
-    aggfunc="mean"
-)
-```
-
-## 16. `melt`
-
-Wide → long:
-
-```python
-long = wide.reset_index().melt(
-    id_vars="date",
-    var_name="asset",
-    value_name="return"
-)
-```
-
-## 17. `explode`
-
-```python
-df2 = pd.DataFrame({
-    "id": [1,2],
-    "tags": ["A|B", "B|C|D"]
-})
-
-long = (
-    df2.assign(tags=df2["tags"].str.split("|"))
-       .explode("tags")
-)
-```
-
-## 18. Datetime
-
-```python
-df["date"] = pd.to_datetime(df["date"])
-
-df["year"] = df["date"].dt.year
-df["month"] = df["date"].dt.month
-df["weekday"] = df["date"].dt.dayofweek
-df["hour"] = df["date"].dt.hour
-```
-
-Difference:
-
-```python
-df["days_since"] = (df["date"] - df["previous_date"]).dt.days
-```
-
-## 19. Shift
-
-```python
-df["lag1"] = df["target"].shift(1)
-```
-
-Panel:
-
-```python
-df["lag1"] = df.groupby("asset")["return"].shift(1)
-```
-
-## 20. Rolling
-
-```python
-df["roll20_mean"] = (
-    df["return"]
-      .shift(1)
-      .rolling(20)
-      .mean()
-)
-```
-
-Panel:
-
-```python
-df["roll20"] = (
-    df.groupby("asset")["return"]
-      .transform(lambda s: s.shift(1).rolling(20).mean())
-)
-```
-
-## 21. Expanding
-
-```python
-df["expanding_mean"] = (
-    df["target"]
-      .shift(1)
-      .expanding()
-      .mean()
-)
-```
-
-## 22. Difference / percentage change
-
-```python
-df["change"] = df["price"].diff()
-df["return"] = df["price"].pct_change()
-```
-
-Panel:
-
-```python
-df["return"] = df.groupby("asset")["price"].pct_change()
-```
-
-## 23. Ranking
-
-```python
-df["rank_pct"] = df["score"].rank(pct=True)
-```
-
-Cross-sectional:
-
-```python
-df["cs_rank"] = df.groupby("date")["signal"].rank(pct=True)
-```
-
-## 24. Binning
-
-Fixed bins:
-
-```python
-df["age_bucket"] = pd.cut(
-    df["age"],
-    bins=[0,30,40,50,60,100]
-)
-```
-
-Equal-frequency:
-
-```python
-df["decile"] = pd.qcut(df["score"], 10, duplicates="drop")
-```
-
-## 25. Strings
-
-```python
-df["name"].str.lower()
-df["name"].str.contains("abc", case=False, na=False)
-df["name"].str.replace("old", "new", regex=False)
-df["name"].str.extract(r"(\d{4})")
-df["tags"].str.split("|")
-```
-
-## 26. Map / replace
-
-```python
-mapping = {"jan":1, "feb":2, "mar":3}
-df["month_num"] = df["month"].map(mapping)
-```
-
-```python
-df["status"] = df["status"].replace({"Y":1, "N":0})
-```
-
-## 27. Key checks
-
-```python
-df["id"].is_unique
-```
-
-```python
-df.duplicated(subset=["asset","date"]).sum()
-```
-
-```python
-df.memory_usage(deep=True)
-```
+**When useful:** Only if a prompt asks for all group-scenario combinations, returns, or historical cumulative statistics.
 
 ---
 
-# NumPy Cheatsheet
+# 02 — NumPy: only the array operations that make pandas/ML easier
+
+**Scope:** NumPy methods are an **addition [+]**; the four specified Kaggle courses use NumPy but do not teach a separate dedicated NumPy syllabus.
 
 ```python
 import numpy as np
+x = np.array([2., 4., 8., 16.])
+X = np.array([[2., 4.], [6., 8.], [10., 12.]])
 ```
 
-## Arrays / shape
+## 1. `array`, `.shape`, slicing — [+]
+
+**What they do:** Turn values into numerical arrays, check their dimensions and select parts of them.
 
 ```python
-x = np.array([1,2,3])
-X = df[["x1","x2","x3"]].to_numpy()
-
-X.shape
-X.ndim
-X.size
+X.shape     # (3 rows, 2 columns)
+X[:, 0]     # all rows, first column
+X[1, :]     # second row
 ```
 
-## Indexing
+## 2. `mean`, `std`, `nanmean`, `quantile` — [+]
+
+**What they do:** Summarise numerical values, optionally ignoring missing numbers.
 
 ```python
-X[0]
-X[:, 0]
-X[:10, :3]
-
-mask = X[:,0] > 0
-X[mask]
+X.mean(axis=0)                       # average of each column
+X.mean(axis=1)                       # average of each row
+np.nanmean(np.array([2., np.nan, 6.]))
+np.quantile(x, [0.1, 0.5, 0.9])
 ```
 
-## Aggregations and axes
+**Memory aid:** `axis=0` aggregates down the rows; `axis=1` aggregates across columns.
+
+## 3. Masks and `np.where` — [+]
+
+**What they do:** Select elements matching a condition or assign two alternative values without a loop.
 
 ```python
-X.mean(axis=0)   # column means
-X.mean(axis=1)   # row means
-
-np.nanmean(X, axis=0)
-np.nanstd(X, axis=0)
+x[x > 5]
+np.where(x > 5, "large", "small")
 ```
 
-## Broadcasting / standardisation
+## 4. Broadcasting — [+]
+
+**What it does:** Automatically stretches column-level numbers across every row, making vectorised calculations easy.
 
 ```python
-mu = np.nanmean(X, axis=0)
-sd = np.nanstd(X, axis=0)
-Z = (X - mu) / sd
+mu, sd = X.mean(axis=0), X.std(axis=0)
+Z = (X - mu) / sd             # standardise columns
 ```
 
-Row-wise:
+**Trap:** Check `.shape` if a subtraction gives unexpected results.
+
+## 5. `clip`, `log1p`, `sqrt` — [+]
+
+**What they do:** Compress extreme values and transform positive skewed variables.
 
 ```python
-mu_row = X.mean(axis=1, keepdims=True)
-sd_row = X.std(axis=1, keepdims=True)
-Z_row = (X - mu_row) / sd_row
+np.clip(x, 3, 12)
+np.log1p(x)                  # computes log(1+x), safe at x=0
+np.sqrt(x)
 ```
 
-## `where`
+**Decision rule:** Log is often sensible for counts/volumes; do not apply it blindly to negative observations.
+
+## 6. `argsort`, `cumsum`, `diff` — [+]
+
+**What they do:** Find the order of observations, accumulate values and compute changes.
 
 ```python
-signal = np.where(returns > 0, 1, -1)
-```
-
-Three-way:
-
-```python
-position = np.where(
-    signal > 1,
-    1,
-    np.where(signal < -1, -1, 0)
-)
-```
-
-## `select`
-
-```python
-conditions = [score < -1, score > 1]
-choices = [-1, 1]
-position = np.select(conditions, choices, default=0)
-```
-
-## Clip / quantiles
-
-```python
-lo, hi = np.quantile(x, [0.01, 0.99])
-x_clip = np.clip(x, lo, hi)
-```
-
-Column quantiles:
-
-```python
-np.quantile(X, [0.01,0.5,0.99], axis=0)
-```
-
-## Sorting / ranking
-
-```python
-idx = np.argsort(x)
-top_idx = np.argsort(-x)[:10]
-```
-
-## Difference / cumulative
-
-```python
-np.diff(x)
+np.argsort(-x)[:2]           # indices of top two
 np.cumsum(x)
+np.diff(x)
+```
+
+## 7. `corrcoef`, random generator — [+]
+
+**What they do:** Measure simple linear relationships and create reproducible random samples.
+
+```python
+np.corrcoef(X, rowvar=False)   # correlations between columns
+rng = np.random.default_rng(42)
+noise = rng.normal(size=100)
+```
+
+## 8. Sine/cosine, sigmoid and interactions — [+]
+
+**What they do:** Represent circular time, flatten out an effect that saturates, or let two features influence one another.
+
+```python
+hour = np.array([23, 0, 1])
+sin_hour = np.sin(2*np.pi*hour/24)
+cos_hour = np.cos(2*np.pi*hour/24)
+z = np.array([-2., 0., 2.])
+sigmoid = 1/(1 + np.exp(-z))
+interaction = X[:, 0] * X[:, 1]
+```
+
+## 9. NaNs, infinities and safe division — [+]
+
+**What they do:** Spot invalid numeric values before sklearn fitting.
+
+```python
+bad = np.array([1., np.nan, np.inf])
+np.isnan(bad)
+np.isinf(bad)
+np.isfinite(bad)
+ratio = X[:, 0] / np.maximum(X[:, 1], 1e-8)
+```
+
+**Trap:** Adding `1e-8` is not a principled treatment of genuinely zero or negative denominators. Inspect the data first.
+
+## 10. `np.select`, `cumprod` — [+]
+
+**What they do:** `select` handles three or more conditional outcomes; `cumprod` compounds a sequence of gross returns.
+
+```python
+score = np.array([-2., 0., 3.])
+np.select([score < -1, score > 1], [-1, 1], default=0)
+returns = np.array([.01, -.02, .015])
 np.cumprod(1 + returns)
 ```
 
-## Correlation / covariance
-
-```python
-np.corrcoef(X, rowvar=False)
-np.cov(X, rowvar=False)
-```
-
-## Reproducible randomness
-
-```python
-rng = np.random.default_rng(42)
-x = rng.normal(0, 1, size=1000)
-```
-
-## Log / sigmoid / tanh
-
-```python
-log_x = np.log1p(x)
-sigmoid = 1 / (1 + np.exp(-x))
-tanh_x = np.tanh(x)
-```
-
-## Cyclic encoding
-
-```python
-hour_sin = np.sin(2*np.pi*hour/24)
-hour_cos = np.cos(2*np.pi*hour/24)
-```
-
-## Interactions
-
-```python
-interaction = x1 * x2
-ratio = x1 / (x2 + 1e-8)
-spread = x1 - x2
-```
-
-## Cross-sectional z-score
-
-For matrix `(time, assets)`:
-
-```python
-mu = np.nanmean(signal, axis=1, keepdims=True)
-sd = np.nanstd(signal, axis=1, keepdims=True)
-z = (signal - mu) / sd
-```
-
-## Sharpe
-
-```python
-sharpe = np.sqrt(252) * np.mean(returns) / np.std(returns, ddof=1)
-```
-
-## Max drawdown
-
-```python
-wealth = np.cumprod(1 + returns)
-peak = np.maximum.accumulate(wealth)
-drawdown = wealth / peak - 1
-max_drawdown = drawdown.min()
-```
-
-## Common array mistake
-
-If `x` is an array, do not write:
-
-```python
-if x > 0:
-    ...
-```
-
-Use a boolean mask:
-
-```python
-mask = x > 0
-```
-
 ---
 
-# Visualisation Cheatsheet
+# 03 — Visualisation: simplest useful plots
 
-Use plots to answer questions, not decorate the notebook.
-
-```python
-import matplotlib.pyplot as plt
-```
-
-## Histogram
+**Scope:** The four named courses use plots but do not include Kaggle's separate Data Visualization course. These are **[+] onsite essentials**, kept deliberately short.
 
 ```python
-fig, ax = plt.subplots(figsize=(6,4))
-ax.hist(df["target"].dropna(), bins=30)
-ax.set_title("Target distribution")
-plt.show()
-```
-
-## Scatter
-
-```python
-fig, ax = plt.subplots(figsize=(6,4))
-ax.scatter(df["feature"], df["target"], alpha=0.3)
-ax.set_xlabel("Feature")
-ax.set_ylabel("Target")
-plt.show()
-```
-
-## Time series
-
-```python
-fig, ax = plt.subplots(figsize=(10,4))
-ax.plot(df["date"], df["target"])
-plt.show()
-```
-
-Rolling overlay:
-
-```python
-ax.plot(
-    df["date"],
-    df["target"].rolling(30).mean(),
-    label="30-period mean"
-)
-ax.legend()
-```
-
-## Multiple subplots
-
-```python
-cols = ["x1","x2","x3","x4"]
-fig, axes = plt.subplots(2, 2, figsize=(10,7))
-
-for ax, c in zip(axes.ravel(), cols):
-    ax.hist(df[c].dropna(), bins=30)
-    ax.set_title(c)
-
-fig.tight_layout()
-plt.show()
-```
-
-## Boxplot
-
-```python
-cats = df["category"].dropna().unique()
-groups = [df.loc[df["category"] == c, "target"] for c in cats]
-
-fig, ax = plt.subplots()
-ax.boxplot(groups, labels=cats)
-plt.show()
-```
-
-## Correlation heatmap — matplotlib
-
-```python
-num = df.select_dtypes(include="number")
-corr = num.corr()
-
-fig, ax = plt.subplots(figsize=(8,7))
-im = ax.imshow(corr, vmin=-1, vmax=1, aspect="auto")
-ax.set_xticks(range(len(corr.columns)))
-ax.set_xticklabels(corr.columns, rotation=90)
-ax.set_yticks(range(len(corr.columns)))
-ax.set_yticklabels(corr.columns)
-fig.colorbar(im, ax=ax)
-fig.tight_layout()
-plt.show()
-```
-
-## Actual vs predicted
-
-```python
-fig, ax = plt.subplots(figsize=(5,5))
-ax.scatter(y_valid, pred, alpha=0.3)
-
-lo = min(y_valid.min(), pred.min())
-hi = max(y_valid.max(), pred.max())
-ax.plot([lo,hi], [lo,hi], "--")
-
-ax.set_xlabel("Actual")
-ax.set_ylabel("Predicted")
-ax.set_title("Actual vs predicted")
-plt.show()
-```
-
-## Residual plot
-
-```python
-resid = y_valid - pred
-
-fig, ax = plt.subplots(figsize=(6,4))
-ax.scatter(pred, resid, alpha=0.3)
-ax.axhline(0, linestyle="--")
-ax.set_xlabel("Predicted")
-ax.set_ylabel("Residual")
-plt.show()
-```
-
-## Bucket response curve
-
-```python
-tmp = pd.DataFrame({
-    "feature": df["feature"],
-    "target": df["target"]
-})
-
-tmp["bucket"] = pd.qcut(tmp["feature"], 10, duplicates="drop")
-resp = tmp.groupby("bucket", observed=True)["target"].mean()
-
-fig, ax = plt.subplots()
-ax.plot(range(len(resp)), resp.values, marker="o")
-ax.set_xlabel("Feature decile")
-ax.set_ylabel("Mean target")
-plt.show()
-```
-
-## Save figure
-
-```python
-fig.savefig("figure.png", dpi=180, bbox_inches="tight")
-```
-
-# Seaborn — if installed
-
-```python
-import seaborn as sns
-```
-
-Distribution:
-
-```python
-sns.histplot(data=df, x="target", bins=30, kde=True)
-```
-
-Scatter:
-
-```python
-sns.scatterplot(data=df, x="feature", y="target", alpha=0.4)
-```
-
-Boxplot:
-
-```python
-sns.boxplot(data=df, x="category", y="target")
-```
-
-Heatmap:
-
-```python
-sns.heatmap(
-    df.select_dtypes(include="number").corr(),
-    cmap="coolwarm",
-    center=0
-)
-```
-
-Pairplot — use sparingly:
-
-```python
-sns.pairplot(
-    df[["x1","x2","x3","target"]].sample(
-        min(1000, len(df)),
-        random_state=42
-    )
-)
-```
-
-## Interview rule
-
-Prefer 2–4 clear plots tied to hypotheses over a large decorative EDA dump.
-
----
-
-# Cleaning + Feature Engineering Cheatsheet
-
-## Compact audit table
-
-```python
-audit = pd.DataFrame({
-    "dtype": df.dtypes.astype(str),
-    "missing_n": df.isna().sum(),
-    "missing_pct": df.isna().mean(),
-    "nunique": df.nunique(dropna=False)
-}).sort_values("missing_pct", ascending=False)
-```
-
-## Constants
-
-```python
-constant_cols = [
-    c for c in df.columns
-    if df[c].nunique(dropna=False) <= 1
-]
-```
-
-## Near constants
-
-```python
-near_constant = []
-
-for c in df.columns:
-    top_freq = df[c].value_counts(normalize=True, dropna=False).iloc[0]
-    if top_freq > 0.99:
-        near_constant.append(c)
-```
-
-## Infinite values
-
-```python
-num_cols = df.select_dtypes(include=np.number).columns
-
-inf_counts = {
-    c: np.isinf(df[c]).sum()
-    for c in num_cols
-}
-```
-
-Replace:
-
-```python
-df[num_cols] = df[num_cols].replace([np.inf, -np.inf], np.nan)
-```
-
-## Sentinel values
-
-```python
-(df["feature"] == -999).sum()
-```
-
-```python
-df.loc[df["feature"] == -999, "feature"] = np.nan
-```
-
-## Impossible values
-
-```python
-df.loc[df["age"] < 0]
-df.loc[df["probability"] > 1]
-df.loc[df["price"] < 0]
-```
-
-Do not automatically delete: determine whether it is a real extreme, a coding error, a sentinel, or a unit problem.
-
-## Outliers
-
-```python
-df["x"].quantile([0.01,0.05,0.5,0.95,0.99])
-```
-
-IQR:
-
-```python
-q1 = df["x"].quantile(0.25)
-q3 = df["x"].quantile(0.75)
-iqr = q3 - q1
-lower = q1 - 1.5 * iqr
-upper = q3 + 1.5 * iqr
-```
-
-Winsorise:
-
-```python
-lo, hi = df["x"].quantile([0.01,0.99])
-df["x_clip"] = df["x"].clip(lo, hi)
-```
-
-## Log transform
-
-```python
-df["log_x"] = np.log1p(df["x"])
-```
-
-Use for positive/right-skewed variables.
-
-## Cyclic time
-
-Hour:
-
-```python
-df["hour_sin"] = np.sin(2*np.pi*df["hour"]/24)
-df["hour_cos"] = np.cos(2*np.pi*df["hour"]/24)
-```
-
-Weekday:
-
-```python
-df["dow_sin"] = np.sin(2*np.pi*df["weekday"]/7)
-df["dow_cos"] = np.cos(2*np.pi*df["weekday"]/7)
-```
-
-Month:
-
-```python
-df["month_sin"] = np.sin(2*np.pi*df["month"]/12)
-df["month_cos"] = np.cos(2*np.pi*df["month"]/12)
-```
-
-## Smooth event proximity
-
-```python
-d = df["days_to_event"]
-df["event_decay"] = np.exp(-d / 3)
-```
-
-Sigmoid-style:
-
-```python
-df["event_proximity"] = 1 / (1 + np.exp((d - 2) / 1.5))
-```
-
-## Rolling physical effects
-
-```python
-df["temp_roll_6"] = (
-    df["temp"]
-      .shift(1)
-      .rolling(6)
-      .mean()
-)
-```
-
-Use when the target responds with inertia rather than only to the instantaneous observation.
-
-## Interactions
-
-```python
-df["temp_x_hum"] = df["temp"] * df["humidity"]
-```
-
-```python
-df["momentum_per_vol"] = df["momentum"] / (df["vol"] + 1e-8)
-```
-
-## Rank transforms
-
-Global:
-
-```python
-df["rank_x"] = df["x"].rank(pct=True)
-```
-
-Cross-sectional:
-
-```python
-df["rank_x"] = df.groupby("date")["x"].rank(pct=True)
-```
-
-## Missing indicators
-
-```python
-df["x_missing"] = df["x"].isna().astype(int)
-```
-
-Then impute `x`.
-
-## Correlated variables
-
-```python
-corr = df[numeric_cols].corr().abs()
-```
-
-Possible responses:
-
-- keep both with Ridge
-- remove one for simplicity
-- retain both for a tree model
-- use domain knowledge
-
-Do not automatically delete every highly correlated variable.
-
-## Leakage audit
-
-For every feature ask:
-
-> Could I know this value at prediction time?
-
-Common leakage:
-
-- future return
-- post-event information
-- target-derived aggregate
-- final outcome data used before the event
-- preprocessing fit on full data
-- feature selection using the test target
-
-## Train-only preprocessing
-
-Manual pattern:
-
-```python
-median = train["x"].median()
-train["x"] = train["x"].fillna(median)
-valid["x"] = valid["x"].fillna(median)
-test["x"] = test["x"].fillna(median)
-```
-
-Prefer sklearn Pipelines when modelling.
-
----
-
-# sklearn Modelling + Validation Cheatsheet
-
-## Imports
-
-```python
-import numpy as np
 import pandas as pd
-
-from sklearn.model_selection import (
-    train_test_split,
-    KFold,
-    StratifiedKFold,
-    TimeSeriesSplit,
-    cross_val_score
-)
-
-from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
-
-from sklearn.preprocessing import (
-    StandardScaler,
-    OneHotEncoder
-)
-
-from sklearn.impute import SimpleImputer
-
-from sklearn.linear_model import (
-    LinearRegression,
-    Ridge,
-    Lasso,
-    LogisticRegression,
-    HuberRegressor
-)
-
-from sklearn.ensemble import (
-    RandomForestRegressor,
-    RandomForestClassifier,
-    HistGradientBoostingRegressor,
-    HistGradientBoostingClassifier
-)
-
-from sklearn.metrics import (
-    mean_squared_error,
-    mean_absolute_error,
-    r2_score,
-    accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
-    roc_auc_score,
-    average_precision_score,
-    confusion_matrix
-)
-
-from sklearn.inspection import permutation_importance
-```
-
-## Train / validation split
-
-Regression:
-
-```python
-X_train, X_valid, y_train, y_valid = train_test_split(
-    X, y, test_size=0.2, random_state=42
-)
-```
-
-Classification:
-
-```python
-X_train, X_valid, y_train, y_valid = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
-```
-
-## Regression baseline
-
-```python
-baseline = np.repeat(y_train.mean(), len(y_valid))
-
-rmse = mean_squared_error(y_valid, baseline) ** 0.5
-mae = mean_absolute_error(y_valid, baseline)
-r2 = r2_score(y_valid, baseline)
-```
-
-## Classification baseline
-
-```python
-majority = y_train.mode()[0]
-baseline = np.repeat(majority, len(y_valid))
-accuracy_score(y_valid, baseline)
-```
-
-Accuracy may be weak for imbalanced targets.
-
-## Ridge
-
-```python
-ridge = Pipeline([
-    ("scale", StandardScaler()),
-    ("model", Ridge(alpha=1.0))
-])
-
-ridge.fit(X_train, y_train)
-pred = ridge.predict(X_valid)
-```
-
-Why scale? Ridge penalises coefficient magnitude, so feature units should not determine regularisation strength.
-
-## Small Ridge alpha search
-
-```python
-rows = []
-
-for alpha in [0.01,0.1,1,10,100]:
-    model = Pipeline([
-        ("scale", StandardScaler()),
-        ("ridge", Ridge(alpha=alpha))
-    ])
-
-    model.fit(X_train, y_train)
-    pred = model.predict(X_valid)
-
-    rows.append({
-        "alpha": alpha,
-        "rmse": mean_squared_error(y_valid, pred) ** 0.5
-    })
-
-pd.DataFrame(rows)
-```
-
-Do not run a giant search onsite.
-
-## Huber regression
-
-```python
-huber = Pipeline([
-    ("scale", StandardScaler()),
-    ("model", HuberRegressor())
-])
-
-huber.fit(X_train, y_train)
-```
-
-Useful when large residuals/outliers dominate least squares.
-
-## Random Forest
-
-Regression:
-
-```python
-rf = RandomForestRegressor(
-    n_estimators=200,
-    min_samples_leaf=3,
-    random_state=42,
-    n_jobs=-1
-)
-
-rf.fit(X_train, y_train)
-```
-
-Classification:
-
-```python
-rf = RandomForestClassifier(
-    n_estimators=200,
-    min_samples_leaf=3,
-    random_state=42,
-    n_jobs=-1
-)
-```
-
-## HistGradientBoosting
-
-```python
-gbm = HistGradientBoostingRegressor(
-    learning_rate=0.05,
-    max_iter=200,
-    max_leaf_nodes=31,
-    random_state=42
-)
-
-gbm.fit(X_train, y_train)
-```
-
-Good sklearn-native nonlinear baseline.
-
-## Mixed numeric + categorical pipeline
-
-```python
-numeric_cols = ["age", "balance"]
-categorical_cols = ["job", "marital"]
-```
-
-Numeric pipeline:
-
-```python
-num_pipe = Pipeline([
-    ("impute", SimpleImputer(strategy="median")),
-    ("scale", StandardScaler())
-])
-```
-
-Categorical pipeline:
-
-```python
-cat_pipe = Pipeline([
-    ("impute", SimpleImputer(strategy="most_frequent")),
-    ("onehot", OneHotEncoder(handle_unknown="ignore"))
-])
-```
-
-Combine:
-
-```python
-preprocessor = ColumnTransformer([
-    ("num", num_pipe, numeric_cols),
-    ("cat", cat_pipe, categorical_cols)
-])
-```
-
-Full regression pipeline:
-
-```python
-model = Pipeline([
-    ("preprocess", preprocessor),
-    ("model", Ridge(alpha=1.0))
-])
-```
-
-## Logistic regression
-
-```python
-clf = Pipeline([
-    ("preprocess", preprocessor),
-    ("model", LogisticRegression(max_iter=2000))
-])
-
-clf.fit(X_train, y_train)
-prob = clf.predict_proba(X_valid)[:,1]
-```
-
-## Classification threshold
-
-```python
-threshold = 0.3
-pred = (prob >= threshold).astype(int)
-```
-
-```python
-precision_score(y_valid, pred)
-recall_score(y_valid, pred)
-f1_score(y_valid, pred)
-roc_auc_score(y_valid, prob)
-average_precision_score(y_valid, prob)
-```
-
-## Threshold sweep
-
-```python
-rows = []
-
-for t in [0.1,0.2,0.3,0.4,0.5]:
-    pred = (prob >= t).astype(int)
-
-    rows.append({
-        "threshold": t,
-        "precision": precision_score(y_valid, pred, zero_division=0),
-        "recall": recall_score(y_valid, pred, zero_division=0),
-        "f1": f1_score(y_valid, pred, zero_division=0)
-    })
-
-pd.DataFrame(rows)
-```
-
-Select threshold on validation, never test.
-
-## KFold
-
-```python
-kf = KFold(
-    n_splits=5,
-    shuffle=True,
-    random_state=42
-)
-```
-
-Use for IID-type data.
-
-## StratifiedKFold
-
-```python
-skf = StratifiedKFold(
-    n_splits=5,
-    shuffle=True,
-    random_state=42
-)
-```
-
-Maintains class proportions.
-
-## TimeSeriesSplit
-
-```python
-tscv = TimeSeriesSplit(n_splits=5)
-```
-
-Use for ordered forecasting.
-
-## Cross-validation score
-
-```python
-scores = cross_val_score(
-    model,
-    X,
-    y,
-    cv=5,
-    scoring="neg_mean_squared_error"
-)
-
-rmse = np.sqrt(-scores)
-print(rmse.mean(), rmse.std())
-```
-
-## Model comparison table
-
-```python
-results = []
-
-results.append({
-    "model": "Baseline",
-    "rmse": baseline_rmse,
-    "mae": baseline_mae
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(1)
+df = pd.DataFrame({
+    "date": pd.date_range("2025-01-01", periods=100),
+    "x": rng.normal(size=100),
+    "y": rng.normal(size=100),
+    "group": rng.choice(["A", "B"], size=100)
 })
-
-results.append({
-    "model": "Ridge",
-    "rmse": ridge_rmse,
-    "mae": ridge_mae
-})
-
-results.append({
-    "model": "GBM",
-    "rmse": gbm_rmse,
-    "mae": gbm_mae
-})
-
-pd.DataFrame(results).sort_values("rmse")
+df["target"] = 2*df["x"] + rng.normal(size=100)
 ```
 
-## Target-bucketed errors
+## 1. `hist` and `df.hist` — [+]
+
+**What they do:** Show a variable's distribution, including skew, gaps, extreme values and possible data errors.
 
 ```python
-tmp = pd.DataFrame({
-    "y": y_valid,
-    "pred": pred
-})
+fig, ax = plt.subplots(figsize=(6, 3))
+ax.hist(df["target"], bins=25)
+ax.set(title="Target distribution", xlabel="Target", ylabel="Count")
+plt.show()
 
-tmp["bucket"] = pd.qcut(tmp["y"], 5, duplicates="drop")
-
-bucket_rmse = (
-    tmp.groupby("bucket", observed=True)
-       .apply(
-           lambda g: np.sqrt(
-               np.mean((g["y"] - g["pred"]) ** 2)
-           )
-       )
-)
+df[["x", "y", "target"]].hist(figsize=(9, 5), bins=20)
+plt.tight_layout(); plt.show()
 ```
 
-Useful when overall RMSE hides failure in important regions.
+## 2. `plot` — [+]
 
-## Permutation importance
+**What it does:** Shows whether a variable changes over time or has unusual periods.
 
 ```python
-pi = permutation_importance(
-    model,
-    X_valid,
-    y_valid,
-    n_repeats=10,
-    random_state=42,
-    scoring="neg_mean_squared_error"
-)
-
-importance = pd.Series(
-    pi.importances_mean,
-    index=X_valid.columns
-).sort_values(ascending=False)
-
-importance.head(10)
+fig, ax = plt.subplots(figsize=(8, 3))
+ax.plot(df["date"], df["target"])
+ax.set(title="Target through time", xlabel="Date", ylabel="Target")
+plt.show()
 ```
 
-Caution: correlated features can substitute for one another.
+## 3. `scatter` — [+]
 
-## SHAP concept
-
-Permutation importance:
-
-> What happens to model performance if this feature is scrambled?
-
-SHAP:
-
-> How much did each feature contribute to this specific prediction relative to a baseline?
-
-Do not spend onsite time installing SHAP unless it clearly helps.
-
-## Freeze before test
-
-Write down:
-
-- features
-- preprocessing
-- model
-- hyperparameters
-- threshold
-- metric
-
-Then evaluate test once. Do not tune after seeing test performance.
-
----
-
-# Time-Series Forecasting Cheatsheet
-
-## Sort
+**What it does:** Shows whether a feature and target tend to move together or show a nonlinear shape.
 
 ```python
-df["date"] = pd.to_datetime(df["date"])
-df = df.sort_values("date").reset_index(drop=True)
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(df["x"], df["target"], alpha=0.45)
+ax.set(xlabel="Feature x", ylabel="Target")
+plt.show()
 ```
 
-## Create future target
+## 4. Bar chart of group means — [+]
+
+**What it does:** Compares average target values across categories.
 
 ```python
-df["target_next"] = df["target"].shift(-1)
+df.groupby("group")["target"].mean().plot.bar(title="Mean target by group")
+plt.tight_layout(); plt.show()
 ```
 
-At time `t`, features should only use information known by `t`.
+## 5. `subplots` — [+]
 
-## Lags
+**What it does:** Puts several related plots in one compact figure rather than making many separate figures.
 
 ```python
-df["lag1"] = df["target"].shift(1)
-df["lag24"] = df["target"].shift(24)
-df["lag168"] = df["target"].shift(168)
+fig, axes = plt.subplots(1, 2, figsize=(9, 3))
+axes[0].hist(df["x"], bins=20)
+axes[1].scatter(df["x"], df["target"], alpha=0.4)
+axes[0].set_title("Feature distribution")
+axes[1].set_title("Feature vs target")
+fig.tight_layout(); plt.show()
 ```
 
-## Rolling statistics
+## 6. Correlation heatmap — [+]
 
-Past-only:
-
-```python
-df["roll24_mean"] = (
-    df["target"]
-      .shift(1)
-      .rolling(24)
-      .mean()
-)
-
-df["roll24_std"] = (
-    df["target"]
-      .shift(1)
-      .rolling(24)
-      .std()
-)
-```
-
-## Exponentially weighted mean
-
-```python
-df["ewm24"] = (
-    df["target"]
-      .shift(1)
-      .ewm(span=24)
-      .mean()
-)
-```
-
-## Cyclic time
-
-```python
-df["hour"] = df["date"].dt.hour
-
-df["hour_sin"] = np.sin(2*np.pi*df["hour"]/24)
-df["hour_cos"] = np.cos(2*np.pi*df["hour"]/24)
-```
-
-```python
-df["weekday"] = df["date"].dt.dayofweek
-
-df["dow_sin"] = np.sin(2*np.pi*df["weekday"]/7)
-df["dow_cos"] = np.cos(2*np.pi*df["weekday"]/7)
-```
-
-## Chronological 80/10/10
-
-```python
-n = len(df)
-i1 = int(0.8*n)
-i2 = int(0.9*n)
-
-train = df.iloc[:i1]
-valid = df.iloc[i1:i2]
-test = df.iloc[i2:]
-```
-
-## Persistence baseline
-
-```python
-pred = valid["lag1"]
-```
-
-## Seasonal naive
-
-Daily hourly seasonality:
-
-```python
-pred = valid["lag24"]
-```
-
-Weekly:
-
-```python
-pred = valid["lag168"]
-```
-
-Always compare ML against these if they make sense.
-
-## TimeSeriesSplit
-
-```python
-from sklearn.model_selection import TimeSeriesSplit
-
-tscv = TimeSeriesSplit(n_splits=5)
-
-for train_idx, valid_idx in tscv.split(X):
-    X_tr = X.iloc[train_idx]
-    X_va = X.iloc[valid_idx]
-```
-
-## Rolling temperature / physical inertia
-
-```python
-df["temp_roll6"] = (
-    df["temp"]
-      .shift(1)
-      .rolling(6)
-      .mean()
-)
-```
-
-Use when the target responds with inertia.
-
-## Error by hour
-
-```python
-tmp = pd.DataFrame({
-    "hour": valid["hour"],
-    "y": y_valid,
-    "pred": pred
-})
-
-tmp["error"] = tmp["y"] - tmp["pred"]
-
-rmse_by_hour = (
-    tmp.groupby("hour")
-       .apply(lambda g: np.sqrt(np.mean(g["error"]**2)))
-)
-```
-
-## Error by target quantile
-
-```python
-tmp["bucket"] = pd.qcut(tmp["y"], 5, duplicates="drop")
-```
-
-## Leakage trap
-
-Potentially wrong:
-
-```python
-df["roll24"] = df["target"].rolling(24).mean()
-```
-
-if current target is unavailable at forecast time.
-
-Safer:
-
-```python
-df["roll24"] = df["target"].shift(1).rolling(24).mean()
-```
-
-## Good onsite workflow
-
-```text
-persistence
-→ seasonal naive
-→ Ridge
-→ HistGradientBoosting
-→ error by hour/period/target bucket
-→ frozen OOS
-```
-
----
-
-# Statistics + Diagnostics Cheatsheet
-
-## Pearson correlation
-
-Linear association:
-
-```python
-df["x"].corr(df["y"], method="pearson")
-```
-
-## Spearman correlation
-
-Monotonic/rank association:
-
-```python
-df["x"].corr(df["y"], method="spearman")
-```
-
-## Correlation matrix
+**What it does:** Shows which numerical columns have strong linear relationships, including pairs of redundant predictors.
 
 ```python
 corr = df.select_dtypes(include=np.number).corr()
+fig, ax = plt.subplots(figsize=(5, 4))
+im = ax.imshow(corr, vmin=-1, vmax=1)
+ax.set_xticks(range(len(corr))); ax.set_yticks(range(len(corr)))
+ax.set_xticklabels(corr.columns, rotation=90)
+ax.set_yticklabels(corr.columns)
+fig.colorbar(im, ax=ax)
+fig.tight_layout(); plt.show()
 ```
 
-## Conditional means / decile response
+## 7. `actual` vs `predicted` and residuals — [+]
+
+**What they do:** Show bias, systematic mistakes and whether errors grow for large targets.
 
 ```python
-df["bucket"] = pd.qcut(df["feature"], 10, duplicates="drop")
-
-response = (
-    df.groupby("bucket", observed=True)["target"]
-      .agg(["mean","std","count"])
-)
+actual = df["target"].to_numpy()
+predicted = 1.7 * df["x"].to_numpy()
+fig, axes = plt.subplots(1, 2, figsize=(9, 3))
+axes[0].scatter(actual, predicted, alpha=0.4)
+axes[0].set(xlabel="Actual", ylabel="Predicted")
+axes[1].scatter(predicted, actual-predicted, alpha=0.4)
+axes[1].axhline(0, ls="--", color="grey")
+axes[1].set(xlabel="Predicted", ylabel="Residual")
+fig.tight_layout(); plt.show()
 ```
 
-A smooth monotonic response can be more informative than one correlation number.
+## 8. Seaborn if already installed — [+ optional]
 
-## Standard error of mean
+**What it does:** Offers compact alternatives to matplotlib for standard histograms and heatmaps.
 
 ```python
-x = df["target"].dropna()
-sem = x.std(ddof=1) / np.sqrt(len(x))
+# import seaborn as sns
+# sns.histplot(data=df, x="target", bins=30)
+# sns.heatmap(df[["x", "y", "target"]].corr(), annot=True)
 ```
 
-## Approximate 95% confidence interval
-
-```python
-mean = x.mean()
-sem = x.std(ddof=1) / np.sqrt(len(x))
-
-lower = mean - 1.96 * sem
-upper = mean + 1.96 * sem
-```
-
-## scipy tests
-
-```python
-from scipy import stats
-```
-
-Independent Welch t-test:
-
-```python
-stats.ttest_ind(
-    group_a,
-    group_b,
-    equal_var=False,
-    nan_policy="omit"
-)
-```
-
-Paired t-test:
-
-```python
-stats.ttest_rel(before, after, nan_policy="omit")
-```
-
-Mann-Whitney:
-
-```python
-stats.mannwhitneyu(group_a, group_b, alternative="two-sided")
-```
-
-In an onsite, effect size + validation often matter more than a p-value.
-
-## Bootstrap mean difference
-
-```python
-rng = np.random.default_rng(42)
-diffs = []
-
-for _ in range(5000):
-    a = rng.choice(group_a, size=len(group_a), replace=True)
-    b = rng.choice(group_b, size=len(group_b), replace=True)
-    diffs.append(a.mean() - b.mean())
-
-np.quantile(diffs, [0.025,0.975])
-```
-
-## Residuals
-
-```python
-resid = y - pred
-
-resid.mean()
-resid.std()
-np.quantile(resid, [0.01,0.05,0.5,0.95,0.99])
-```
-
-## Heteroskedasticity clue
-
-```python
-plt.scatter(pred, resid, alpha=0.3)
-plt.axhline(0, linestyle="--")
-```
-
-Fan-shaped residual spread suggests variance changes with prediction level.
-
-## Error by target bucket
-
-```python
-tmp = pd.DataFrame({"y": y, "pred": pred})
-tmp["bucket"] = pd.qcut(tmp["y"], 5, duplicates="drop")
-
-def rmse(g):
-    return np.sqrt(np.mean((g["y"] - g["pred"]) ** 2))
-
-bucket_rmse = tmp.groupby("bucket", observed=True).apply(rmse)
-```
-
-## Predicted-decile response
-
-```python
-tmp["pred_decile"] = pd.qcut(tmp["pred"], 10, duplicates="drop")
-
-summary = (
-    tmp.groupby("pred_decile", observed=True)["y"]
-       .agg(["mean","count"])
-)
-```
-
-Useful for ranking/trading/prioritisation.
-
-## Classification calibration-style check
-
-```python
-tmp = pd.DataFrame({"prob": prob, "y": y_valid})
-tmp["decile"] = pd.qcut(tmp["prob"], 10, duplicates="drop")
-
-cal = (
-    tmp.groupby("decile", observed=True)
-       .agg(
-           mean_prob=("prob","mean"),
-           realised_rate=("y","mean"),
-           n=("y","size")
-       )
-)
-```
-
-## Robustness by period
-
-```python
-tmp = tmp.sort_values("date").reset_index(drop=True)
-tmp["period"] = pd.qcut(
-    tmp.index,
-    3,
-    labels=["early","middle","late"]
-)
-```
-
-Then recompute your metric by period.
-
-Ask whether performance is concentrated in one regime.
+**Rule:** Do not install another plotting library under time pressure just to make the figures prettier.
 
 ---
 
-# Jupyter + Debugging Cheatsheet
+# 04 — Cleaning and feature engineering
 
-## Environment
-
-```python
-import os
-import sys
-
-print(sys.version)
-print(sys.executable)
-print(os.getcwd())
-```
-
-Files:
-
-```python
-os.listdir()
-```
-
-## Package versions
+**Course basis:** Pandas lesson 5 (data types and missing values); Intermediate ML lessons 2, 3, 4 and 7 (missing, categorical, pipelines, leakage). **[+]** items address onsite-specific edge cases and feature hypotheses.
 
 ```python
 import numpy as np
 import pandas as pd
-import sklearn
 
-print(np.__version__)
-print(pd.__version__)
-print(sklearn.__version__)
+df = pd.DataFrame({
+    "age": [25, 41, 35, 41, 80],
+    "income": [50000, np.nan, 72000, np.nan, -999],
+    "city": ["London", "Paris", "unknown", "Paris", "London"],
+    "month": [12, 1, 2, 3, 4],
+    "target": [0, 1, 0, 1, 1]
+})
 ```
 
-## Install package
+## 1. Audit missingness and dtypes — [K]
 
-Inside Jupyter:
+**What it does:** Shows how many records would be affected if you drop or impute each field.
 
 ```python
-%pip install seaborn
+pd.DataFrame({
+    "dtype": df.dtypes.astype(str),
+    "missing": df.isna().sum(),
+    "missing_pct": df.isna().mean(),
+    "unique": df.nunique(dropna=False)
+})
 ```
 
-Prefer `%pip` to `!pip`. Restart kernel if required.
+## 2. `dropna`, `fillna`, `SimpleImputer` — [K]
 
-Do not install packages unless there is real benefit.
-
-## Timing
+**What they do:** Delete incomplete rows/columns or substitute a learnt typical value for missing cells.
 
 ```python
-%timeit np.mean(x)
+df.dropna(subset=["target"])                    # target needs to be known
+income_fill = df["income"].replace(-999, np.nan).median()
+df["income"].replace(-999, np.nan).fillna(income_fill)
 ```
 
-## Variables currently defined
+**For modelling, prefer:**
 
 ```python
-%whos
+from sklearn.impute import SimpleImputer
+imp = SimpleImputer(strategy="median")
+# imp.fit(X_train[numeric_cols]); imp.transform(X_valid[numeric_cols])
 ```
 
-## CSV delimiter / encoding problems
+**Trap:** `fit` learns the median and should use training observations only. Put it inside a pipeline.
+
+## 3. Handle categorical values — [K]
+
+**What it does:** Turns strings into input the model can understand.
 
 ```python
-df = pd.read_csv("file.csv")
+pd.get_dummies(df[["city"]])  # quick exploratory encoding
+# In sklearn pipelines, use OneHotEncoder(handle_unknown="ignore") instead.
 ```
 
-Semicolon:
+**Choices from Intermediate ML:** drop the feature, ordinal encoding (only when ordering is meaningful or model-compatible), or one-hot encoding.
+
+## 4. `astype`, `to_numeric`, `to_datetime` — [K]/[+]
+
+**What they do:** Repair columns read with the wrong type.
 
 ```python
-df = pd.read_csv("file.csv", sep=";")
+df["age"].astype(float)
+pd.to_numeric(pd.Series(["1.4", "?", "2.6"]), errors="coerce")
+pd.to_datetime(pd.Series(["2025-01-01", "bad"]), errors="coerce")
 ```
 
-Encoding:
+## 5. Duplicates, constants and sentinel values — [+]
+
+**What they do:** Catch repeated records, useless columns and special codes that look numeric but mean missing.
 
 ```python
-df = pd.read_csv("file.csv", encoding="latin1")
+df.duplicated().sum()
+df.duplicated(subset=["age", "month"]).sum()  # only if these should form a key
+constant_cols = [c for c in df if df[c].nunique(dropna=False) <= 1]
+df["income"] = df["income"].replace(-999, np.nan)
 ```
 
-## KeyError
+**Trap:** A valid repeated customer transaction is not automatically a duplicate error.
+
+## 6. Infinities and impossible values — [+]
+
+**What they do:** Identify numbers that sklearn cannot usually handle or that violate the meaning of the variable.
 
 ```python
-df.columns.tolist()
+numeric = df.select_dtypes(include=np.number).columns
+inf_count = np.isinf(df[numeric]).sum()
+df[numeric] = df[numeric].replace([np.inf, -np.inf], np.nan)
+df.loc[df["age"] < 0]
 ```
 
-Strip whitespace:
+## 7. Skew/outliers: log, clip, quantiles — [+]
+
+**What they do:** Reduce the influence of very large observations without assuming they are data errors.
 
 ```python
-df.columns = df.columns.str.strip()
+s = pd.Series([0, 1, 2, 4, 100.])
+np.log1p(s)                                       # only if all values > -1
+lo, hi = s.quantile([0.01, 0.99])
+s.clip(lo, hi)
 ```
 
-## Date parsing failed
+**Critical:** A tail may be economically important; measure error in that region before discarding/clipping it.
+
+## 8. Cyclic calendar representation — [K: Time Series seasonality] / [+ direct encoding]
+
+**What it does:** Makes December and January close to each other, unlike the raw integers 12 and 1.
 
 ```python
-dates = pd.to_datetime(df["date"], errors="coerce")
+m = df["month"]
+df["month_sin"] = np.sin(2*np.pi*m/12)
+df["month_cos"] = np.cos(2*np.pi*m/12)
 ```
 
-Inspect bad values:
+## 9. Lags and rolling features — [K: Time Series]
+
+**What they do:** Use recent and seasonal past values to help forecast a future outcome.
 
 ```python
-df.loc[dates.isna(), "date"]
+series = pd.Series([3, 4, 6, 8, 10, 9], dtype=float)
+past1 = series.shift(1)
+past3_mean = series.shift(1).rolling(3).mean()
 ```
 
-## Numeric stored as string
+## 10. Feature interactions and event distance — [+]
+
+**What they do:** Allow for effects that depend jointly on two variables, or fade with distance from an event.
 
 ```python
-df["x"] = pd.to_numeric(df["x"], errors="coerce")
+temperature = np.array([5., 12., 25.])
+humidity = np.array([0.8, 0.6, 0.3])
+temperature * humidity
+days_from_holiday = np.array([0, 1, 3, 10])
+np.exp(-days_from_holiday/3.0)
 ```
 
-## Shape mismatch
+**Rule:** State a hypothesis before introducing the transform; compare validation results with/without it.
 
-```python
-print(
-    X_train.shape,
-    X_valid.shape,
-    y_train.shape,
-    y_valid.shape
-)
-```
+## 11. Leakage guard — [K: Intermediate ML]
 
-## Merge unexpectedly increased rows
+**What it does:** Prevents the model from using information it could not have had at prediction time.
 
-```python
-print(left.shape, right.shape)
-print(left["id"].duplicated().sum())
-print(right["id"].duplicated().sum())
-```
-
-Then use the expected `validate=` cardinality.
-
-## Model rejects NaNs
-
-```python
-X_train.isna().sum().sort_values(ascending=False).head()
-```
-
-Use:
-
-```python
-SimpleImputer(strategy="median")
-```
-
-## Model rejects strings
-
-```python
-X_train.select_dtypes(include="object").columns
-```
-
-Use `OneHotEncoder` or a suitable categorical encoding.
-
-## Infinite values
-
-```python
-np.isinf(
-    X_train.select_dtypes(include=np.number)
-).sum()
-```
-
-Replace:
-
-```python
-X = X.replace([np.inf,-np.inf], np.nan)
-```
-
-## Convergence warning
-
-For logistic/Huber, try scaling and:
-
-```python
-max_iter=2000
-```
-
-## Memory issue
-
-Sample:
-
-```python
-df_small = df.sample(100000, random_state=42)
-```
-
-Keep relevant columns only:
-
-```python
-df = df[needed_cols].copy()
-```
-
-Avoid giant many-to-many merges.
-
-## Restart discipline
-
-If notebook state becomes confusing:
-
-1. restart kernel
-2. run all
-3. fix first failing cell
-4. repeat
-
-Final notebook should reproduce top-to-bottom.
+- If deciding **before** a sales call, the call's eventual duration is unavailable.
+- If forecasting yesterday-to-today returns from yesterday's close, today's closing price is future information.
+- If imputing/scaling/encoding, fit on training only; transform validation/test using those learnt rules.
+- If selecting features/hyperparameters/thresholds, use validation rather than final test performance.
 
 ---
 
-# Common Onsite Recipes
+# 05 — sklearn: model, validate and compare with minimal code
 
-## 1. How many observations satisfy X and Y?
-
-```python
-count = (
-    (df["age"] > 50)
-    &
-    (df["bmi"] < 20)
-).sum()
-```
-
-## 2. Summarise target by category
+**Course basis:** Intro to ML (decision trees, MAE, under/overfitting, random forests), Intermediate ML (imputation, categorical encoding, pipelines, CV, XGBoost, leakage).
 
 ```python
-summary = (
-    df.groupby("category")
-      .agg(
-          n=("target","size"),
-          target_mean=("target","mean"),
-          target_std=("target","std")
-      )
-      .sort_values("target_mean", ascending=False)
-)
-```
-
-## 3. Strongest simple relationships
-
-```python
-num = df.select_dtypes(include=np.number)
-
-pearson = (
-    num.corr()["target"]
-       .drop("target")
-       .sort_values(key=np.abs, ascending=False)
-)
-
-spearman = (
-    num.corr(method="spearman")["target"]
-       .drop("target")
-       .sort_values(key=np.abs, ascending=False)
-)
-```
-
-## 4. Clean modelling table
-
-```python
-target = "y"
-
-X = df.drop(columns=[target])
-y = df[target]
-
-numeric_cols = X.select_dtypes(include=np.number).columns.tolist()
-categorical_cols = X.select_dtypes(exclude=np.number).columns.tolist()
-```
-
-## 5. Regression benchmark
-
-```python
+import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import Ridge
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
 
+sample = pd.DataFrame({
+    "size": [55, 65, 75, 85, 95, 110, 125, 150, 175, 200, 230, 260],
+    "age":  [15, 20, 18, 10, 8, 5, 11, 4, 6, 3, 2, 1],
+    "price": [160, 190, 215, 240, 270, 315, 340, 400, 475, 540, 590, 680]
+})
+X = sample[["size", "age"]]
+y = sample["price"]
+```
+
+## 1. Separate X and y — [K]
+
+**What it does:** `X` contains information known at prediction time; `y` is the answer the model should learn to predict.
+
+```python
+X = sample.drop(columns=["price"])
+y = sample["price"]
+```
+
+## 2. `train_test_split` — [K]
+
+**What it does:** Hides some labelled examples so you can check generalisation instead of measuring memorisation.
+
+```python
 X_train, X_valid, y_train, y_valid = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.25, random_state=42
 )
+```
 
+**Trap:** This random split is for non-temporal, approximately independent observations; for time data see `06`.
+
+## 3. Baseline mean prediction — [+ but crucial]
+
+**What it does:** Gives a simple target to beat before investing in more complex models.
+
+```python
 baseline = np.repeat(y_train.mean(), len(y_valid))
-baseline_rmse = mean_squared_error(y_valid, baseline) ** 0.5
+print("Baseline MAE:", mean_absolute_error(y_valid, baseline))
+```
 
-ridge = Pipeline([
-    ("scale", StandardScaler()),
-    ("model", Ridge(alpha=1))
+## 4. `DecisionTreeRegressor` — [K]
+
+**What it does:** Learns if/else rules from the training examples and predicts an average target value inside each leaf.
+
+```python
+tree = DecisionTreeRegressor(max_leaf_nodes=5, random_state=42)
+tree.fit(X_train, y_train)
+pred_tree = tree.predict(X_valid)
+print("Tree MAE:", mean_absolute_error(y_valid, pred_tree))
+```
+
+## 5. `max_leaf_nodes`: underfitting vs overfitting — [K]
+
+**What it does:** Limits how detailed the tree's rules can become; too small misses patterns, too large memorises noise.
+
+```python
+for n_leaves in [2, 5, 10, 20]:
+    model = DecisionTreeRegressor(max_leaf_nodes=n_leaves, random_state=42)
+    model.fit(X_train, y_train)
+    print(n_leaves, mean_absolute_error(y_valid, model.predict(X_valid)))
+```
+
+**Trap:** Pick complexity on validation, not on your final untouched test set.
+
+## 6. `RandomForestRegressor` — [K]
+
+**What it does:** Averages many decision trees so the prediction depends less on one noisy fitted tree.
+
+```python
+forest = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
+forest.fit(X_train, y_train)
+pred_forest = forest.predict(X_valid)
+print("Forest MAE:", mean_absolute_error(y_valid, pred_forest))
+```
+
+## 7. MAE, RMSE and R² — [K MAE] / [+ RMSE/R²]
+
+**What they do:** MAE measures typical absolute error; RMSE penalises large errors more; R² compares squared error with predicting the mean.
+
+```python
+from sklearn.metrics import r2_score
+mae = mean_absolute_error(y_valid, pred_forest)
+rmse = np.sqrt(mean_squared_error(y_valid, pred_forest))
+r2 = r2_score(y_valid, pred_forest)
+print(mae, rmse, r2)
+```
+
+## 8. Three missing-data choices — [K: Intermediate ML]
+
+**What they do:** Either remove columns with missing values, replace missing values, or replace and add a missingness indicator.
+
+```python
+from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(strategy="median", add_indicator=True)
+# imputer.fit(X_train_num)          # learn median ONLY from training
+# X_valid_imp = imputer.transform(X_valid_num)
+```
+
+**Trap:** A `Pipeline` is safer because it fits preprocessing within each training fold.
+
+## 9. One-hot encoding + `ColumnTransformer` + `Pipeline` — [K]
+
+**What they do:** Clean/encode different column types and fit a model as one repeatable sequence, without leaking validation information.
+
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+mixed = pd.DataFrame({"size": [70, 80, 90, 100], "city": ["A", "B", "A", "C"]})
+numerical = ["size"]
+categorical = ["city"]
+preprocess = ColumnTransformer(transformers=[
+    ("num", SimpleImputer(strategy="median"), numerical),
+    ("cat", OneHotEncoder(handle_unknown="ignore"), categorical)
 ])
-
-ridge.fit(X_train, y_train)
-ridge_pred = ridge.predict(X_valid)
-ridge_rmse = mean_squared_error(y_valid, ridge_pred) ** 0.5
+pipe = Pipeline(steps=[("preprocess", preprocess),
+                       ("model", RandomForestRegressor(n_estimators=50, random_state=42))])
+# pipe.fit(X_train_mixed, y_train)    # use the SAME column names as above
+# pipe.predict(X_valid_mixed)
 ```
 
-## 6. Classification benchmark
+**Simpler Kaggle alternative:** For just numeric columns, `SimpleImputer` followed by a forest is enough. Use the mixed-column pipeline when categorical variables actually matter.
+
+## 10. `cross_val_score` — [K]
+
+**What it does:** Repeats fitting/validation over several partitions rather than relying on one lucky split.
 
 ```python
-clf.fit(X_train, y_train)
-prob = clf.predict_proba(X_valid)[:,1]
-
-print(roc_auc_score(y_valid, prob))
-print(average_precision_score(y_valid, prob))
+from sklearn.model_selection import cross_val_score
+scores = -cross_val_score(
+    RandomForestRegressor(n_estimators=100, random_state=42),
+    X, y, cv=3, scoring="neg_mean_absolute_error"
+)
+print(scores, scores.mean())
 ```
 
-## 7. Does a nonlinear model add anything?
+**Note:** `cv=3` normally uses non-shuffled K-fold for regression. When you need shuffled IID folds use `KFold`, and for forecasting use `TimeSeriesSplit`.
+
+## 11. `XGBRegressor` — [K: Intermediate ML] / optional installation
+
+**What it does:** Adds trees sequentially, each intended to fix mistakes left by earlier trees.
 
 ```python
-results = pd.DataFrame([
-    {"Model":"Baseline", "RMSE":baseline_rmse},
-    {"Model":"Ridge", "RMSE":ridge_rmse},
-    {"Model":"GBM", "RMSE":gbm_rmse}
-])
-
-results.sort_values("RMSE")
+# Only if xgboost is already installed and compatible:
+# from xgboost import XGBRegressor
+# model = XGBRegressor(n_estimators=200, learning_rate=0.05, random_state=42)
+# model.fit(X_train, y_train)
 ```
 
-Then ask whether improvement is:
-
-- meaningful in size
-- stable across folds/time
-- present in important target buckets
-- worth the extra complexity
-
-## 8. Try plausible transforms
+**Fallback [+]:** `HistGradientBoostingRegressor` provides a sklearn-native boosted-tree model, but check missing/categorical handling for your installed version.
 
 ```python
-x = df["feature"]
+from sklearn.ensemble import HistGradientBoostingRegressor
+gbm = HistGradientBoostingRegressor(max_iter=100, random_state=42)
+gbm.fit(X_train, y_train)
+```
 
-candidates = pd.DataFrame({
-    "raw": x,
-    "log1p": np.log1p(x.clip(lower=0)),
-    "sqrt": np.sqrt(x.clip(lower=0)),
-    "rank": x.rank(pct=True)
+## 12. Classification: logistic baseline, forest and threshold — [+]
+
+**What they do:** Predict a class probability and decide how high the probability must be before labelling an observation positive.
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, roc_auc_score
+from sklearn.preprocessing import StandardScaler
+Xc = pd.DataFrame({"x": [-3, -2, -1, 0, 1, 2, 3, 4]})
+yc = pd.Series([0, 0, 0, 0, 1, 1, 1, 1])
+clf = Pipeline([("scale", StandardScaler()),
+                ("model", LogisticRegression(max_iter=1000))])
+clf.fit(Xc, yc)
+prob = clf.predict_proba(Xc)[:, 1]
+labels = (prob >= 0.5).astype(int)
+print(accuracy_score(yc, labels), roc_auc_score(yc, prob))  # training score: syntax demo, NOT validation
+```
+
+**Extra metric guide:** Precision = fraction of predicted positives that were correct; recall = fraction of actual positives recovered. For a rare class, PR-AUC can be more informative than accuracy.
+
+## 13. Feature importance, buckets and final test discipline — [+]
+
+**What they do:** Identify which predictors a model relies on and whether large target values are especially difficult.
+
+```python
+from sklearn.inspection import permutation_importance
+imp = permutation_importance(forest, X_valid, y_valid, n_repeats=3,
+                             scoring="neg_mean_absolute_error", random_state=42)
+print(pd.Series(imp.importances_mean, index=X_valid.columns).sort_values(ascending=False))
+
+errors = pd.DataFrame({"actual": y_valid.to_numpy(), "pred": pred_forest})
+errors["bucket"] = pd.qcut(errors["actual"], q=3, duplicates="drop")
+print(errors.groupby("bucket", observed=True).apply(
+    lambda g: np.mean(np.abs(g["actual"] - g["pred"]))))
+```
+
+**Rule:** Use train/CV to fit, validation to choose model settings, and untouched test data **once** to estimate final performance.
+
+---
+
+# 06 — Time Series: Kaggle's six-lesson logic, in code
+
+```python
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+df = pd.DataFrame({
+    "date": pd.date_range("2025-01-01", periods=200, freq="D"),
+    "sales": 100 + np.arange(200)*0.2 + 8*np.sin(2*np.pi*np.arange(200)/7)
 })
-
-for c in candidates.columns:
-    print(
-        c,
-        candidates[c].corr(df["target"], method="spearman")
-    )
+df = df.sort_values("date").set_index("date")
 ```
 
-Do not choose a transform solely from in-sample correlation. Validate it.
+## 1. Time-step feature — [K: Lesson 1]
 
-## 9. Time-series forecast setup
+**What it does:** Uses how far through the sample an observation is to model a long-run trend.
 
 ```python
-df = df.sort_values("date").reset_index(drop=True)
+df["time"] = np.arange(len(df))
+trend_model = LinearRegression()
+trend_model.fit(df[["time"]], df["sales"])
+trend_pred = trend_model.predict(df[["time"]])
+```
 
-df["target_next"] = df["target"].shift(-1)
-df["lag1"] = df["target"].shift(1)
-df["lag24"] = df["target"].shift(24)
-df["roll24"] = df["target"].shift(1).rolling(24).mean()
+**Caution:** Trend estimated over the full sample is only for illustration; for forecasting, fit on the training period.
 
+## 2. Lag feature — [K: Lesson 1]
+
+**What it does:** Gives the model previous observed values to help predict the next one.
+
+```python
+df["lag1"] = df["sales"].shift(1)
+df["lag7"] = df["sales"].shift(7)
+```
+
+**Trap:** If predicting today's sales at the start of today, today's sales cannot appear as a feature.
+
+## 3. Rolling mean for trend — [K: Lesson 2]
+
+**What it does:** Smooths out short-term fluctuations so the longer-run direction is easier to see.
+
+```python
+df["trend7"] = df["sales"].shift(1).rolling(7).mean()
+```
+
+**Time dummy:** `np.arange(len(df))` is another simple way to represent trend, often with linear regression.
+
+## 4. Seasonal indicators — [K: Lesson 3]
+
+**What they do:** Let the model learn distinct average effects for different weekdays or months.
+
+```python
+df["weekday"] = df.index.dayofweek
+weekday_flags = pd.get_dummies(df["weekday"], prefix="day", drop_first=True)
+```
+
+## 5. Fourier / sine-cosine features — [K: Lesson 3]
+
+**What they do:** Describe a repeating cycle smoothly using waves rather than a separate indicator for each period.
+
+```python
+n = np.arange(len(df))
+df["weekly_sin"] = np.sin(2*np.pi*n/7)
+df["weekly_cos"] = np.cos(2*np.pi*n/7)
+```
+
+**Extra useful case:** Encode hour-of-day as `sin(2*pi*hour/24)` and `cos(2*pi*hour/24)` so 23:00 and 00:00 are adjacent.
+
+## 6. Time series as features / lag embedding — [K: Lesson 4]
+
+**What it does:** Creates several past-value columns so a conventional ML model can learn a short recent-history pattern.
+
+```python
+for lag in [1, 2, 3, 7, 14]:
+    df["lag_%d" % lag] = df["sales"].shift(lag)
+feature_cols = ["time", "weekday", "weekly_sin", "weekly_cos", "lag_1", "lag_7"]
+model_df = df.dropna(subset=feature_cols + ["sales"]).copy()
+```
+
+## 7. Hybrid models — [K: Lesson 5]
+
+**What they do:** Fit a simple model to large-scale structure, then a second model to what the first one fails to explain.
+
+```python
+from sklearn.ensemble import RandomForestRegressor
+# Example training-only fragment (fit stages only on the training portion):
+# trend.fit(X_train_time, y_train)
+# residual = y_train - trend.predict(X_train_time)
+# second = RandomForestRegressor(random_state=42).fit(X_train_features, residual)
+# final_prediction = trend.predict(X_valid_time) + second.predict(X_valid_features)
+```
+
+**Not a default:** Start with a straightforward one-model baseline; try a hybrid only if there is enough time and a clear reason.
+
+## 8. Multi-step forecasting strategies — [K: Lesson 6]
+
+**What they do:** Handle forecasts for several future time steps rather than just one.
+
+- **Recursive:** Predict one step, feed prediction back as an input, repeat. Simple but errors compound.
+- **Direct:** Fit a separate forecast for each horizon. More models but no predicted-target feedback.
+- **Multi-output:** Predict a vector of future values in one model.
+- **DirRec / mixed strategies:** Blend direct/recursive ideas.
+
+**Onsite default:** For a one-step task, build only a one-step forecast. Expand only if asked.
+
+## 9. Chronological split + baseline — [+ decisive]
+
+**What it does:** Evaluates a forecasting model on later observations and compares against simply using known history.
+
+```python
 model_df = df.dropna().copy()
+i = int(0.8 * len(model_df))
+train, valid = model_df.iloc[:i], model_df.iloc[i:]
+
+# If predicting today's sales from values known BEFORE today:
+persistence = valid["lag1"]
+weekly_naive = valid["lag7"]
+from sklearn.metrics import mean_absolute_error
+print(mean_absolute_error(valid["sales"], persistence))
+print(mean_absolute_error(valid["sales"], weekly_naive))
 ```
 
-Then split chronologically.
+**Target definition trap:** If instead you form `target_next = sales.shift(-1)` and forecast tomorrow after observing today, the persistence baseline is **today's** sales (`sales`), not `lag1`; the comparable weekly value for tomorrow is six rows before today (`shift(6)` for daily observations).
 
-## 10. Prediction deciles
+## 10. `TimeSeriesSplit`, EWM, group lags — [+]
+
+**What they do:** Repeatedly validate past-to-future predictions, smooth observations with an exponential decay, or create lags within entities.
 
 ```python
-tmp = pd.DataFrame({
-    "pred": pred,
-    "actual": y_valid
+from sklearn.model_selection import TimeSeriesSplit
+cv = TimeSeriesSplit(n_splits=4)
+df["ewm7_past"] = df["sales"].shift(1).ewm(span=7).mean()
+# If multiple shops/assets, sort by entity and timestamp first:
+# panel["lag1"] = panel.groupby("shop")["sales"].shift(1)
+```
+
+**Pitfalls:** Check missing timestamps/DST, leakage from overlapping windows, and whether features from future exogenous variables would actually be available.
+
+---
+
+# 07 — Statistics and diagnostics: what to check after fitting
+
+**Course basis:** Intro ML measures generalisation mainly through MAE; Intermediate ML uses CV; Time Series examines trend/seasonality. Remaining diagnostics below are **[+] onsite-useful additions**.
+
+```python
+import numpy as np
+import pandas as pd
+
+df = pd.DataFrame({
+    "x": [1., 2., 3., 4., 5., 6.],
+    "target": [2., 3., 4., 8., 10., 11.],
+    "prediction": [2., 3., 5., 6., 8., 11.]
 })
-
-tmp["decile"] = pd.qcut(
-    tmp["pred"],
-    10,
-    labels=False,
-    duplicates="drop"
-)
-
-summary = (
-    tmp.groupby("decile")
-       .agg(
-           n=("actual","size"),
-           mean_pred=("pred","mean"),
-           mean_actual=("actual","mean")
-       )
-)
 ```
 
-## 11. Trade top predicted opportunities
+## 1. `.corr` (Pearson / Spearman) — [+]
+
+**What it does:** Pearson measures linear association; Spearman measures whether larger values tend to have larger ranks.
 
 ```python
-tmp = pd.DataFrame({
-    "pred": pred,
-    "pnl": realised_pnl
-})
-
-threshold = tmp["pred"].quantile(0.8)
-trades = tmp[tmp["pred"] >= threshold]
-
-print(trades["pnl"].sum())
-print(trades["pnl"].mean())
-print((trades["pnl"] > 0).mean())
+df["x"].corr(df["target"])
+df["x"].corr(df["target"], method="spearman")
 ```
 
-Select threshold on validation only.
+**Trap:** Neither implies causation, and low correlation need not imply no nonlinear predictability.
 
-## 12. Transaction costs
+## 2. MAE / RMSE / R² — [K MAE] / [+ others]
+
+**What they do:** MAE shows typical absolute errors; RMSE punishes occasional large errors more; R² measures improvement over predicting the target mean.
 
 ```python
-gross = position * future_return
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+y, pred = df["target"], df["prediction"]
+print("MAE", mean_absolute_error(y, pred))
+print("RMSE", mean_squared_error(y, pred)**0.5)
+print("R2", r2_score(y, pred))
+```
 
-turnover = np.abs(
-    position - np.roll(position, 1)
+## 3. Mean error and residuals — [+]
+
+**What they do:** Show whether the model systematically predicts too high/low and which examples it misses.
+
+```python
+df["error"] = df["target"] - df["prediction"]
+print(df["error"].mean())
+print(df["error"].quantile([0.05, 0.5, 0.95]))
+```
+
+## 4. Target-bucket error — [+]
+
+**What it does:** Checks whether high/low target values have much worse error than the overall average.
+
+```python
+df["bucket"] = pd.qcut(df["target"], 3, duplicates="drop")
+by_bucket = df.groupby("bucket", observed=True).apply(
+    lambda g: np.mean(np.abs(g["target"]-g["prediction"]))
 )
-turnover[0] = np.abs(position[0])
-
-cost_bps = 10
-net = gross - turnover * cost_bps / 10000
+print(by_bucket)
 ```
 
-## 13. Final model table + conclusion
+**Extra interpretation:** When selecting trades or rare opportunities, errors on extreme targets may matter more than overall RMSE.
+
+## 5. Predicted-decile/tercile realised mean — [+]
+
+**What it does:** Tests whether the model ranks observations in a useful order, even if absolute predictions are imperfect.
 
 ```python
-results = pd.DataFrame(results).sort_values("RMSE")
-display(results)
+df["pred_bin"] = pd.qcut(df["prediction"], 3, duplicates="drop")
+print(df.groupby("pred_bin", observed=True)["target"].agg(["mean", "size"]))
 ```
 
-Then write concise markdown:
+## 6. Out-of-sample stability — [+]
+
+**What it does:** Checks that a result does not rely on one particular segment of a chronological validation period.
+
+```python
+validation = df.reset_index(drop=True).copy()  # must already be chronological for this use
+# Split the ordered frame and calculate the same metric per block.
+for block in np.array_split(np.arange(len(validation)), 3):
+    s = validation.iloc[block]
+    print(mean_absolute_error(s["target"], s["prediction"]))
+```
+
+## 7. Classification metrics — [+]
+
+**What they do:** Precision counts how many predicted positives are correct; recall counts how many real positives you found; F1 combines both; ROC-AUC judges ranking across thresholds.
+
+```python
+from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score
+actual = np.array([0, 0, 1, 1, 0, 1])
+prob = np.array([0.1, 0.3, 0.6, 0.8, 0.4, 0.7])
+label = (prob >= 0.5).astype(int)
+print(precision_score(actual, label), recall_score(actual, label), f1_score(actual, label))
+print(roc_auc_score(actual, prob))
+```
+
+## 8. Simple confidence interval / bootstrap — [+ optional]
+
+**What they do:** Express uncertainty around a sample mean or model comparison instead of treating an observed difference as certain.
+
+```python
+x = np.array([3., 4., 5., 6., 7.])
+se = x.std(ddof=1)/np.sqrt(len(x))
+print((x.mean()-1.96*se, x.mean()+1.96*se))  # rough normal approximation
+```
+
+**Important:** Standard IID formulas are not appropriate without adjustment for strongly time-dependent observations.
+
+## 9. Two-sample test and bootstrap — [+ optional]
+
+**What they do:** A t-test compares group means under assumptions; a bootstrap resamples data to estimate sampling uncertainty.
+
+```python
+from scipy import stats  # if installed
+a = np.array([2., 4., 5., 6., 7.])
+b = np.array([1., 3., 3., 4., 5.])
+print(stats.ttest_ind(a, b, equal_var=False))
+rng = np.random.default_rng(42)
+diffs = [rng.choice(a, len(a), replace=True).mean() -
+         rng.choice(b, len(b), replace=True).mean() for _ in range(1000)]
+print(np.quantile(diffs, [.025, .975]))
+```
+
+**Use only when:** Time permits and the dependence assumptions make sense; resampling individual rows is often wrong for time series.
+
+---
+
+# 08 — Python and Jupyter survival (fast-reference)
+
+**Scope:** [+] Onsite addition. The named Kaggle courses assume some Python knowledge, so this fills the specific gap of being rusty in Python itself.
+
+## 1. Lists, dictionaries and loops — [+]
+
+**What they do:** Store groups of values or repeat the same calculation over a small list of columns.
+
+```python
+cols = ["age", "income"]
+weights = {"age": 0.2, "income": 0.8}
+for col in cols:
+    print(col)
+```
+
+## 2. Functions and comprehensions — [+]
+
+**What they do:** Package a calculation for reuse or construct a list by filtering another list.
+
+```python
+def mae(y, pred):
+    return abs(y - pred).mean()
+
+columns = ["age", "income", "id"]
+features = [c for c in columns if c != "id"]
+```
+
+## 3. Check Python, packages and working directory — [+]
+
+**What it does:** Tells you which kernel you're actually using and why Jupyter cannot find a file.
+
+```python
+import os, sys, pandas as pd, sklearn
+print(sys.version)
+print(sys.executable)
+print(os.getcwd())
+print(pd.__version__, sklearn.__version__)
+print(os.listdir("."))
+```
+
+## 4. Package install / speed test — [+]
+
+**What they do:** `%pip` installs in the active notebook environment; `%timeit` helps compare slow vs fast approaches.
+
+```python
+# These lines run in Jupyter only:
+# %pip install seaborn
+# %timeit sum(range(1000))
+```
+
+**Rule:** Avoid installing optional libraries unless they provide a decisive benefit.
+
+## 5. Read CSV with uncommon delimiter, decimal or encoding — [+]
+
+**What it does:** Corrects files that otherwise load as one giant column or fail due to text encoding.
+
+```python
+# pd.read_csv("data.csv", sep=";")
+# pd.read_csv("data.csv", decimal=",")
+# pd.read_csv("data.csv", encoding="latin1")
+```
+
+## 6. Fix common errors — [+]
+
+**What they do:** Reveal the mismatch instead of guessing the cause.
+
+```python
+# KeyError: inspect actual names
+# print(df.columns.tolist())
+# df.columns = df.columns.str.strip()
+
+# ValueError: could not convert string to float
+# print(X.select_dtypes(exclude="number").columns)
+
+# Model says NaN is present
+# print(X.isna().sum().sort_values(ascending=False).head())
+
+# Wrong shapes
+# print(X_train.shape, X_valid.shape, y_train.shape, y_valid.shape)
+```
+
+## 7. Restart / run all — [+]
+
+**What it does:** Confirms the final notebook works from a clean kernel rather than relying on variables created out of order.
+
+Use **Kernel → Restart and Run All** before concluding, if time permits. Save a copy of your work first.
+
+## 8. High-value internet documentation links — [+]
+
+- [Pandas API](https://pandas.pydata.org/docs/reference/index.html)
+- [NumPy reference](https://numpy.org/doc/stable/reference/)
+- [scikit-learn user guide](https://scikit-learn.org/stable/user_guide.html)
+- [Matplotlib examples](https://matplotlib.org/stable/gallery/index.html)
+
+**Best search:** `site:pandas.pydata.org DataFrame groupby agg`, not a broad search for a full solution to the entire problem.
+
+---
+
+# 09 — Reusable recipes for actual interview questions
+
+## Recipe A — “How many rows satisfy two conditions?” — [K]
+
+**What it does:** Creates a True/False mask and counts the True values.
+
+```python
+import pandas as pd
+people = pd.DataFrame({"age": [45, 58, 73], "bmi": [21., 19., 18.]})
+print(((people["age"] > 50) & (people["bmi"] < 20)).sum())
+```
+
+## Recipe B — “Which groups have the highest average target?” — [K]
+
+**What it does:** Compares target levels across categories.
+
+```python
+g = pd.DataFrame({"region": ["N", "S", "N"], "target": [10, 20, 30]})
+print(g.groupby("region")["target"].agg(["size", "mean"]).sort_values("mean", ascending=False))
+```
+
+## Recipe C — “Build a simple full regression pipeline” — [K]
+
+**What it does:** Fits a baseline, decision tree and forest to the same train/validation split so model performance is directly comparable.
+
+```python
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+
+# Replace X/y with your real cleaned numeric features and target.
+# X_train, X_valid, y_train, y_valid = train_test_split(X, y, test_size=.2, random_state=42)
+# models = {
+#     "tree": DecisionTreeRegressor(max_leaf_nodes=30, random_state=42),
+#     "forest": RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
+# }
+# baseline_mae = mean_absolute_error(y_valid, np.repeat(y_train.mean(), len(y_valid)))
+# for name, model in models.items():
+#     model.fit(X_train, y_train)
+#     print(name, mean_absolute_error(y_valid, model.predict(X_valid)))
+```
+
+## Recipe D — “My dataset has strings and missing values” — [K]
+
+**What it does:** Fits imputation and category encoding using *only training data* within a reusable pipeline.
+
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import RandomForestRegressor
+
+# Assume X is a DataFrame and y is a Series, already split.
+# nums = X_train.select_dtypes(include="number").columns.tolist()
+# cats = X_train.select_dtypes(exclude="number").columns.tolist()
+# pre = ColumnTransformer([
+#     ("num", SimpleImputer(strategy="median"), nums),
+#     ("cat", Pipeline([("imp", SimpleImputer(strategy="most_frequent")),
+#                       ("oh", OneHotEncoder(handle_unknown="ignore"))]), cats)
+# ])
+# pipe = Pipeline([("preprocess", pre), ("model", RandomForestRegressor(n_estimators=100, random_state=42))])
+# pipe.fit(X_train, y_train)
+# pred = pipe.predict(X_valid)
+```
+
+## Recipe E — “It has dates. Is it a forecasting problem?” — [K]
+
+**What it does:** Makes a past-only feature and compares it to a naïve recent-value forecast.
+
+```python
+series = pd.DataFrame({"date": pd.date_range("2025-01-01", periods=10),
+                       "y": [10, 11, 12, 10, 14, 13, 15, 16, 14, 18]})
+series = series.sort_values("date")
+series["lag1"] = series["y"].shift(1)
+series["roll3"] = series["y"].shift(1).rolling(3).mean()
+# Split by date, NOT with random shuffling.
+```
+
+## Recipe F — “Where does the model fail?” — [+]
+
+**What it does:** Compares absolute error for low, middle and high targets.
+
+```python
+results = pd.DataFrame({"actual": [10, 12, 25, 40, 50, 60],
+                        "pred": [11, 11, 22, 35, 42, 48]})
+results["bucket"] = pd.qcut(results["actual"], 3, duplicates="drop")
+print(results.groupby("bucket", observed=True).apply(
+    lambda d: (d["actual"] - d["pred"]).abs().mean()))
+```
+
+## Recipe G — “How should I present this?” — [+]
+
+**What it does:** Reduces the final notebook into a small number of findings rather than a chronology of every command.
 
 ```markdown
-## Conclusion
+## Objective
+Predict **[target]** from information available at **[time]**.
 
-- Best validation model: ...
-- Improvement versus baseline: ...
-- Main useful features: ...
-- Weakest region: ...
-- Main concern: ...
-- Next step: ...
+## Data
+[N rows], [M features]. Main issue: [missing/leaky/duplicates].
+
+## Model comparison
+| Model | Validation MAE | Comment |
+|---|---:|---|
+| Baseline | ... | ... |
+| Tree | ... | ... |
+| Random Forest | ... | ... |
+
+## Conclusion
+- Main improvement: ...
+- Weak region/subgroup: ...
+- Limitation: ...
+- If I had more time: ...
 ```
 
-## 14. If running out of time
+## Recipe H — “I have 25 minutes left” — [+]
 
-Stop adding features/models.
+**What it does:** Forces a finishable answer: stop feature engineering, run one baseline/model, write one comparison, create one plot and state limitations.
 
-Do:
-
-1. baseline
-2. one simple model
-3. one nonlinear model
-4. one comparison table
-5. actual-vs-predicted
-6. one error slice
-7. conclusions
-
-That is much better than five unfinished models.
+**Stop adding algorithms; tidy the notebook so the interviewer can follow it.**
 
 ---
 
-# Optional ML Methods
+# 10 — Optional tools: know they exist; use only if justified
 
-These are secondary tools. Do not reach for them before a baseline + simple model + validation are working.
+**Scope:** This file is deliberately **[+] beyond the four-course minimum**, except XGBoost itself is covered in Intermediate ML. It preserves the previous cheatsheet's optional syllabus without making it compulsory.
 
-## RobustScaler
+## 1. Ridge / Lasso — [+]
 
-Useful when numeric features have heavy tails/outliers.
+**What they do:** Fit simple linear relationships while penalising large coefficients (Ridge) or encouraging some to zero (Lasso).
 
 ```python
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge, Lasso
+ridge = make_pipeline(StandardScaler(), Ridge(alpha=1))
+lasso = make_pipeline(StandardScaler(), Lasso(alpha=0.1))
+# ridge.fit(X_train, y_train)
+```
+
+**Use when:** Small/noisy data; need interpretable, restrained alternative to flexible trees.
+
+## 2. `HuberRegressor` / `RobustScaler` — [+]
+
+**What they do:** Reduce the influence of outliers when fitting a linear model or calculating feature scale.
+
+```python
+from sklearn.linear_model import HuberRegressor
 from sklearn.preprocessing import RobustScaler
-
-model = Pipeline([
-    ("scale", RobustScaler()),
-    ("model", Ridge(alpha=1.0))
-])
+robust = make_pipeline(RobustScaler(), HuberRegressor())
 ```
 
-`RobustScaler` uses median/interquartile-range-type scaling rather than mean/std.
+## 3. `permutation_importance` — [+]
 
-## MinMaxScaler
+**What it does:** Measures how much a fitted model's score deteriorates when one feature is randomly shuffled.
 
 ```python
-from sklearn.preprocessing import MinMaxScaler
-
-scaler = MinMaxScaler()
+from sklearn.inspection import permutation_importance
+# perm = permutation_importance(model, X_valid, y_valid, n_repeats=3, random_state=42)
 ```
 
-Maps training feature range approximately to `[0,1]`. Usually unnecessary for trees.
+**Trap:** Correlated predictors can substitute for one another, making individual importance look weak.
 
-## Lasso
+## 4. PCA / mutual information — [+]
 
-```python
-from sklearn.linear_model import Lasso
-
-model = Pipeline([
-    ("scale", StandardScaler()),
-    ("model", Lasso(alpha=0.01, max_iter=5000))
-])
-```
-
-L1 penalty can set coefficients to zero. Useful for sparse feature selection, but can be unstable with correlated features.
-
-## Elastic Net
-
-```python
-from sklearn.linear_model import ElasticNet
-
-model = Pipeline([
-    ("scale", StandardScaler()),
-    ("model", ElasticNet(
-        alpha=0.01,
-        l1_ratio=0.5,
-        max_iter=5000
-    ))
-])
-```
-
-Combines Ridge and Lasso penalties.
-
-## Polynomial / interaction features
-
-```python
-from sklearn.preprocessing import PolynomialFeatures
-
-poly = PolynomialFeatures(
-    degree=2,
-    include_bias=False,
-    interaction_only=True
-)
-```
-
-Pipeline:
-
-```python
-model = Pipeline([
-    ("poly", PolynomialFeatures(
-        degree=2,
-        include_bias=False,
-        interaction_only=True
-    )),
-    ("scale", StandardScaler()),
-    ("ridge", Ridge(alpha=10))
-])
-```
-
-Can explode dimensionality. Use only for small feature sets or targeted interactions.
-
-## Mutual information
-
-Regression:
-
-```python
-from sklearn.feature_selection import mutual_info_regression
-
-mi = mutual_info_regression(
-    X_train,
-    y_train,
-    random_state=42
-)
-
-mi = pd.Series(
-    mi,
-    index=X_train.columns
-).sort_values(ascending=False)
-```
-
-Classification:
-
-```python
-from sklearn.feature_selection import mutual_info_classif
-```
-
-Captures some nonlinear dependence, but still use validation before selecting features.
-
-## SelectKBest
-
-```python
-from sklearn.feature_selection import SelectKBest, f_regression
-
-selector = SelectKBest(
-    score_func=f_regression,
-    k=10
-)
-```
-
-Avoid selecting features using test data.
-
-## PCA
+**What they do:** PCA compresses correlated numeric variables into new axes; mutual information screens for statistical dependence beyond linear correlation.
 
 ```python
 from sklearn.decomposition import PCA
-
-model = Pipeline([
-    ("scale", StandardScaler()),
-    ("pca", PCA(n_components=0.95)),
-    ("ridge", Ridge(alpha=1.0))
-])
+from sklearn.feature_selection import mutual_info_regression
+# Fit inside CV/pipeline; never fit PCA using test rows.
+# pca = PCA(n_components=5)
+# scores = mutual_info_regression(X_train_numeric, y_train, random_state=42)
 ```
 
-Useful with many strongly correlated numeric variables. Costs interpretability.
+## 5. Classification probability/threshold and calibration — [+]
 
-Explained variance:
+**What they do:** Turn a probability model into a decision, then check whether predicted probabilities resemble actual frequencies.
 
 ```python
-pca = PCA().fit(X_scaled)
-np.cumsum(pca.explained_variance_ratio_)
+import pandas as pd
+p = pd.Series([.1, .2, .5, .7, .9])
+labels = (p >= .4).astype(int)
 ```
 
-## Simple decision tree
+**Pick the threshold using validation and the costs of false positives vs false negatives.**
+
+## 6. SHAP (concept only) — [+]
+
+**What it does:** Allocates a prediction's departure from a reference value across individual input features.
+
+**Contrast:** Permutation importance describes loss of overall predictive performance after shuffling a feature; SHAP explains contributions for particular predictions. Don't install it mid-interview without a clear need.
+
+## 7. Simple trading signal metrics — [+]
+
+**What they do:** Compare a predictive score with the realised economic return and quantify risk/costs.
 
 ```python
-from sklearn.tree import DecisionTreeRegressor
-
-model = DecisionTreeRegressor(
-    max_depth=4,
-    min_samples_leaf=20,
-    random_state=42
-)
+import numpy as np
+r = np.array([.01, -.02, .015, .005])
+sharpe = np.sqrt(252) * r.mean() / r.std(ddof=1)
+wealth = np.cumprod(1+r)
+drawdown = wealth/np.maximum.accumulate(wealth) - 1
+print(sharpe, drawdown.min())
 ```
 
-Useful for interpreting nonlinear splits, but a single tree often overfits.
+**Only when relevant:** If the task is generic house-price or demand forecasting, do not invent a trading strategy.
 
-## GradientBoostingRegressor
+## 8. XGBoost — [K: Intermediate ML] / optional library
 
-Alternative if `HistGradientBoostingRegressor` is inconvenient:
+**What it does:** Sequentially builds many trees, concentrating on mistakes left by previous trees.
 
 ```python
-from sklearn.ensemble import GradientBoostingRegressor
-
-model = GradientBoostingRegressor(
-    n_estimators=200,
-    learning_rate=0.05,
-    max_depth=3,
-    random_state=42
-)
+# from xgboost import XGBRegressor
+# xgb = XGBRegressor(n_estimators=200, learning_rate=.05, random_state=42)
 ```
 
-## XGBoost — only if installed / clearly worthwhile
+**Fallback:** `sklearn.ensemble.HistGradientBoostingRegressor` avoids package-install risk.
+
+## 9. ElasticNet, polynomial features, statsmodels — [+ optional]
+
+**What they do:** ElasticNet combines Ridge/Lasso penalties; polynomial features add squares/interactions; statsmodels can provide classical regression summaries.
 
 ```python
-from xgboost import XGBRegressor
-
-model = XGBRegressor(
-    n_estimators=300,
-    learning_rate=0.05,
-    max_depth=4,
-    subsample=0.8,
-    colsample_bytree=0.8,
-    random_state=42
-)
+from sklearn.linear_model import ElasticNet
+from sklearn.preprocessing import PolynomialFeatures
+model = make_pipeline(StandardScaler(), ElasticNet(alpha=.1, l1_ratio=.5, max_iter=3000))
+poly = PolynomialFeatures(degree=2, include_bias=False)
+# Fit poly inside train-only pipeline; beware exploding feature count.
+# import statsmodels.api as sm    # optional package
+# sm.OLS(y_train, sm.add_constant(X_train_numeric)).fit().summary()
 ```
 
-Do not burn interview time debugging package installation if sklearn boosting is sufficient.
+**Not a priority:** Use only if the task asks for coefficient inference or the basic models are insufficient.
 
-## statsmodels OLS — if coefficient inference matters
+---
 
-```python
-import statsmodels.api as sm
-
-X_ols = sm.add_constant(X)
-model = sm.OLS(y, X_ols, missing="drop").fit()
-print(model.summary())
-```
-
-Useful if you specifically care about coefficients, standard errors and classical regression diagnostics. Not required for ordinary predictive modelling.
-
-## Variance Inflation Factor (VIF)
-
-```python
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-
-X_num = X_numeric.dropna().copy()
-
-vif = pd.Series(
-    [
-        variance_inflation_factor(X_num.values, i)
-        for i in range(X_num.shape[1])
-    ],
-    index=X_num.columns
-)
-```
-
-Can diagnose multicollinearity, but regularisation often makes this less urgent in predictive work.
-
-## KMeans — only if clustering is genuinely useful
-
-```python
-from sklearn.cluster import KMeans
-
-km = KMeans(
-    n_clusters=4,
-    random_state=42,
-    n_init=10
-)
-
-clusters = km.fit_predict(X_scaled)
-```
-
-Do not add clustering just to create features unless EDA gives a reason.

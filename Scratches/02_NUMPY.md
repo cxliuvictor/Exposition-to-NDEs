@@ -1,182 +1,122 @@
-# NumPy Cheatsheet
+# 02 — NumPy: only the array operations that make pandas/ML easier
+
+**Scope:** NumPy methods are an **addition [+]**; the four specified Kaggle courses use NumPy but do not teach a separate dedicated NumPy syllabus.
 
 ```python
 import numpy as np
+x = np.array([2., 4., 8., 16.])
+X = np.array([[2., 4.], [6., 8.], [10., 12.]])
 ```
 
-## Arrays / shape
+## 1. `array`, `.shape`, slicing — [+]
+
+**What they do:** Turn values into numerical arrays, check their dimensions and select parts of them.
 
 ```python
-x = np.array([1,2,3])
-X = df[["x1","x2","x3"]].to_numpy()
-
-X.shape
-X.ndim
-X.size
+X.shape     # (3 rows, 2 columns)
+X[:, 0]     # all rows, first column
+X[1, :]     # second row
 ```
 
-## Indexing
+## 2. `mean`, `std`, `nanmean`, `quantile` — [+]
+
+**What they do:** Summarise numerical values, optionally ignoring missing numbers.
 
 ```python
-X[0]
-X[:, 0]
-X[:10, :3]
-
-mask = X[:,0] > 0
-X[mask]
+X.mean(axis=0)                       # average of each column
+X.mean(axis=1)                       # average of each row
+np.nanmean(np.array([2., np.nan, 6.]))
+np.quantile(x, [0.1, 0.5, 0.9])
 ```
 
-## Aggregations and axes
+**Memory aid:** `axis=0` aggregates down the rows; `axis=1` aggregates across columns.
+
+## 3. Masks and `np.where` — [+]
+
+**What they do:** Select elements matching a condition or assign two alternative values without a loop.
 
 ```python
-X.mean(axis=0)   # column means
-X.mean(axis=1)   # row means
-
-np.nanmean(X, axis=0)
-np.nanstd(X, axis=0)
+x[x > 5]
+np.where(x > 5, "large", "small")
 ```
 
-## Broadcasting / standardisation
+## 4. Broadcasting — [+]
+
+**What it does:** Automatically stretches column-level numbers across every row, making vectorised calculations easy.
 
 ```python
-mu = np.nanmean(X, axis=0)
-sd = np.nanstd(X, axis=0)
-Z = (X - mu) / sd
+mu, sd = X.mean(axis=0), X.std(axis=0)
+Z = (X - mu) / sd             # standardise columns
 ```
 
-Row-wise:
+**Trap:** Check `.shape` if a subtraction gives unexpected results.
+
+## 5. `clip`, `log1p`, `sqrt` — [+]
+
+**What they do:** Compress extreme values and transform positive skewed variables.
 
 ```python
-mu_row = X.mean(axis=1, keepdims=True)
-sd_row = X.std(axis=1, keepdims=True)
-Z_row = (X - mu_row) / sd_row
+np.clip(x, 3, 12)
+np.log1p(x)                  # computes log(1+x), safe at x=0
+np.sqrt(x)
 ```
 
-## `where`
+**Decision rule:** Log is often sensible for counts/volumes; do not apply it blindly to negative observations.
+
+## 6. `argsort`, `cumsum`, `diff` — [+]
+
+**What they do:** Find the order of observations, accumulate values and compute changes.
 
 ```python
-signal = np.where(returns > 0, 1, -1)
-```
-
-Three-way:
-
-```python
-position = np.where(
-    signal > 1,
-    1,
-    np.where(signal < -1, -1, 0)
-)
-```
-
-## `select`
-
-```python
-conditions = [score < -1, score > 1]
-choices = [-1, 1]
-position = np.select(conditions, choices, default=0)
-```
-
-## Clip / quantiles
-
-```python
-lo, hi = np.quantile(x, [0.01, 0.99])
-x_clip = np.clip(x, lo, hi)
-```
-
-Column quantiles:
-
-```python
-np.quantile(X, [0.01,0.5,0.99], axis=0)
-```
-
-## Sorting / ranking
-
-```python
-idx = np.argsort(x)
-top_idx = np.argsort(-x)[:10]
-```
-
-## Difference / cumulative
-
-```python
-np.diff(x)
+np.argsort(-x)[:2]           # indices of top two
 np.cumsum(x)
-np.cumprod(1 + returns)
+np.diff(x)
 ```
 
-## Correlation / covariance
+## 7. `corrcoef`, random generator — [+]
+
+**What they do:** Measure simple linear relationships and create reproducible random samples.
 
 ```python
-np.corrcoef(X, rowvar=False)
-np.cov(X, rowvar=False)
-```
-
-## Reproducible randomness
-
-```python
+np.corrcoef(X, rowvar=False)   # correlations between columns
 rng = np.random.default_rng(42)
-x = rng.normal(0, 1, size=1000)
+noise = rng.normal(size=100)
 ```
 
-## Log / sigmoid / tanh
+## 8. Sine/cosine, sigmoid and interactions — [+]
+
+**What they do:** Represent circular time, flatten out an effect that saturates, or let two features influence one another.
 
 ```python
-log_x = np.log1p(x)
-sigmoid = 1 / (1 + np.exp(-x))
-tanh_x = np.tanh(x)
+hour = np.array([23, 0, 1])
+sin_hour = np.sin(2*np.pi*hour/24)
+cos_hour = np.cos(2*np.pi*hour/24)
+z = np.array([-2., 0., 2.])
+sigmoid = 1/(1 + np.exp(-z))
+interaction = X[:, 0] * X[:, 1]
 ```
 
-## Cyclic encoding
+## 9. NaNs, infinities and safe division — [+]
+
+**What they do:** Spot invalid numeric values before sklearn fitting.
 
 ```python
-hour_sin = np.sin(2*np.pi*hour/24)
-hour_cos = np.cos(2*np.pi*hour/24)
+bad = np.array([1., np.nan, np.inf])
+np.isnan(bad)
+np.isinf(bad)
+np.isfinite(bad)
+ratio = X[:, 0] / np.maximum(X[:, 1], 1e-8)
 ```
 
-## Interactions
+**Trap:** Adding `1e-8` is not a principled treatment of genuinely zero or negative denominators. Inspect the data first.
+
+## 10. `np.select`, `cumprod` — [+]
+
+**What they do:** `select` handles three or more conditional outcomes; `cumprod` compounds a sequence of gross returns.
 
 ```python
-interaction = x1 * x2
-ratio = x1 / (x2 + 1e-8)
-spread = x1 - x2
-```
-
-## Cross-sectional z-score
-
-For matrix `(time, assets)`:
-
-```python
-mu = np.nanmean(signal, axis=1, keepdims=True)
-sd = np.nanstd(signal, axis=1, keepdims=True)
-z = (signal - mu) / sd
-```
-
-## Sharpe
-
-```python
-sharpe = np.sqrt(252) * np.mean(returns) / np.std(returns, ddof=1)
-```
-
-## Max drawdown
-
-```python
-wealth = np.cumprod(1 + returns)
-peak = np.maximum.accumulate(wealth)
-drawdown = wealth / peak - 1
-max_drawdown = drawdown.min()
-```
-
-## Common array mistake
-
-If `x` is an array, do not write:
-
-```python
-if x > 0:
-    ...
-```
-
-Use a boolean mask:
-
-```python
-mask = x > 0
+score = np.array([-2., 0., 3.])
+np.select([score < -1, score > 1], [-1, 1], default=0)
+returns = np.array([.01, -.02, .015])
+np.cumprod(1 + returns)
 ```

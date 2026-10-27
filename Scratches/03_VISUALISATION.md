@@ -1,189 +1,119 @@
-# Visualisation Cheatsheet
+# 03 — Visualisation: simplest useful plots
 
-Use plots to answer questions, not decorate the notebook.
+**Scope:** The four named courses use plots but do not include Kaggle's separate Data Visualization course. These are **[+] onsite essentials**, kept deliberately short.
 
 ```python
+import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(1)
+df = pd.DataFrame({
+    "date": pd.date_range("2025-01-01", periods=100),
+    "x": rng.normal(size=100),
+    "y": rng.normal(size=100),
+    "group": rng.choice(["A", "B"], size=100)
+})
+df["target"] = 2*df["x"] + rng.normal(size=100)
 ```
 
-## Histogram
+## 1. `hist` and `df.hist` — [+]
+
+**What they do:** Show a variable's distribution, including skew, gaps, extreme values and possible data errors.
 
 ```python
-fig, ax = plt.subplots(figsize=(6,4))
-ax.hist(df["target"].dropna(), bins=30)
-ax.set_title("Target distribution")
+fig, ax = plt.subplots(figsize=(6, 3))
+ax.hist(df["target"], bins=25)
+ax.set(title="Target distribution", xlabel="Target", ylabel="Count")
 plt.show()
+
+df[["x", "y", "target"]].hist(figsize=(9, 5), bins=20)
+plt.tight_layout(); plt.show()
 ```
 
-## Scatter
+## 2. `plot` — [+]
+
+**What it does:** Shows whether a variable changes over time or has unusual periods.
 
 ```python
-fig, ax = plt.subplots(figsize=(6,4))
-ax.scatter(df["feature"], df["target"], alpha=0.3)
-ax.set_xlabel("Feature")
-ax.set_ylabel("Target")
-plt.show()
-```
-
-## Time series
-
-```python
-fig, ax = plt.subplots(figsize=(10,4))
+fig, ax = plt.subplots(figsize=(8, 3))
 ax.plot(df["date"], df["target"])
+ax.set(title="Target through time", xlabel="Date", ylabel="Target")
 plt.show()
 ```
 
-Rolling overlay:
+## 3. `scatter` — [+]
+
+**What it does:** Shows whether a feature and target tend to move together or show a nonlinear shape.
 
 ```python
-ax.plot(
-    df["date"],
-    df["target"].rolling(30).mean(),
-    label="30-period mean"
-)
-ax.legend()
-```
-
-## Multiple subplots
-
-```python
-cols = ["x1","x2","x3","x4"]
-fig, axes = plt.subplots(2, 2, figsize=(10,7))
-
-for ax, c in zip(axes.ravel(), cols):
-    ax.hist(df[c].dropna(), bins=30)
-    ax.set_title(c)
-
-fig.tight_layout()
+fig, ax = plt.subplots(figsize=(5, 3))
+ax.scatter(df["x"], df["target"], alpha=0.45)
+ax.set(xlabel="Feature x", ylabel="Target")
 plt.show()
 ```
 
-## Boxplot
+## 4. Bar chart of group means — [+]
+
+**What it does:** Compares average target values across categories.
 
 ```python
-cats = df["category"].dropna().unique()
-groups = [df.loc[df["category"] == c, "target"] for c in cats]
-
-fig, ax = plt.subplots()
-ax.boxplot(groups, labels=cats)
-plt.show()
+df.groupby("group")["target"].mean().plot.bar(title="Mean target by group")
+plt.tight_layout(); plt.show()
 ```
 
-## Correlation heatmap — matplotlib
+## 5. `subplots` — [+]
+
+**What it does:** Puts several related plots in one compact figure rather than making many separate figures.
 
 ```python
-num = df.select_dtypes(include="number")
-corr = num.corr()
+fig, axes = plt.subplots(1, 2, figsize=(9, 3))
+axes[0].hist(df["x"], bins=20)
+axes[1].scatter(df["x"], df["target"], alpha=0.4)
+axes[0].set_title("Feature distribution")
+axes[1].set_title("Feature vs target")
+fig.tight_layout(); plt.show()
+```
 
-fig, ax = plt.subplots(figsize=(8,7))
-im = ax.imshow(corr, vmin=-1, vmax=1, aspect="auto")
-ax.set_xticks(range(len(corr.columns)))
+## 6. Correlation heatmap — [+]
+
+**What it does:** Shows which numerical columns have strong linear relationships, including pairs of redundant predictors.
+
+```python
+corr = df.select_dtypes(include=np.number).corr()
+fig, ax = plt.subplots(figsize=(5, 4))
+im = ax.imshow(corr, vmin=-1, vmax=1)
+ax.set_xticks(range(len(corr))); ax.set_yticks(range(len(corr)))
 ax.set_xticklabels(corr.columns, rotation=90)
-ax.set_yticks(range(len(corr.columns)))
 ax.set_yticklabels(corr.columns)
 fig.colorbar(im, ax=ax)
-fig.tight_layout()
-plt.show()
+fig.tight_layout(); plt.show()
 ```
 
-## Actual vs predicted
+## 7. `actual` vs `predicted` and residuals — [+]
+
+**What they do:** Show bias, systematic mistakes and whether errors grow for large targets.
 
 ```python
-fig, ax = plt.subplots(figsize=(5,5))
-ax.scatter(y_valid, pred, alpha=0.3)
-
-lo = min(y_valid.min(), pred.min())
-hi = max(y_valid.max(), pred.max())
-ax.plot([lo,hi], [lo,hi], "--")
-
-ax.set_xlabel("Actual")
-ax.set_ylabel("Predicted")
-ax.set_title("Actual vs predicted")
-plt.show()
+actual = df["target"].to_numpy()
+predicted = 1.7 * df["x"].to_numpy()
+fig, axes = plt.subplots(1, 2, figsize=(9, 3))
+axes[0].scatter(actual, predicted, alpha=0.4)
+axes[0].set(xlabel="Actual", ylabel="Predicted")
+axes[1].scatter(predicted, actual-predicted, alpha=0.4)
+axes[1].axhline(0, ls="--", color="grey")
+axes[1].set(xlabel="Predicted", ylabel="Residual")
+fig.tight_layout(); plt.show()
 ```
 
-## Residual plot
+## 8. Seaborn if already installed — [+ optional]
+
+**What it does:** Offers compact alternatives to matplotlib for standard histograms and heatmaps.
 
 ```python
-resid = y_valid - pred
-
-fig, ax = plt.subplots(figsize=(6,4))
-ax.scatter(pred, resid, alpha=0.3)
-ax.axhline(0, linestyle="--")
-ax.set_xlabel("Predicted")
-ax.set_ylabel("Residual")
-plt.show()
+# import seaborn as sns
+# sns.histplot(data=df, x="target", bins=30)
+# sns.heatmap(df[["x", "y", "target"]].corr(), annot=True)
 ```
 
-## Bucket response curve
-
-```python
-tmp = pd.DataFrame({
-    "feature": df["feature"],
-    "target": df["target"]
-})
-
-tmp["bucket"] = pd.qcut(tmp["feature"], 10, duplicates="drop")
-resp = tmp.groupby("bucket", observed=True)["target"].mean()
-
-fig, ax = plt.subplots()
-ax.plot(range(len(resp)), resp.values, marker="o")
-ax.set_xlabel("Feature decile")
-ax.set_ylabel("Mean target")
-plt.show()
-```
-
-## Save figure
-
-```python
-fig.savefig("figure.png", dpi=180, bbox_inches="tight")
-```
-
-# Seaborn — if installed
-
-```python
-import seaborn as sns
-```
-
-Distribution:
-
-```python
-sns.histplot(data=df, x="target", bins=30, kde=True)
-```
-
-Scatter:
-
-```python
-sns.scatterplot(data=df, x="feature", y="target", alpha=0.4)
-```
-
-Boxplot:
-
-```python
-sns.boxplot(data=df, x="category", y="target")
-```
-
-Heatmap:
-
-```python
-sns.heatmap(
-    df.select_dtypes(include="number").corr(),
-    cmap="coolwarm",
-    center=0
-)
-```
-
-Pairplot — use sparingly:
-
-```python
-sns.pairplot(
-    df[["x1","x2","x3","target"]].sample(
-        min(1000, len(df)),
-        random_state=42
-    )
-)
-```
-
-## Interview rule
-
-Prefer 2–4 clear plots tied to hypotheses over a large decorative EDA dump.
+**Rule:** Do not install another plotting library under time pressure just to make the figures prettier.

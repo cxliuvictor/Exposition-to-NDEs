@@ -1,239 +1,111 @@
-# Optional ML Methods
+# 10 — Optional tools: know they exist; use only if justified
 
-These are secondary tools. Do not reach for them before a baseline + simple model + validation are working.
+**Scope:** This file is deliberately **[+] beyond the four-course minimum**, except XGBoost itself is covered in Intermediate ML. It preserves the previous cheatsheet's optional syllabus without making it compulsory.
 
-## RobustScaler
+## 1. Ridge / Lasso — [+]
 
-Useful when numeric features have heavy tails/outliers.
+**What they do:** Fit simple linear relationships while penalising large coefficients (Ridge) or encouraging some to zero (Lasso).
 
 ```python
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Ridge, Lasso
+ridge = make_pipeline(StandardScaler(), Ridge(alpha=1))
+lasso = make_pipeline(StandardScaler(), Lasso(alpha=0.1))
+# ridge.fit(X_train, y_train)
+```
+
+**Use when:** Small/noisy data; need interpretable, restrained alternative to flexible trees.
+
+## 2. `HuberRegressor` / `RobustScaler` — [+]
+
+**What they do:** Reduce the influence of outliers when fitting a linear model or calculating feature scale.
+
+```python
+from sklearn.linear_model import HuberRegressor
 from sklearn.preprocessing import RobustScaler
-
-model = Pipeline([
-    ("scale", RobustScaler()),
-    ("model", Ridge(alpha=1.0))
-])
+robust = make_pipeline(RobustScaler(), HuberRegressor())
 ```
 
-`RobustScaler` uses median/interquartile-range-type scaling rather than mean/std.
+## 3. `permutation_importance` — [+]
 
-## MinMaxScaler
+**What it does:** Measures how much a fitted model's score deteriorates when one feature is randomly shuffled.
 
 ```python
-from sklearn.preprocessing import MinMaxScaler
-
-scaler = MinMaxScaler()
+from sklearn.inspection import permutation_importance
+# perm = permutation_importance(model, X_valid, y_valid, n_repeats=3, random_state=42)
 ```
 
-Maps training feature range approximately to `[0,1]`. Usually unnecessary for trees.
+**Trap:** Correlated predictors can substitute for one another, making individual importance look weak.
 
-## Lasso
+## 4. PCA / mutual information — [+]
 
-```python
-from sklearn.linear_model import Lasso
-
-model = Pipeline([
-    ("scale", StandardScaler()),
-    ("model", Lasso(alpha=0.01, max_iter=5000))
-])
-```
-
-L1 penalty can set coefficients to zero. Useful for sparse feature selection, but can be unstable with correlated features.
-
-## Elastic Net
-
-```python
-from sklearn.linear_model import ElasticNet
-
-model = Pipeline([
-    ("scale", StandardScaler()),
-    ("model", ElasticNet(
-        alpha=0.01,
-        l1_ratio=0.5,
-        max_iter=5000
-    ))
-])
-```
-
-Combines Ridge and Lasso penalties.
-
-## Polynomial / interaction features
-
-```python
-from sklearn.preprocessing import PolynomialFeatures
-
-poly = PolynomialFeatures(
-    degree=2,
-    include_bias=False,
-    interaction_only=True
-)
-```
-
-Pipeline:
-
-```python
-model = Pipeline([
-    ("poly", PolynomialFeatures(
-        degree=2,
-        include_bias=False,
-        interaction_only=True
-    )),
-    ("scale", StandardScaler()),
-    ("ridge", Ridge(alpha=10))
-])
-```
-
-Can explode dimensionality. Use only for small feature sets or targeted interactions.
-
-## Mutual information
-
-Regression:
-
-```python
-from sklearn.feature_selection import mutual_info_regression
-
-mi = mutual_info_regression(
-    X_train,
-    y_train,
-    random_state=42
-)
-
-mi = pd.Series(
-    mi,
-    index=X_train.columns
-).sort_values(ascending=False)
-```
-
-Classification:
-
-```python
-from sklearn.feature_selection import mutual_info_classif
-```
-
-Captures some nonlinear dependence, but still use validation before selecting features.
-
-## SelectKBest
-
-```python
-from sklearn.feature_selection import SelectKBest, f_regression
-
-selector = SelectKBest(
-    score_func=f_regression,
-    k=10
-)
-```
-
-Avoid selecting features using test data.
-
-## PCA
+**What they do:** PCA compresses correlated numeric variables into new axes; mutual information screens for statistical dependence beyond linear correlation.
 
 ```python
 from sklearn.decomposition import PCA
-
-model = Pipeline([
-    ("scale", StandardScaler()),
-    ("pca", PCA(n_components=0.95)),
-    ("ridge", Ridge(alpha=1.0))
-])
+from sklearn.feature_selection import mutual_info_regression
+# Fit inside CV/pipeline; never fit PCA using test rows.
+# pca = PCA(n_components=5)
+# scores = mutual_info_regression(X_train_numeric, y_train, random_state=42)
 ```
 
-Useful with many strongly correlated numeric variables. Costs interpretability.
+## 5. Classification probability/threshold and calibration — [+]
 
-Explained variance:
+**What they do:** Turn a probability model into a decision, then check whether predicted probabilities resemble actual frequencies.
 
 ```python
-pca = PCA().fit(X_scaled)
-np.cumsum(pca.explained_variance_ratio_)
+import pandas as pd
+p = pd.Series([.1, .2, .5, .7, .9])
+labels = (p >= .4).astype(int)
 ```
 
-## Simple decision tree
+**Pick the threshold using validation and the costs of false positives vs false negatives.**
+
+## 6. SHAP (concept only) — [+]
+
+**What it does:** Allocates a prediction's departure from a reference value across individual input features.
+
+**Contrast:** Permutation importance describes loss of overall predictive performance after shuffling a feature; SHAP explains contributions for particular predictions. Don't install it mid-interview without a clear need.
+
+## 7. Simple trading signal metrics — [+]
+
+**What they do:** Compare a predictive score with the realised economic return and quantify risk/costs.
 
 ```python
-from sklearn.tree import DecisionTreeRegressor
-
-model = DecisionTreeRegressor(
-    max_depth=4,
-    min_samples_leaf=20,
-    random_state=42
-)
+import numpy as np
+r = np.array([.01, -.02, .015, .005])
+sharpe = np.sqrt(252) * r.mean() / r.std(ddof=1)
+wealth = np.cumprod(1+r)
+drawdown = wealth/np.maximum.accumulate(wealth) - 1
+print(sharpe, drawdown.min())
 ```
 
-Useful for interpreting nonlinear splits, but a single tree often overfits.
+**Only when relevant:** If the task is generic house-price or demand forecasting, do not invent a trading strategy.
 
-## GradientBoostingRegressor
+## 8. XGBoost — [K: Intermediate ML] / optional library
 
-Alternative if `HistGradientBoostingRegressor` is inconvenient:
+**What it does:** Sequentially builds many trees, concentrating on mistakes left by previous trees.
 
 ```python
-from sklearn.ensemble import GradientBoostingRegressor
-
-model = GradientBoostingRegressor(
-    n_estimators=200,
-    learning_rate=0.05,
-    max_depth=3,
-    random_state=42
-)
+# from xgboost import XGBRegressor
+# xgb = XGBRegressor(n_estimators=200, learning_rate=.05, random_state=42)
 ```
 
-## XGBoost — only if installed / clearly worthwhile
+**Fallback:** `sklearn.ensemble.HistGradientBoostingRegressor` avoids package-install risk.
+
+## 9. ElasticNet, polynomial features, statsmodels — [+ optional]
+
+**What they do:** ElasticNet combines Ridge/Lasso penalties; polynomial features add squares/interactions; statsmodels can provide classical regression summaries.
 
 ```python
-from xgboost import XGBRegressor
-
-model = XGBRegressor(
-    n_estimators=300,
-    learning_rate=0.05,
-    max_depth=4,
-    subsample=0.8,
-    colsample_bytree=0.8,
-    random_state=42
-)
+from sklearn.linear_model import ElasticNet
+from sklearn.preprocessing import PolynomialFeatures
+model = make_pipeline(StandardScaler(), ElasticNet(alpha=.1, l1_ratio=.5, max_iter=3000))
+poly = PolynomialFeatures(degree=2, include_bias=False)
+# Fit poly inside train-only pipeline; beware exploding feature count.
+# import statsmodels.api as sm    # optional package
+# sm.OLS(y_train, sm.add_constant(X_train_numeric)).fit().summary()
 ```
 
-Do not burn interview time debugging package installation if sklearn boosting is sufficient.
-
-## statsmodels OLS — if coefficient inference matters
-
-```python
-import statsmodels.api as sm
-
-X_ols = sm.add_constant(X)
-model = sm.OLS(y, X_ols, missing="drop").fit()
-print(model.summary())
-```
-
-Useful if you specifically care about coefficients, standard errors and classical regression diagnostics. Not required for ordinary predictive modelling.
-
-## Variance Inflation Factor (VIF)
-
-```python
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-
-X_num = X_numeric.dropna().copy()
-
-vif = pd.Series(
-    [
-        variance_inflation_factor(X_num.values, i)
-        for i in range(X_num.shape[1])
-    ],
-    index=X_num.columns
-)
-```
-
-Can diagnose multicollinearity, but regularisation often makes this less urgent in predictive work.
-
-## KMeans — only if clustering is genuinely useful
-
-```python
-from sklearn.cluster import KMeans
-
-km = KMeans(
-    n_clusters=4,
-    random_state=42,
-    n_init=10
-)
-
-clusters = km.fit_predict(X_scaled)
-```
-
-Do not add clustering just to create features unless EDA gives a reason.
+**Not a priority:** Use only if the task asks for coefficient inference or the basic models are insufficient.

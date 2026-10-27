@@ -1,173 +1,124 @@
-# Statistics + Diagnostics Cheatsheet
+# 07 — Statistics and diagnostics: what to check after fitting
 
-## Pearson correlation
-
-Linear association:
+**Course basis:** Intro ML measures generalisation mainly through MAE; Intermediate ML uses CV; Time Series examines trend/seasonality. Remaining diagnostics below are **[+] onsite-useful additions**.
 
 ```python
-df["x"].corr(df["y"], method="pearson")
+import numpy as np
+import pandas as pd
+
+df = pd.DataFrame({
+    "x": [1., 2., 3., 4., 5., 6.],
+    "target": [2., 3., 4., 8., 10., 11.],
+    "prediction": [2., 3., 5., 6., 8., 11.]
+})
 ```
 
-## Spearman correlation
+## 1. `.corr` (Pearson / Spearman) — [+]
 
-Monotonic/rank association:
+**What it does:** Pearson measures linear association; Spearman measures whether larger values tend to have larger ranks.
 
 ```python
-df["x"].corr(df["y"], method="spearman")
+df["x"].corr(df["target"])
+df["x"].corr(df["target"], method="spearman")
 ```
 
-## Correlation matrix
+**Trap:** Neither implies causation, and low correlation need not imply no nonlinear predictability.
+
+## 2. MAE / RMSE / R² — [K MAE] / [+ others]
+
+**What they do:** MAE shows typical absolute errors; RMSE punishes occasional large errors more; R² measures improvement over predicting the target mean.
 
 ```python
-corr = df.select_dtypes(include=np.number).corr()
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+y, pred = df["target"], df["prediction"]
+print("MAE", mean_absolute_error(y, pred))
+print("RMSE", mean_squared_error(y, pred)**0.5)
+print("R2", r2_score(y, pred))
 ```
 
-## Conditional means / decile response
+## 3. Mean error and residuals — [+]
+
+**What they do:** Show whether the model systematically predicts too high/low and which examples it misses.
 
 ```python
-df["bucket"] = pd.qcut(df["feature"], 10, duplicates="drop")
+df["error"] = df["target"] - df["prediction"]
+print(df["error"].mean())
+print(df["error"].quantile([0.05, 0.5, 0.95]))
+```
 
-response = (
-    df.groupby("bucket", observed=True)["target"]
-      .agg(["mean","std","count"])
+## 4. Target-bucket error — [+]
+
+**What it does:** Checks whether high/low target values have much worse error than the overall average.
+
+```python
+df["bucket"] = pd.qcut(df["target"], 3, duplicates="drop")
+by_bucket = df.groupby("bucket", observed=True).apply(
+    lambda g: np.mean(np.abs(g["target"]-g["prediction"]))
 )
+print(by_bucket)
 ```
 
-A smooth monotonic response can be more informative than one correlation number.
+**Extra interpretation:** When selecting trades or rare opportunities, errors on extreme targets may matter more than overall RMSE.
 
-## Standard error of mean
+## 5. Predicted-decile/tercile realised mean — [+]
+
+**What it does:** Tests whether the model ranks observations in a useful order, even if absolute predictions are imperfect.
 
 ```python
-x = df["target"].dropna()
-sem = x.std(ddof=1) / np.sqrt(len(x))
+df["pred_bin"] = pd.qcut(df["prediction"], 3, duplicates="drop")
+print(df.groupby("pred_bin", observed=True)["target"].agg(["mean", "size"]))
 ```
 
-## Approximate 95% confidence interval
+## 6. Out-of-sample stability — [+]
+
+**What it does:** Checks that a result does not rely on one particular segment of a chronological validation period.
 
 ```python
-mean = x.mean()
-sem = x.std(ddof=1) / np.sqrt(len(x))
-
-lower = mean - 1.96 * sem
-upper = mean + 1.96 * sem
+validation = df.reset_index(drop=True).copy()  # must already be chronological for this use
+# Split the ordered frame and calculate the same metric per block.
+for block in np.array_split(np.arange(len(validation)), 3):
+    s = validation.iloc[block]
+    print(mean_absolute_error(s["target"], s["prediction"]))
 ```
 
-## scipy tests
+## 7. Classification metrics — [+]
+
+**What they do:** Precision counts how many predicted positives are correct; recall counts how many real positives you found; F1 combines both; ROC-AUC judges ranking across thresholds.
 
 ```python
-from scipy import stats
+from sklearn.metrics import precision_score, recall_score, f1_score, roc_auc_score
+actual = np.array([0, 0, 1, 1, 0, 1])
+prob = np.array([0.1, 0.3, 0.6, 0.8, 0.4, 0.7])
+label = (prob >= 0.5).astype(int)
+print(precision_score(actual, label), recall_score(actual, label), f1_score(actual, label))
+print(roc_auc_score(actual, prob))
 ```
 
-Independent Welch t-test:
+## 8. Simple confidence interval / bootstrap — [+ optional]
+
+**What they do:** Express uncertainty around a sample mean or model comparison instead of treating an observed difference as certain.
 
 ```python
-stats.ttest_ind(
-    group_a,
-    group_b,
-    equal_var=False,
-    nan_policy="omit"
-)
+x = np.array([3., 4., 5., 6., 7.])
+se = x.std(ddof=1)/np.sqrt(len(x))
+print((x.mean()-1.96*se, x.mean()+1.96*se))  # rough normal approximation
 ```
 
-Paired t-test:
+**Important:** Standard IID formulas are not appropriate without adjustment for strongly time-dependent observations.
+
+## 9. Two-sample test and bootstrap — [+ optional]
+
+**What they do:** A t-test compares group means under assumptions; a bootstrap resamples data to estimate sampling uncertainty.
 
 ```python
-stats.ttest_rel(before, after, nan_policy="omit")
-```
-
-Mann-Whitney:
-
-```python
-stats.mannwhitneyu(group_a, group_b, alternative="two-sided")
-```
-
-In an onsite, effect size + validation often matter more than a p-value.
-
-## Bootstrap mean difference
-
-```python
+from scipy import stats  # if installed
+a = np.array([2., 4., 5., 6., 7.])
+b = np.array([1., 3., 3., 4., 5.])
+print(stats.ttest_ind(a, b, equal_var=False))
 rng = np.random.default_rng(42)
-diffs = []
-
-for _ in range(5000):
-    a = rng.choice(group_a, size=len(group_a), replace=True)
-    b = rng.choice(group_b, size=len(group_b), replace=True)
-    diffs.append(a.mean() - b.mean())
-
-np.quantile(diffs, [0.025,0.975])
+diffs = [rng.choice(a, len(a), replace=True).mean() -
+         rng.choice(b, len(b), replace=True).mean() for _ in range(1000)]
+print(np.quantile(diffs, [.025, .975]))
 ```
 
-## Residuals
-
-```python
-resid = y - pred
-
-resid.mean()
-resid.std()
-np.quantile(resid, [0.01,0.05,0.5,0.95,0.99])
-```
-
-## Heteroskedasticity clue
-
-```python
-plt.scatter(pred, resid, alpha=0.3)
-plt.axhline(0, linestyle="--")
-```
-
-Fan-shaped residual spread suggests variance changes with prediction level.
-
-## Error by target bucket
-
-```python
-tmp = pd.DataFrame({"y": y, "pred": pred})
-tmp["bucket"] = pd.qcut(tmp["y"], 5, duplicates="drop")
-
-def rmse(g):
-    return np.sqrt(np.mean((g["y"] - g["pred"]) ** 2))
-
-bucket_rmse = tmp.groupby("bucket", observed=True).apply(rmse)
-```
-
-## Predicted-decile response
-
-```python
-tmp["pred_decile"] = pd.qcut(tmp["pred"], 10, duplicates="drop")
-
-summary = (
-    tmp.groupby("pred_decile", observed=True)["y"]
-       .agg(["mean","count"])
-)
-```
-
-Useful for ranking/trading/prioritisation.
-
-## Classification calibration-style check
-
-```python
-tmp = pd.DataFrame({"prob": prob, "y": y_valid})
-tmp["decile"] = pd.qcut(tmp["prob"], 10, duplicates="drop")
-
-cal = (
-    tmp.groupby("decile", observed=True)
-       .agg(
-           mean_prob=("prob","mean"),
-           realised_rate=("y","mean"),
-           n=("y","size")
-       )
-)
-```
-
-## Robustness by period
-
-```python
-tmp = tmp.sort_values("date").reset_index(drop=True)
-tmp["period"] = pd.qcut(
-    tmp.index,
-    3,
-    labels=["early","middle","late"]
-)
-```
-
-Then recompute your metric by period.
-
-Ask whether performance is concentrated in one regime.
+**Use only when:** Time permits and the dependence assumptions make sense; resampling individual rows is often wrong for time series.

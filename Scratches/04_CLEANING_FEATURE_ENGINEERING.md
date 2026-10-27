@@ -1,224 +1,150 @@
-# Cleaning + Feature Engineering Cheatsheet
+# 04 — Cleaning and feature engineering
 
-## Compact audit table
+**Course basis:** Pandas lesson 5 (data types and missing values); Intermediate ML lessons 2, 3, 4 and 7 (missing, categorical, pipelines, leakage). **[+]** items address onsite-specific edge cases and feature hypotheses.
 
 ```python
-audit = pd.DataFrame({
+import numpy as np
+import pandas as pd
+
+df = pd.DataFrame({
+    "age": [25, 41, 35, 41, 80],
+    "income": [50000, np.nan, 72000, np.nan, -999],
+    "city": ["London", "Paris", "unknown", "Paris", "London"],
+    "month": [12, 1, 2, 3, 4],
+    "target": [0, 1, 0, 1, 1]
+})
+```
+
+## 1. Audit missingness and dtypes — [K]
+
+**What it does:** Shows how many records would be affected if you drop or impute each field.
+
+```python
+pd.DataFrame({
     "dtype": df.dtypes.astype(str),
-    "missing_n": df.isna().sum(),
+    "missing": df.isna().sum(),
     "missing_pct": df.isna().mean(),
-    "nunique": df.nunique(dropna=False)
-}).sort_values("missing_pct", ascending=False)
+    "unique": df.nunique(dropna=False)
+})
 ```
 
-## Constants
+## 2. `dropna`, `fillna`, `SimpleImputer` — [K]
+
+**What they do:** Delete incomplete rows/columns or substitute a learnt typical value for missing cells.
 
 ```python
-constant_cols = [
-    c for c in df.columns
-    if df[c].nunique(dropna=False) <= 1
-]
+df.dropna(subset=["target"])                    # target needs to be known
+income_fill = df["income"].replace(-999, np.nan).median()
+df["income"].replace(-999, np.nan).fillna(income_fill)
 ```
 
-## Near constants
+**For modelling, prefer:**
 
 ```python
-near_constant = []
-
-for c in df.columns:
-    top_freq = df[c].value_counts(normalize=True, dropna=False).iloc[0]
-    if top_freq > 0.99:
-        near_constant.append(c)
+from sklearn.impute import SimpleImputer
+imp = SimpleImputer(strategy="median")
+# imp.fit(X_train[numeric_cols]); imp.transform(X_valid[numeric_cols])
 ```
 
-## Infinite values
+**Trap:** `fit` learns the median and should use training observations only. Put it inside a pipeline.
+
+## 3. Handle categorical values — [K]
+
+**What it does:** Turns strings into input the model can understand.
 
 ```python
-num_cols = df.select_dtypes(include=np.number).columns
-
-inf_counts = {
-    c: np.isinf(df[c]).sum()
-    for c in num_cols
-}
+pd.get_dummies(df[["city"]])  # quick exploratory encoding
+# In sklearn pipelines, use OneHotEncoder(handle_unknown="ignore") instead.
 ```
 
-Replace:
+**Choices from Intermediate ML:** drop the feature, ordinal encoding (only when ordering is meaningful or model-compatible), or one-hot encoding.
+
+## 4. `astype`, `to_numeric`, `to_datetime` — [K]/[+]
+
+**What they do:** Repair columns read with the wrong type.
 
 ```python
-df[num_cols] = df[num_cols].replace([np.inf, -np.inf], np.nan)
+df["age"].astype(float)
+pd.to_numeric(pd.Series(["1.4", "?", "2.6"]), errors="coerce")
+pd.to_datetime(pd.Series(["2025-01-01", "bad"]), errors="coerce")
 ```
 
-## Sentinel values
+## 5. Duplicates, constants and sentinel values — [+]
+
+**What they do:** Catch repeated records, useless columns and special codes that look numeric but mean missing.
 
 ```python
-(df["feature"] == -999).sum()
+df.duplicated().sum()
+df.duplicated(subset=["age", "month"]).sum()  # only if these should form a key
+constant_cols = [c for c in df if df[c].nunique(dropna=False) <= 1]
+df["income"] = df["income"].replace(-999, np.nan)
 ```
 
-```python
-df.loc[df["feature"] == -999, "feature"] = np.nan
-```
+**Trap:** A valid repeated customer transaction is not automatically a duplicate error.
 
-## Impossible values
+## 6. Infinities and impossible values — [+]
+
+**What they do:** Identify numbers that sklearn cannot usually handle or that violate the meaning of the variable.
 
 ```python
+numeric = df.select_dtypes(include=np.number).columns
+inf_count = np.isinf(df[numeric]).sum()
+df[numeric] = df[numeric].replace([np.inf, -np.inf], np.nan)
 df.loc[df["age"] < 0]
-df.loc[df["probability"] > 1]
-df.loc[df["price"] < 0]
 ```
 
-Do not automatically delete: determine whether it is a real extreme, a coding error, a sentinel, or a unit problem.
+## 7. Skew/outliers: log, clip, quantiles — [+]
 
-## Outliers
+**What they do:** Reduce the influence of very large observations without assuming they are data errors.
 
 ```python
-df["x"].quantile([0.01,0.05,0.5,0.95,0.99])
+s = pd.Series([0, 1, 2, 4, 100.])
+np.log1p(s)                                       # only if all values > -1
+lo, hi = s.quantile([0.01, 0.99])
+s.clip(lo, hi)
 ```
 
-IQR:
+**Critical:** A tail may be economically important; measure error in that region before discarding/clipping it.
+
+## 8. Cyclic calendar representation — [K: Time Series seasonality] / [+ direct encoding]
+
+**What it does:** Makes December and January close to each other, unlike the raw integers 12 and 1.
 
 ```python
-q1 = df["x"].quantile(0.25)
-q3 = df["x"].quantile(0.75)
-iqr = q3 - q1
-lower = q1 - 1.5 * iqr
-upper = q3 + 1.5 * iqr
+m = df["month"]
+df["month_sin"] = np.sin(2*np.pi*m/12)
+df["month_cos"] = np.cos(2*np.pi*m/12)
 ```
 
-Winsorise:
+## 9. Lags and rolling features — [K: Time Series]
+
+**What they do:** Use recent and seasonal past values to help forecast a future outcome.
 
 ```python
-lo, hi = df["x"].quantile([0.01,0.99])
-df["x_clip"] = df["x"].clip(lo, hi)
+series = pd.Series([3, 4, 6, 8, 10, 9], dtype=float)
+past1 = series.shift(1)
+past3_mean = series.shift(1).rolling(3).mean()
 ```
 
-## Log transform
+## 10. Feature interactions and event distance — [+]
+
+**What they do:** Allow for effects that depend jointly on two variables, or fade with distance from an event.
 
 ```python
-df["log_x"] = np.log1p(df["x"])
+temperature = np.array([5., 12., 25.])
+humidity = np.array([0.8, 0.6, 0.3])
+temperature * humidity
+days_from_holiday = np.array([0, 1, 3, 10])
+np.exp(-days_from_holiday/3.0)
 ```
 
-Use for positive/right-skewed variables.
+**Rule:** State a hypothesis before introducing the transform; compare validation results with/without it.
 
-## Cyclic time
+## 11. Leakage guard — [K: Intermediate ML]
 
-Hour:
+**What it does:** Prevents the model from using information it could not have had at prediction time.
 
-```python
-df["hour_sin"] = np.sin(2*np.pi*df["hour"]/24)
-df["hour_cos"] = np.cos(2*np.pi*df["hour"]/24)
-```
-
-Weekday:
-
-```python
-df["dow_sin"] = np.sin(2*np.pi*df["weekday"]/7)
-df["dow_cos"] = np.cos(2*np.pi*df["weekday"]/7)
-```
-
-Month:
-
-```python
-df["month_sin"] = np.sin(2*np.pi*df["month"]/12)
-df["month_cos"] = np.cos(2*np.pi*df["month"]/12)
-```
-
-## Smooth event proximity
-
-```python
-d = df["days_to_event"]
-df["event_decay"] = np.exp(-d / 3)
-```
-
-Sigmoid-style:
-
-```python
-df["event_proximity"] = 1 / (1 + np.exp((d - 2) / 1.5))
-```
-
-## Rolling physical effects
-
-```python
-df["temp_roll_6"] = (
-    df["temp"]
-      .shift(1)
-      .rolling(6)
-      .mean()
-)
-```
-
-Use when the target responds with inertia rather than only to the instantaneous observation.
-
-## Interactions
-
-```python
-df["temp_x_hum"] = df["temp"] * df["humidity"]
-```
-
-```python
-df["momentum_per_vol"] = df["momentum"] / (df["vol"] + 1e-8)
-```
-
-## Rank transforms
-
-Global:
-
-```python
-df["rank_x"] = df["x"].rank(pct=True)
-```
-
-Cross-sectional:
-
-```python
-df["rank_x"] = df.groupby("date")["x"].rank(pct=True)
-```
-
-## Missing indicators
-
-```python
-df["x_missing"] = df["x"].isna().astype(int)
-```
-
-Then impute `x`.
-
-## Correlated variables
-
-```python
-corr = df[numeric_cols].corr().abs()
-```
-
-Possible responses:
-
-- keep both with Ridge
-- remove one for simplicity
-- retain both for a tree model
-- use domain knowledge
-
-Do not automatically delete every highly correlated variable.
-
-## Leakage audit
-
-For every feature ask:
-
-> Could I know this value at prediction time?
-
-Common leakage:
-
-- future return
-- post-event information
-- target-derived aggregate
-- final outcome data used before the event
-- preprocessing fit on full data
-- feature selection using the test target
-
-## Train-only preprocessing
-
-Manual pattern:
-
-```python
-median = train["x"].median()
-train["x"] = train["x"].fillna(median)
-valid["x"] = valid["x"].fillna(median)
-test["x"] = test["x"].fillna(median)
-```
-
-Prefer sklearn Pipelines when modelling.
+- If deciding **before** a sales call, the call's eventual duration is unavailable.
+- If forecasting yesterday-to-today returns from yesterday's close, today's closing price is future information.
+- If imputing/scaling/encoding, fit on training only; transform validation/test using those learnt rules.
+- If selecting features/hyperparameters/thresholds, use validation rather than final test performance.

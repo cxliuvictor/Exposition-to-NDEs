@@ -1,192 +1,95 @@
-# Jupyter + Debugging Cheatsheet
+# 08 — Python and Jupyter survival (fast-reference)
 
-## Environment
+**Scope:** [+] Onsite addition. The named Kaggle courses assume some Python knowledge, so this fills the specific gap of being rusty in Python itself.
+
+## 1. Lists, dictionaries and loops — [+]
+
+**What they do:** Store groups of values or repeat the same calculation over a small list of columns.
 
 ```python
-import os
-import sys
+cols = ["age", "income"]
+weights = {"age": 0.2, "income": 0.8}
+for col in cols:
+    print(col)
+```
 
+## 2. Functions and comprehensions — [+]
+
+**What they do:** Package a calculation for reuse or construct a list by filtering another list.
+
+```python
+def mae(y, pred):
+    return abs(y - pred).mean()
+
+columns = ["age", "income", "id"]
+features = [c for c in columns if c != "id"]
+```
+
+## 3. Check Python, packages and working directory — [+]
+
+**What it does:** Tells you which kernel you're actually using and why Jupyter cannot find a file.
+
+```python
+import os, sys, pandas as pd, sklearn
 print(sys.version)
 print(sys.executable)
 print(os.getcwd())
+print(pd.__version__, sklearn.__version__)
+print(os.listdir("."))
 ```
 
-Files:
+## 4. Package install / speed test — [+]
+
+**What they do:** `%pip` installs in the active notebook environment; `%timeit` helps compare slow vs fast approaches.
 
 ```python
-os.listdir()
+# These lines run in Jupyter only:
+# %pip install seaborn
+# %timeit sum(range(1000))
 ```
 
-## Package versions
+**Rule:** Avoid installing optional libraries unless they provide a decisive benefit.
+
+## 5. Read CSV with uncommon delimiter, decimal or encoding — [+]
+
+**What it does:** Corrects files that otherwise load as one giant column or fail due to text encoding.
 
 ```python
-import numpy as np
-import pandas as pd
-import sklearn
-
-print(np.__version__)
-print(pd.__version__)
-print(sklearn.__version__)
+# pd.read_csv("data.csv", sep=";")
+# pd.read_csv("data.csv", decimal=",")
+# pd.read_csv("data.csv", encoding="latin1")
 ```
 
-## Install package
+## 6. Fix common errors — [+]
 
-Inside Jupyter:
+**What they do:** Reveal the mismatch instead of guessing the cause.
 
 ```python
-%pip install seaborn
+# KeyError: inspect actual names
+# print(df.columns.tolist())
+# df.columns = df.columns.str.strip()
+
+# ValueError: could not convert string to float
+# print(X.select_dtypes(exclude="number").columns)
+
+# Model says NaN is present
+# print(X.isna().sum().sort_values(ascending=False).head())
+
+# Wrong shapes
+# print(X_train.shape, X_valid.shape, y_train.shape, y_valid.shape)
 ```
 
-Prefer `%pip` to `!pip`. Restart kernel if required.
+## 7. Restart / run all — [+]
 
-Do not install packages unless there is real benefit.
+**What it does:** Confirms the final notebook works from a clean kernel rather than relying on variables created out of order.
 
-## Timing
+Use **Kernel → Restart and Run All** before concluding, if time permits. Save a copy of your work first.
 
-```python
-%timeit np.mean(x)
-```
+## 8. High-value internet documentation links — [+]
 
-## Variables currently defined
+- [Pandas API](https://pandas.pydata.org/docs/reference/index.html)
+- [NumPy reference](https://numpy.org/doc/stable/reference/)
+- [scikit-learn user guide](https://scikit-learn.org/stable/user_guide.html)
+- [Matplotlib examples](https://matplotlib.org/stable/gallery/index.html)
 
-```python
-%whos
-```
-
-## CSV delimiter / encoding problems
-
-```python
-df = pd.read_csv("file.csv")
-```
-
-Semicolon:
-
-```python
-df = pd.read_csv("file.csv", sep=";")
-```
-
-Encoding:
-
-```python
-df = pd.read_csv("file.csv", encoding="latin1")
-```
-
-## KeyError
-
-```python
-df.columns.tolist()
-```
-
-Strip whitespace:
-
-```python
-df.columns = df.columns.str.strip()
-```
-
-## Date parsing failed
-
-```python
-dates = pd.to_datetime(df["date"], errors="coerce")
-```
-
-Inspect bad values:
-
-```python
-df.loc[dates.isna(), "date"]
-```
-
-## Numeric stored as string
-
-```python
-df["x"] = pd.to_numeric(df["x"], errors="coerce")
-```
-
-## Shape mismatch
-
-```python
-print(
-    X_train.shape,
-    X_valid.shape,
-    y_train.shape,
-    y_valid.shape
-)
-```
-
-## Merge unexpectedly increased rows
-
-```python
-print(left.shape, right.shape)
-print(left["id"].duplicated().sum())
-print(right["id"].duplicated().sum())
-```
-
-Then use the expected `validate=` cardinality.
-
-## Model rejects NaNs
-
-```python
-X_train.isna().sum().sort_values(ascending=False).head()
-```
-
-Use:
-
-```python
-SimpleImputer(strategy="median")
-```
-
-## Model rejects strings
-
-```python
-X_train.select_dtypes(include="object").columns
-```
-
-Use `OneHotEncoder` or a suitable categorical encoding.
-
-## Infinite values
-
-```python
-np.isinf(
-    X_train.select_dtypes(include=np.number)
-).sum()
-```
-
-Replace:
-
-```python
-X = X.replace([np.inf,-np.inf], np.nan)
-```
-
-## Convergence warning
-
-For logistic/Huber, try scaling and:
-
-```python
-max_iter=2000
-```
-
-## Memory issue
-
-Sample:
-
-```python
-df_small = df.sample(100000, random_state=42)
-```
-
-Keep relevant columns only:
-
-```python
-df = df[needed_cols].copy()
-```
-
-Avoid giant many-to-many merges.
-
-## Restart discipline
-
-If notebook state becomes confusing:
-
-1. restart kernel
-2. run all
-3. fix first failing cell
-4. repeat
-
-Final notebook should reproduce top-to-bottom.
+**Best search:** `site:pandas.pydata.org DataFrame groupby agg`, not a broad search for a full solution to the entire problem.
