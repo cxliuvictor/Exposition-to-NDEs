@@ -1,10 +1,10 @@
 # The Dataset Interview: One Continuous Research Pipeline
 
-**Optiver-inspired, Squarepoint-adapted | Python 3.8-compatible patterns | Pandas → sklearn → out-of-sample conclusion**
+**Original-inspired, current-adapted | Python 3.8-compatible patterns | Pandas → sklearn → out-of-sample conclusion**
 
 This is designed to be read **top to bottom in a Jupyter notebook**, not as disconnected documentation for separate libraries. Each step gives a small explanation, code you can adapt, what to inspect, and what to say to the interviewer. The default route is **tabular regression / forecasting**. Whenever the task is classification, a genuine time series, or trade selection, take the small branch marked **IF** at the point where it becomes relevant.
 
-**Source and adaptation.** The flow follows your uploaded Optiver HackerRank reconstruction: inspect data → preserve a validation period → target distribution / temporal consistency → univariate Pearson/Spearman and response buckets → simple rule, Ridge and boosted trees → compare predictive and decision metrics → validation-block robustness → feature shift → freeze and evaluate OOS. Your Optiver exercise had predominantly numerical features and a PnL objective. This guide adds missing/categorical data, appropriate split selection, baseline models, and regression/classification decision points. It does **not** assume your onsite dataset will be financial.
+**Source and adaptation.** The flow follows your uploaded Original project reconstruction: inspect data → preserve a validation period → target distribution / temporal consistency → univariate Pearson/Spearman and response buckets → simple rule, Ridge and boosted trees → compare predictive and decision metrics → validation-block robustness → feature shift → freeze and evaluate OOS. Your Original exercise had predominantly numerical features and a PnL objective. This guide adds missing/categorical data, appropriate split selection, baseline models, and regression/classification decision points. It does **not** assume your onsite dataset will be financial.
 
 **Copying convention:** MAIN PATH cells are written to run **in order**; change only the configuration in Step 0 for your file. IF branches are alternatives or additions, **not** extra cells you must always run. Code that performs operations is not commented out. Comment lines explain what happens. The bundled demo uses sklearn's real Diabetes regression dataset if you have no CSV to practise with.
 
@@ -224,7 +224,7 @@ assert len(combined) == len(transactions)
 
 ## Step 3 — Define what is known at prediction time; split once
 
-**Why:** a good validation design is usually more valuable than an extra model. Your Optiver notebook sensibly used a chronological last-20% validation period; that would be inappropriate by default for generic unordered IID data.
+**Why:** a good validation design is usually more valuable than an extra model. Your Original notebook sensibly used a chronological last-20% validation period; that would be inappropriate by default for generic unordered IID data.
 
 **IF you need next-hour/next-day prediction from an observed series:** create the shifted future label **now, before making the split**, then remove the missing final label. The *label* uses the future because that is what you are predicting; *features* must not.
 
@@ -312,7 +312,7 @@ For a binary outcome, use stratification in the IID split (the code below does t
 
 ## Step 4 — Get the shape of the signal before choosing a model
 
-This reproduces the strongest EDA components of your Optiver notebook **using training labels only**, but under a strict budget. In that notebook you checked the target PnL distribution, chronological blocks, Pearson/Spearman correlations, and quantile-bucket conditional responses. For the onsite, produce **two or three useful observations**, not dozens of plots.
+This reproduces the strongest EDA components of your Original notebook **using training labels only**, but under a strict budget. In that notebook you checked the target PnL distribution, chronological blocks, Pearson/Spearman correlations, and quantile-bucket conditional responses. For the onsite, produce **two or three useful observations**, not dozens of plots.
 
 **MAIN PATH — target distribution and numeric correlations:**
 
@@ -430,7 +430,7 @@ Time series is **not a separate model family**: it is a forecasting version of t
 
 ## Step 6 — Establish a baseline first (regression and forecasting)
 
-The Optiver notebook compared a simple one-feature rule with Ridge and gradient boosting. For generic regression, start even simpler: the **training mean**. With a genuine time series, persistence or seasonal-naive is often stronger.
+The Original notebook compared a simple one-feature rule with Ridge and gradient boosting. For generic regression, start even simpler: the **training mean**. With a genuine time series, persistence or seasonal-naive is often stronger.
 
 **MAIN PATH:**
 
@@ -506,7 +506,7 @@ display(comparison)
 
 ## Step 8 — Diagnose *where* a regression model succeeds or fails
 
-Your Optiver notebook correctly went beyond RMSE to prediction/target correlation and decision value. For a generic regression, residual and target-bucket plots are the simplest informative additions.
+Your Original notebook correctly went beyond RMSE to prediction/target correlation and decision value. For a generic regression, residual and target-bucket plots are the simplest informative additions.
 
 **REGRESSION PATH — choose the validation winner, then inspect it:**
 
@@ -558,9 +558,9 @@ print('Spearman rank correlation:', ranking['score'].corr(ranking['outcome'], me
 
 This asks whether larger predictions actually identify larger realised outcomes. It is **not** a trading PnL analysis unless the outcome is economically meaningful after costs.
 
-### IF the objective is Optiver-style PnL / trade selection
+### IF the objective is Original-style PnL / trade selection
 
-Your Optiver task selected a fraction of opportunities by predicted PnL. Replicate that **only when the target is trade-level PnL** (or can be translated into PnL defensibly).
+Your Original task selected a fraction of opportunities by predicted PnL. Replicate that **only when the target is trade-level PnL** (or can be translated into PnL defensibly).
 
 ```python
 # Validation only: score from chosen model, realised per-trade PnL = y_valid.
@@ -586,7 +586,7 @@ A smaller fraction may improve average PnL per trade but reduce total opportunit
 
 ## Step 9 — Check whether the regression result is fragile
 
-This is where research judgement becomes visible. The Optiver reconstruction used validation-time blocks and test/train feature-shift diagnostics. Preserve those when relevant, but keep the exercise proportional.
+This is where research judgement becomes visible. The Original reconstruction used validation-time blocks and test/train feature-shift diagnostics. Preserve those when relevant, but keep the exercise proportional.
 
 **REGRESSION PATH — limited CV on training data (optional when time is tight):**
 
@@ -643,7 +643,7 @@ Try a change only if you can write a sentence beginning **“Because the plot/st
 
 ## Step 10 — Freeze the regression procedure; evaluate OOS only once
 
-Your Optiver notebook's final test logic is instructive, with one important correction: **refit whichever model was chosen**, rather than always cloning the gradient-boosting model. Also freeze the feature set, preprocessing choices and any selection fraction before reading test labels.
+Your Original notebook's final test logic is instructive, with one important correction: **refit whichever model was chosen**, rather than always cloning the gradient-boosting model. Also freeze the feature set, preprocessing choices and any selection fraction before reading test labels.
 
 **MAIN PATH:**
 
@@ -915,9 +915,9 @@ The classification path now rejoins the shared **Step 11: notebook conclusion an
 
 ## Step 11 — Turn the notebook into your presentation
 
-The friend who attended described a Jupyter notebook presentation and an hour-long QR discussion, not a requirement for a polished PowerPoint deck. End with one readable Markdown summary: problem → data issue → baseline → model comparison → main finding → limitations. **Do not leave the interviewer staring at 30 unlabeled cells.**
+End with one readable Markdown summary: problem → data issue → baseline → model comparison → main finding → limitations. **Do not leave the interviewer staring at 30 unlabeled cells.**
 
-**Copy this closing structure into a Markdown cell and complete it from your results:**
+**Closing structure and complete it from your results:**
 
 > ### Research summary
 > **Objective.** Predict [outcome] for [unit of observation], using information available at [decision time].
@@ -932,9 +932,9 @@ The friend who attended described a Jupyter notebook presentation and an hour-lo
 >
 > **Next steps.** [One specific additional experiment], rather than generic “tune more”.
 
-**Likely QR questions:** Why that metric? What was the naive baseline? Why Ridge? Did boosted trees truly help? Was the split appropriate? Could any predictor leak the outcome? How stable were results across subgroups or time? Were extreme outcomes harder? What did you reject? If the objective is trading, how do prediction accuracy, rank quality and net trading PnL differ?
+**Likely questions:** Why that metric? What was the naive baseline? Why Ridge? Did boosted trees truly help? Was the split appropriate? Could any predictor leak the outcome? How stable were results across subgroups or time? Were extreme outcomes harder? What did you reject? If the objective is trading, how do prediction accuracy, rank quality and net trading PnL differ?
 
-**Likely PM follow-up:** Explain what you actually built, what failed, and what commercial or market intuition it demonstrates. You can connect to your options/neural-SDE benchmarking or market-signal research, but keep the answer about this dataset grounded in *this* dataset.
+**Likely follow-up:** Explain what you actually built, what failed, and what commercial or market intuition it demonstrates. You can connect to your options/neural-SDE benchmarking or market-signal research, but keep the answer about this dataset grounded in *this* dataset.
 
 ---
 
