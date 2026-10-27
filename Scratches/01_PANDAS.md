@@ -230,3 +230,10 @@ prices.shift(1).expanding().mean()
 ```
 
 **When useful:** Only if a prompt asks for all group-scenario combinations, returns, or historical cumulative statistics.
+
+## 18. Duplicated
+
+Removing duplicate columns (remember `duplicated()` returns booleans for rows) by transposing first
+```python
+out = df.loc[:,~df.T.duplicated()]
+```
