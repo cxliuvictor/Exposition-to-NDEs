@@ -1,0 +1,35 @@
+# File inventory
+
+- `INVENTORY.md`
+- `README.md`
+- `THREE_WEEK_CALENDAR.md`
+- `reference/DATASET_SOURCES.md`
+- `reference/DATASET_VALIDATION_NOTES.md`
+- `reference/FEATURE_TRANSFORMATION_PLAYBOOK.md`
+- `reference/INTERVIEWER_QUESTION_BANK.md`
+- `reference/METRICS_AND_VALIDATION_SHEET.md`
+- `reference/PRESENTATION_TEMPLATE.md`
+- `reference/PROJECT_SCORING_RUBRIC.md`
+- `reference/PYTHON38_AND_ONSITE_ENVIRONMENT.md`
+- `reference/RESEARCH_WORKFLOW_9_TO_2.md`
+- `reference/dataset_loader.py`
+- `week1/00_environment_and_jupyter.ipynb`
+- `week1/01_pandas_transformations.ipynb`
+- `week1/02_numpy_and_feature_transforms.ipynb`
+- `week1/03_eda_and_matplotlib.ipynb`
+- `week1/04_cleaning_and_feature_engineering.ipynb`
+- `week1/05_sklearn_regression_and_validation.ipynb`
+- `week1/06_sklearn_classification_and_interpretability.ipynb`
+- `week1/07_closed_book_mastery_test.ipynb`
+- `week1/MASTERY_CHECKLIST.md`
+- `week1/REFERENCE_GUIDE.md`
+- `week1/solutions/ANSWER_KEY.md`
+- `week2/01_anonymous_tabular_superconductivity.ipynb`
+- `week2/02_cross_sectional_sp500.ipynb`
+- `week2/03_pjm_demand_feature_engineering.ipynb`
+- `week2/04_adult_income_classification.ipynb`
+- `week2/05_air_quality_sensor_regression.ipynb`
+- `week3/01_mock_3h_ames_housing.ipynb`
+- `week3/02_mock_4h_btc_trade_selection.ipynb`
+- `week3/03_full_day_mock_appliances_energy.ipynb`
+- `week3/CLOSING_INTERVIEW_DRILL.md`
