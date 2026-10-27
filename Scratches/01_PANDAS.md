@@ -10,6 +10,8 @@ sales = pd.DataFrame({
     "returns": [5, np.nan, 0, 8, 2],
     "category": ["A", "B", "A", "B", "A"]
 })
+
+# this dict of lists is a column-oriented construction; you can also do row-oriented as a list of dict or list of list(with columns=[] to add col names)
 ```
 
 ## 1. `DataFrame`, `Series`, `read_csv`, `to_csv` — [K]
@@ -17,9 +19,14 @@ sales = pd.DataFrame({
 **What they do:** A Series is one labelled column, a DataFrame is a table, and CSV methods load/save that table.
 
 ```python
-pd.Series([2, 4, 6], name="value")
+pd.Series([2, 4, 6], name="value")  # you can also make a Series from a dict
+pd.Series((1, 2, 3), index=['a', 'b', 'c'])
+
 pd.DataFrame({"x": [1, 2], "y": [3, 4]})
-# sales = pd.read_csv("sales.csv", index_col=0)  # only if first column really is the index
+pd.DataFrame([[1, 3], [2, 4]], columns=['x', 'y'])
+pd.DataFrame([{'x':1, 'y':3}, {'x':2, 'y':4}])
+
+sales = pd.read_csv("sales.csv", index_col=0)  # only if first column really is the index
 sales.to_csv("sales_output.csv", index=False)
 ```
 
@@ -223,3 +230,10 @@ prices.shift(1).expanding().mean()
 ```
 
 **When useful:** Only if a prompt asks for all group-scenario combinations, returns, or historical cumulative statistics.
+
+## 18. Duplicated
+
+Removing duplicate columns (remember `duplicated()` returns booleans for rows) by transposing first
+```python
+out = df.loc[:,~df.T.duplicated()]
+```
