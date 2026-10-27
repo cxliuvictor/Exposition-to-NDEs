@@ -19,9 +19,14 @@ sales = pd.DataFrame({
 **What they do:** A Series is one labelled column, a DataFrame is a table, and CSV methods load/save that table.
 
 ```python
-pd.Series([2, 4, 6], name="value")
+pd.Series([2, 4, 6], name="value")  # you can also make a Series from a dict
+pd.Series((1, 2, 3), index=['a', 'b', 'c'])
+
 pd.DataFrame({"x": [1, 2], "y": [3, 4]})
-# sales = pd.read_csv("sales.csv", index_col=0)  # only if first column really is the index
+pd.DataFrame([[1, 3], [2, 4]], columns=['x', 'y'])
+pd.DataFrame([{'x':1, 'y':3}, {'x':2, 'y':4}])
+
+sales = pd.read_csv("sales.csv", index_col=0)  # only if first column really is the index
 sales.to_csv("sales_output.csv", index=False)
 ```
 
