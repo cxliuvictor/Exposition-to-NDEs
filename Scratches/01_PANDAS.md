@@ -10,6 +10,8 @@ sales = pd.DataFrame({
     "returns": [5, np.nan, 0, 8, 2],
     "category": ["A", "B", "A", "B", "A"]
 })
+
+# this dict of lists is a column-oriented construction; you can also do row-oriented as a list of dict or list of list(with columns=[] to add col names)
 ```
 
 ## 1. `DataFrame`, `Series`, `read_csv`, `to_csv` — [K]
