@@ -1417,3 +1417,925 @@ UNDERSTAND
 Use your other cheatsheet only when you forget syntax.
 
 A simple, complete, correctly validated analysis is stronger than a sophisticated unfinished one.
+
+# ============================================================
+# SQUAREPOINT BOAT DATA TASK — END-TO-END CODE TEMPLATE
+# ============================================================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+# ============================================================
+# PART 0 — LOAD DATA
+# ============================================================
+
+bd = pd.read_csv("BoatData_V1.csv")
+
+print(bd.head())
+print(bd.shape)
+print(bd.info())
+
+
+# ============================================================
+# PART 1.1 — EXTRACT NUMERICAL FEATURES FROM TEXT
+# Example:
+# "753 ft² 70 m²"  -> extract 70 m²
+# If only ft² exists, convert it to m²
+# ============================================================
+
+# ----- MAINSAIL AREA -----
+
+m2 = (
+    bd["Mainsail"]
+    .str.extract(r'(\d+(?:\.\d+)?)\s*m(?:²|\^2|2)')[0]
+    .astype(float)
+)
+
+ft2 = (
+    bd["Mainsail"]
+    .str.extract(r'(\d+(?:\.\d+)?)\s*ft(?:²|\^2|2)')[0]
+    .astype(float)
+)
+
+bd["Mainsail_m2"] = m2.fillna(ft2 * 0.092903)
+
+
+# ----- DRAFT -----
+# If values contain metres, e.g. "4.8 6'11 2.1 m"
+
+bd["Draft_m"] = (
+    bd["Draft"]
+    .str.extract(r'(\d+(?:\.\d+)?)\s*m')[0]
+    .astype(float)
+)
+
+
+# ----- BEAM -----
+
+bd["Beam_m"] = (
+    bd["Beam"]
+    .str.extract(r'(\d+(?:\.\d+)?)\s*m')[0]
+    .astype(float)
+)
+
+
+# ----- HULL LENGTH -----
+
+bd["Hull_length_m"] = (
+    bd["Hull length"]
+    .str.extract(r'(\d+(?:\.\d+)?)\s*m')[0]
+    .astype(float)
+)
+
+
+# ============================================================
+# PART 1.1a — AVERAGE MAINSAIL AREA OF BENETEAU BOATS
+# Adjust "Model"/"Variant" depending on where BENETEAU appears
+# ============================================================
+
+beneteau_mean = bd.loc[
+    bd["Model"].str.contains("BENETEAU", case=False, na=False),
+    "Mainsail_m2"
+].mean()
+
+print("Average Beneteau mainsail area:", beneteau_mean)
+
+
+# ============================================================
+# PART 1.1b — CATEGORY WITH HIGHEST MEDIAN DRAFT
+# ============================================================
+
+draft_by_category = (
+    bd.groupby("Category")["Draft_m"]
+      .median()
+      .sort_values(ascending=False)
+)
+
+print(draft_by_category)
+
+print(
+    "Category with highest median draft:",
+    draft_by_category.index[0]
+)
+
+
+# ============================================================
+# PART 1.2 — INVESTIGATE / CLEAN OTHER COLUMNS
+# ============================================================
+
+# Missing values
+print(
+    bd.isna()
+      .sum()
+      .sort_values(ascending=False)
+)
+
+# Number of unique values
+print(
+    bd.nunique()
+      .sort_values()
+)
+
+# Exact duplicates
+print(
+    "Exact duplicates:",
+    bd.duplicated().sum()
+)
+
+# Numeric summary
+print(
+    bd.describe().T
+)
+
+# Categorical summaries
+for col in bd.select_dtypes(include="object").columns:
+    print("\nCOLUMN:", col)
+    print(
+        bd[col]
+        .value_counts(dropna=False)
+        .head(10)
+    )
+
+
+# ------------------------------------------------------------
+# Optional: remove exact duplicates if clearly genuine duplicates
+# ------------------------------------------------------------
+
+# bd = bd.drop_duplicates()
+
+
+# ------------------------------------------------------------
+# Ensure price is numeric
+# ------------------------------------------------------------
+
+bd["Listing Price"] = pd.to_numeric(
+    bd["Listing Price"],
+    errors="coerce"
+)
+
+
+# ------------------------------------------------------------
+# Replace infinite values
+# ------------------------------------------------------------
+
+numeric_cols_now = bd.select_dtypes(include=np.number).columns
+
+bd[numeric_cols_now] = bd[numeric_cols_now].replace(
+    [np.inf, -np.inf],
+    np.nan
+)
+
+
+# ============================================================
+# PART 1.3 — CORRELATION BETWEEN NUMERICAL FEATURES
+# ============================================================
+
+num = bd.select_dtypes(include=np.number)
+
+corr = num.corr()
+
+print(corr)
+
+
+# ------------------------------------------------------------
+# Heatmap
+# ------------------------------------------------------------
+
+plt.figure(figsize=(12, 9))
+
+sns.heatmap(
+    corr,
+    cmap="coolwarm",
+    center=0
+)
+
+plt.title("Correlation matrix")
+plt.tight_layout()
+plt.show()
+
+
+# ------------------------------------------------------------
+# Rank strongest UNIQUE correlation pairs
+# ------------------------------------------------------------
+
+upper_triangle = np.triu(
+    np.ones(corr.shape),
+    k=1
+).astype(bool)
+
+pairs = (
+    corr.abs()
+        .where(upper_triangle)
+        .stack()
+        .sort_values(ascending=False)
+)
+
+print("Top correlations:")
+print(pairs.head(10))
+
+
+# ------------------------------------------------------------
+# Scatterplot strongest pair
+# ------------------------------------------------------------
+
+x, y = pairs.index[0]
+
+sns.scatterplot(
+    data=bd,
+    x=x,
+    y=y,
+    alpha=0.4
+)
+
+plt.title(f"{x} vs {y}")
+plt.show()
+
+
+# ============================================================
+# PART 1.4 — DISTRIBUTION OF LISTING PRICES
+# ============================================================
+
+sns.histplot(
+    bd["Listing Price"].dropna(),
+    bins=40
+)
+
+plt.title("Distribution of Listing Prices")
+plt.show()
+
+
+# ------------------------------------------------------------
+# Log-price distribution — useful if heavily right-skewed
+# ------------------------------------------------------------
+
+sns.histplot(
+    np.log1p(
+        bd["Listing Price"].dropna()
+    ),
+    bins=40
+)
+
+plt.xlabel("log(1 + Listing Price)")
+plt.title("Log Listing Price")
+plt.show()
+
+
+# ============================================================
+# DEFINE "EXPENSIVE" BOATS
+# Example = top 10% by listing price
+# ============================================================
+
+cutoff = bd["Listing Price"].quantile(0.90)
+
+expensive = bd.loc[
+    bd["Listing Price"] >= cutoff
+].copy()
+
+print("Expensive boat cutoff:", cutoff)
+
+
+# ------------------------------------------------------------
+# Common categorical characteristics
+# ------------------------------------------------------------
+
+print(
+    expensive["Category"]
+    .value_counts()
+    .head(10)
+)
+
+print(
+    expensive["Geographic Region"]
+    .value_counts()
+    .head(10)
+)
+
+print(
+    expensive["Hull type"]
+    .value_counts()
+    .head(10)
+)
+
+
+# ------------------------------------------------------------
+# Compare numeric characteristics:
+# all boats vs expensive boats
+# ------------------------------------------------------------
+
+comparison = pd.DataFrame({
+    "All boats":
+        bd.select_dtypes(include=np.number).median(),
+
+    "Expensive boats":
+        expensive.select_dtypes(include=np.number).median()
+})
+
+print(comparison)
+
+
+# ============================================================
+# PART 1.5 — GEOGRAPHIC REGION VS LISTING PRICE
+# ============================================================
+
+region_price = (
+    bd.groupby("Geographic Region")["Listing Price"]
+      .agg(
+          count="count",
+          mean="mean",
+          median="median"
+      )
+      .sort_values(
+          "median",
+          ascending=False
+      )
+)
+
+print(region_price)
+
+
+# ------------------------------------------------------------
+# Boxplot
+# ------------------------------------------------------------
+
+plt.figure(figsize=(10, 5))
+
+sns.boxplot(
+    data=bd,
+    x="Geographic Region",
+    y="Listing Price"
+)
+
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+
+# ------------------------------------------------------------
+# Log-price version if price is heavily skewed
+# ------------------------------------------------------------
+
+bd["log_price"] = np.log1p(
+    bd["Listing Price"]
+)
+
+plt.figure(figsize=(10, 5))
+
+sns.boxplot(
+    data=bd,
+    x="Geographic Region",
+    y="log_price"
+)
+
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+
+# ------------------------------------------------------------
+# Check whether regional differences persist WITHIN categories
+# ------------------------------------------------------------
+
+category_region_price = (
+    bd.groupby(
+        ["Category", "Geographic Region"]
+    )["Listing Price"]
+    .median()
+    .unstack()
+)
+
+print(category_region_price)
+
+
+# ============================================================
+# PART 1.6 — MEAN / MEDIAN PRICE BY YEAR BUILT
+# ============================================================
+
+year_price = (
+    bd.groupby("Year")["Listing Price"]
+      .agg(
+          count="count",
+          mean="mean",
+          median="median"
+      )
+      .reset_index()
+)
+
+print(year_price)
+
+
+# ------------------------------------------------------------
+# Optional: ignore years with tiny sample sizes
+# ------------------------------------------------------------
+
+year_price_clean = year_price.loc[
+    year_price["count"] >= 5
+]
+
+
+# ------------------------------------------------------------
+# Plot trend
+# ------------------------------------------------------------
+
+plt.figure(figsize=(10, 5))
+
+plt.plot(
+    year_price_clean["Year"],
+    year_price_clean["mean"],
+    label="Mean"
+)
+
+plt.plot(
+    year_price_clean["Year"],
+    year_price_clean["median"],
+    label="Median"
+)
+
+plt.xlabel("Year built")
+plt.ylabel("Listing price")
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+
+# ============================================================
+# ============================================================
+# PART 2 — BUILD A PRICING MODEL
+# ============================================================
+# ============================================================
+
+
+# ============================================================
+# PART 2.1a — CHOOSE FEATURES
+# ============================================================
+
+features = [
+    "Year",
+    "Hull_length_m",
+    "Beam_m",
+    "Draft_m",
+    "Mainsail_m2",
+    "Geographic Region",
+    "Category",
+    "Hull type",
+    "Model"
+]
+
+# Keep only features that actually exist
+features = [
+    col for col in features
+    if col in bd.columns
+]
+
+X = bd[features].copy()
+y = bd["Listing Price"].copy()
+
+
+# Remove rows with missing target
+mask = y.notna()
+
+X = X.loc[mask]
+y = y.loc[mask]
+
+
+# ============================================================
+# PART 2.1b — TRAIN / TEST SPLIT
+# ============================================================
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.20,
+    random_state=42
+)
+
+
+# ============================================================
+# IDENTIFY NUMERIC / CATEGORICAL COLUMNS
+# ============================================================
+
+numeric_cols = (
+    X_train
+    .select_dtypes(include=np.number)
+    .columns
+    .tolist()
+)
+
+categorical_cols = (
+    X_train
+    .select_dtypes(exclude=np.number)
+    .columns
+    .tolist()
+)
+
+print("Numeric:", numeric_cols)
+print("Categorical:", categorical_cols)
+
+
+# ============================================================
+# PREPROCESSING
+# ============================================================
+
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder
+
+
+# ------------------------------------------------------------
+# Numeric:
+# fill missing values with training median
+# ------------------------------------------------------------
+
+numeric_pipeline = Pipeline([
+    (
+        "imputer",
+        SimpleImputer(
+            strategy="median"
+        )
+    )
+])
+
+
+# ------------------------------------------------------------
+# Categorical:
+# fill missing values + one-hot encode
+#
+# handle_unknown="ignore" is especially useful because
+# unseen boats may contain categories/makes not in training
+# ------------------------------------------------------------
+
+categorical_pipeline = Pipeline([
+    (
+        "imputer",
+        SimpleImputer(
+            strategy="most_frequent"
+        )
+    ),
+    (
+        "onehot",
+        OneHotEncoder(
+            handle_unknown="ignore"
+        )
+    )
+])
+
+
+# ------------------------------------------------------------
+# Combine numeric + categorical preprocessing
+# ------------------------------------------------------------
+
+preprocess = ColumnTransformer([
+    (
+        "num",
+        numeric_pipeline,
+        numeric_cols
+    ),
+    (
+        "cat",
+        categorical_pipeline,
+        categorical_cols
+    )
+])
+
+
+# ============================================================
+# BASELINE MODEL
+# ============================================================
+
+from sklearn.dummy import DummyRegressor
+
+baseline = DummyRegressor(
+    strategy="median"
+)
+
+baseline.fit(
+    X_train,
+    y_train
+)
+
+baseline_pred = baseline.predict(
+    X_test
+)
+
+
+# ============================================================
+# MAIN MODEL — RANDOM FOREST
+# ============================================================
+
+from sklearn.ensemble import RandomForestRegressor
+
+model = Pipeline([
+    (
+        "preprocess",
+        preprocess
+    ),
+    (
+        "model",
+        RandomForestRegressor(
+            n_estimators=200,
+            min_samples_leaf=3,
+            random_state=42,
+            n_jobs=-1
+        )
+    )
+])
+
+model.fit(
+    X_train,
+    y_train
+)
+
+pred = model.predict(
+    X_test
+)
+
+
+# ============================================================
+# PART 2.1c — EVALUATE MODEL
+# ============================================================
+
+from sklearn.metrics import (
+    mean_absolute_error,
+    mean_squared_error,
+    r2_score
+)
+
+
+def regression_metrics(y_true, pred):
+    return {
+        "MAE":
+            mean_absolute_error(
+                y_true,
+                pred
+            ),
+
+        "RMSE":
+            mean_squared_error(
+                y_true,
+                pred
+            ) ** 0.5,
+
+        "R2":
+            r2_score(
+                y_true,
+                pred
+            )
+    }
+
+
+print(
+    "BASELINE:",
+    regression_metrics(
+        y_test,
+        baseline_pred
+    )
+)
+
+print(
+    "RANDOM FOREST:",
+    regression_metrics(
+        y_test,
+        pred
+    )
+)
+
+
+# ------------------------------------------------------------
+# Actual vs predicted
+# ------------------------------------------------------------
+
+plt.figure(figsize=(6, 6))
+
+plt.scatter(
+    y_test,
+    pred,
+    alpha=0.4
+)
+
+lo = min(
+    y_test.min(),
+    pred.min()
+)
+
+hi = max(
+    y_test.max(),
+    pred.max()
+)
+
+plt.plot(
+    [lo, hi],
+    [lo, hi],
+    "--"
+)
+
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Actual vs Predicted")
+plt.show()
+
+
+# ------------------------------------------------------------
+# Residuals
+# ------------------------------------------------------------
+
+residuals = (
+    np.asarray(y_test)
+    -
+    np.asarray(pred)
+)
+
+plt.figure(figsize=(7, 4))
+
+plt.scatter(
+    pred,
+    residuals,
+    alpha=0.4
+)
+
+plt.axhline(
+    0,
+    linestyle="--"
+)
+
+plt.xlabel("Predicted price")
+plt.ylabel("Residual")
+plt.title("Residual Plot")
+plt.show()
+
+
+# ============================================================
+# PART 2.1d — FEATURE IMPORTANCE
+# ============================================================
+
+from sklearn.inspection import permutation_importance
+
+importance = permutation_importance(
+    model,
+    X_test,
+    y_test,
+    scoring="neg_mean_absolute_error",
+    n_repeats=5,
+    random_state=42
+)
+
+importance_series = pd.Series(
+    importance.importances_mean,
+    index=X_test.columns
+).sort_values(
+    ascending=False
+)
+
+print(importance_series)
+
+
+# ------------------------------------------------------------
+# Plot feature importance
+# ------------------------------------------------------------
+
+importance_series.head(15).sort_values().plot.barh(
+    figsize=(8, 5)
+)
+
+plt.xlabel("Permutation importance")
+plt.tight_layout()
+plt.show()
+
+
+# ============================================================
+# PART 2.1e — PREDICT PRICES FOR 10 UNSEEN BOATS
+# ============================================================
+
+new = pd.read_csv(
+    "BoatData_NoPrice_V1.csv"
+)
+
+
+# ------------------------------------------------------------
+# APPLY THE SAME NUMERIC EXTRACTION TO NEW DATA
+# ------------------------------------------------------------
+
+if "Mainsail" in new.columns:
+
+    m2 = (
+        new["Mainsail"]
+        .str.extract(
+            r'(\d+(?:\.\d+)?)\s*m(?:²|\^2|2)'
+        )[0]
+        .astype(float)
+    )
+
+    ft2 = (
+        new["Mainsail"]
+        .str.extract(
+            r'(\d+(?:\.\d+)?)\s*ft(?:²|\^2|2)'
+        )[0]
+        .astype(float)
+    )
+
+    new["Mainsail_m2"] = (
+        m2.fillna(
+            ft2 * 0.092903
+        )
+    )
+
+
+if "Draft" in new.columns:
+
+    new["Draft_m"] = (
+        new["Draft"]
+        .str.extract(
+            r'(\d+(?:\.\d+)?)\s*m'
+        )[0]
+        .astype(float)
+    )
+
+
+if "Beam" in new.columns:
+
+    new["Beam_m"] = (
+        new["Beam"]
+        .str.extract(
+            r'(\d+(?:\.\d+)?)\s*m'
+        )[0]
+        .astype(float)
+    )
+
+
+if "Hull length" in new.columns:
+
+    new["Hull_length_m"] = (
+        new["Hull length"]
+        .str.extract(
+            r'(\d+(?:\.\d+)?)\s*m'
+        )[0]
+        .astype(float)
+    )
+
+
+# ------------------------------------------------------------
+# Predict
+# ------------------------------------------------------------
+
+new["Predicted Price"] = model.predict(
+    new[features]
+)
+
+print(
+    new["Predicted Price"]
+)
+
+
+# ------------------------------------------------------------
+# Average + median predicted price
+# ------------------------------------------------------------
+
+print(
+    "Average predicted price:",
+    new["Predicted Price"].mean()
+)
+
+print(
+    "Median predicted price:",
+    new["Predicted Price"].median()
+)
+
+
+# ============================================================
+# OPTIONAL — SHOW FINAL PREDICTIONS
+# ============================================================
+
+display(
+    new[
+        features
+        +
+        ["Predicted Price"]
+    ]
+)
+
+
+# ============================================================
+# VERY SHORT VERBAL METHODOLOGY SUMMARY
+# ============================================================
+
+# Part 1:
+# - Standardise numerical features extracted from text into one unit.
+# - Audit missingness, duplicates, data types and suspicious values.
+# - Study numeric relationships using correlations + scatterplots.
+# - Study price distribution and characteristics of expensive boats.
+# - Compare pricing geographically and across build years.
+
+# Part 2:
+# - Predict Listing Price using physical characteristics,
+#   boat type/model and geographic information.
+# - Use train/test split.
+# - Impute missing numeric/categorical values.
+# - One-hot encode categorical variables.
+# - Compare Random Forest against a simple median-price baseline.
+# - Evaluate with MAE, RMSE and R².
+# - Use permutation importance to understand influential features.
+# - Apply identical cleaning + trained pipeline to unseen boats.
